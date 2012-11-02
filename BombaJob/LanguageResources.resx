@@ -1,0 +1,381 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="appName" xml:space="preserve">
+    <value>BombaJob</value>
+  </data>
+  <data name="conf_InAppEmail" xml:space="preserve">
+    <value>In-App Email</value>
+  </data>
+  <data name="conf_InitSync" xml:space="preserve">
+    <value>Начална синхронизация</value>
+  </data>
+  <data name="conf_OnlineSearch" xml:space="preserve">
+    <value>Онлайн търсене</value>
+  </data>
+  <data name="conf_PrivateData" xml:space="preserve">
+    <value>Запази лични данни</value>
+  </data>
+  <data name="conf_ShowCategories" xml:space="preserve">
+    <value>Показвай категориите</value>
+  </data>
+  <data name="error_NoInternet" xml:space="preserve">
+    <value>В момента няма интернет връзка. Опитайте по-късно пак.</value>
+  </data>
+  <data name="freelance_all" xml:space="preserve">
+    <value>Навсякъде</value>
+  </data>
+  <data name="freelance_no" xml:space="preserve">
+    <value>Без Проект/Freelance</value>
+  </data>
+  <data name="freelance_only" xml:space="preserve">
+    <value>Само Проект/Freelance</value>
+  </data>
+  <data name="linkClicked" xml:space="preserve">
+    <value>Това действие ще затвори текущото приложение и ще отвори Internet Explorer. Сигурни ли сте?</value>
+  </data>
+  <data name="loading" xml:space="preserve">
+    <value>Зареждане...</value>
+  </data>
+  <data name="menu_About" xml:space="preserve">
+    <value>За BombJob.bg</value>
+  </data>
+  <data name="menu_Categories" xml:space="preserve">
+    <value>Категории</value>
+  </data>
+  <data name="menu_Jobs" xml:space="preserve">
+    <value>Оферти</value>
+  </data>
+  <data name="menu_Newest" xml:space="preserve">
+    <value>Нови</value>
+  </data>
+  <data name="menu_Offers" xml:space="preserve">
+    <value>Оферти</value>
+  </data>
+  <data name="menu_People" xml:space="preserve">
+    <value>Хора</value>
+  </data>
+  <data name="menu_Post" xml:space="preserve">
+    <value>Публикувай</value>
+  </data>
+  <data name="menu_Search" xml:space="preserve">
+    <value>Търси</value>
+  </data>
+  <data name="menu_Settings" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="menu_Sync" xml:space="preserve">
+    <value>Синхронизация</value>
+  </data>
+  <data name="monthFull_1" xml:space="preserve">
+    <value>Януари</value>
+  </data>
+  <data name="monthFull_10" xml:space="preserve">
+    <value>Октомври</value>
+  </data>
+  <data name="monthFull_11" xml:space="preserve">
+    <value>Ноември</value>
+  </data>
+  <data name="monthFull_12" xml:space="preserve">
+    <value>Декември</value>
+  </data>
+  <data name="monthFull_2" xml:space="preserve">
+    <value>Февруари</value>
+  </data>
+  <data name="monthFull_3" xml:space="preserve">
+    <value>Март</value>
+  </data>
+  <data name="monthFull_4" xml:space="preserve">
+    <value>Април</value>
+  </data>
+  <data name="monthFull_5" xml:space="preserve">
+    <value>Май</value>
+  </data>
+  <data name="monthFull_6" xml:space="preserve">
+    <value>Юни</value>
+  </data>
+  <data name="monthFull_7" xml:space="preserve">
+    <value>Юли</value>
+  </data>
+  <data name="monthFull_8" xml:space="preserve">
+    <value>Август</value>
+  </data>
+  <data name="monthFull_9" xml:space="preserve">
+    <value>Септември</value>
+  </data>
+  <data name="monthShort_1" xml:space="preserve">
+    <value>Яну</value>
+  </data>
+  <data name="monthShort_10" xml:space="preserve">
+    <value>Окт</value>
+  </data>
+  <data name="monthShort_11" xml:space="preserve">
+    <value>Ное</value>
+  </data>
+  <data name="monthShort_12" xml:space="preserve">
+    <value>Дек</value>
+  </data>
+  <data name="monthShort_2" xml:space="preserve">
+    <value>Фев</value>
+  </data>
+  <data name="monthShort_3" xml:space="preserve">
+    <value>Март</value>
+  </data>
+  <data name="monthShort_4" xml:space="preserve">
+    <value>Апр</value>
+  </data>
+  <data name="monthShort_5" xml:space="preserve">
+    <value>Май</value>
+  </data>
+  <data name="monthShort_6" xml:space="preserve">
+    <value>Юни</value>
+  </data>
+  <data name="monthShort_7" xml:space="preserve">
+    <value>Юли</value>
+  </data>
+  <data name="monthShort_8" xml:space="preserve">
+    <value>Авг</value>
+  </data>
+  <data name="monthShort_9" xml:space="preserve">
+    <value>Септ</value>
+  </data>
+  <data name="no" xml:space="preserve">
+    <value>Не</value>
+  </data>
+  <data name="noCategories" xml:space="preserve">
+    <value>Няма категории.</value>
+  </data>
+  <data name="noOffers" xml:space="preserve">
+    <value>Няма оферти.</value>
+  </data>
+  <data name="offers" xml:space="preserve">
+    <value>Оферти:</value>
+  </data>
+  <data name="offer_Boom" xml:space="preserve">
+    <value>Бум!</value>
+  </data>
+  <data name="offer_Category" xml:space="preserve">
+    <value>Категория:</value>
+  </data>
+  <data name="offer_category_title" xml:space="preserve">
+    <value>Работя в:</value>
+  </data>
+  <data name="offer_Company_Email" xml:space="preserve">
+    <value>Email за връзка:</value>
+  </data>
+  <data name="offer_Company_Negativ" xml:space="preserve">
+    <value>Предимства на фирмата:</value>
+  </data>
+  <data name="offer_Company_Positiv" xml:space="preserve">
+    <value>Описание на позицията:</value>
+  </data>
+  <data name="offer_Company_Title" xml:space="preserve">
+    <value>Заглавие на позицията:</value>
+  </data>
+  <data name="offer_FreelanceYn" xml:space="preserve">
+    <value>Проект/Freelance:</value>
+  </data>
+  <data name="offer_Human_Email" xml:space="preserve">
+    <value>Вашият email:</value>
+  </data>
+  <data name="offer_Human_Negativ" xml:space="preserve">
+    <value>Умения:</value>
+  </data>
+  <data name="offer_Human_Positiv" xml:space="preserve">
+    <value>Проблем:</value>
+  </data>
+  <data name="offer_Human_Title" xml:space="preserve">
+    <value>Заглавие на резюмето ви:</value>
+  </data>
+  <data name="offer_iam_company" xml:space="preserve">
+    <value>Фирма</value>
+  </data>
+  <data name="offer_iam_human" xml:space="preserve">
+    <value>Човек</value>
+  </data>
+  <data name="offer_iam_title" xml:space="preserve">
+    <value>Аз съм</value>
+  </data>
+  <data name="offer_Message" xml:space="preserve">
+    <value>Съобщение</value>
+  </data>
+  <data name="offer_Message_Empty" xml:space="preserve">
+    <value>Съобщението ви е празно.</value>
+  </data>
+  <data name="offer_MissingReqFields" xml:space="preserve">
+    <value>Има нещо изпуснато...</value>
+  </data>
+  <data name="offer_sendMessage" xml:space="preserve">
+    <value>Изпрати съобщение</value>
+  </data>
+  <data name="offer_ThankYou" xml:space="preserve">
+    <value>Благодарим ви!</value>
+  </data>
+  <data name="popup_Cancel" xml:space="preserve">
+    <value>Затвори</value>
+  </data>
+  <data name="popup_OK" xml:space="preserve">
+    <value>ОК</value>
+  </data>
+  <data name="search_Freelance" xml:space="preserve">
+    <value>Проект/Freelance</value>
+  </data>
+  <data name="search_Results" xml:space="preserve">
+    <value>Резултати</value>
+  </data>
+  <data name="search_Search" xml:space="preserve">
+    <value>Търси</value>
+  </data>
+  <data name="share_Email_Desc" xml:space="preserve">
+    <value>Изпрати на email...</value>
+  </data>
+  <data name="share_Email_Subject" xml:space="preserve">
+    <value>BombaJob.bg - виж тази обява</value>
+  </data>
+  <data name="shortCompany" xml:space="preserve">
+    <value>Ф</value>
+  </data>
+  <data name="shortHuman" xml:space="preserve">
+    <value>Ч</value>
+  </data>
+  <data name="weekday_1" xml:space="preserve">
+    <value>Понеделник</value>
+  </data>
+  <data name="weekday_2" xml:space="preserve">
+    <value>Вторник</value>
+  </data>
+  <data name="weekday_3" xml:space="preserve">
+    <value>Сряда</value>
+  </data>
+  <data name="weekday_4" xml:space="preserve">
+    <value>Четвъртък</value>
+  </data>
+  <data name="weekday_5" xml:space="preserve">
+    <value>Петък</value>
+  </data>
+  <data name="weekday_6" xml:space="preserve">
+    <value>Събота</value>
+  </data>
+  <data name="weekday_7" xml:space="preserve">
+    <value>Неделя</value>
+  </data>
+  <data name="yes" xml:space="preserve">
+    <value>Да</value>
+  </data>
+</root>
