@@ -26,5 +26,6 @@ namespace BombaJob.Database
         ICollection<JobOffer> GetNewestOffers(int offersPerPage);
         JobOffer GetJobOfferById(int entID);
         ICollection<JobOffer> GetByCategoryID(int categoryID);
+        ICollection<JobOffer> SearchJobOffers(string searchKeyword);
     }
 }

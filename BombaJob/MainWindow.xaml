@@ -39,7 +39,7 @@
 
     <Controls:MetroContentControl>
         <Grid>
-            <TabControl Margin="0,0,0,10">
+            <TabControl Name="tbContent" Margin="0,0,0,10">
                 <TabItem Header="{x:Static properties:Resources.menu_Newest}">
                     <TabItem.Content>
                         <Grid>
@@ -99,6 +99,26 @@
                         <Grid>
                             <TextBlock>Post....</TextBlock>
                             <Controls:ProgressRing Width="64" Height="64"/>
+                        </Grid>
+                    </TabItem.Content>
+                </TabItem>
+                <Separator Name="sepSearch" BorderThickness="2" Visibility="Hidden" />
+                <TabItem Name="tabSearch" Header="{x:Static properties:Resources.menu_Search}" Visibility="Hidden">
+                    <TabItem.Content>
+                        <Grid>
+                            <ListBox Name="searchResultsList" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                            <Image Source="{Binding HumanYn, Converter={StaticResource OfferIconConverter}}" Height="21" Width="35" VerticalAlignment="Top" Margin="0,10,8,0"/>
+                                            <StackPanel>
+                                                <TextBlock Text="{Binding Path=Title}" FontSize="24" TextWrapping="Wrap" Margin="12,0,0,0" Foreground="Black" />
+                                                <TextBlock Text="{Binding PublishDate, Converter={StaticResource OfferDateLongConverter}}" Foreground="#FFFF8D00" Margin="12,0,0,10" />
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
                         </Grid>
                     </TabItem.Content>
                 </TabItem>

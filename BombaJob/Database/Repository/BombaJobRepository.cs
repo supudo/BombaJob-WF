@@ -194,6 +194,21 @@ namespace BombaJob.Database
                 return offers;
             }
         }
+
+        public ICollection<JobOffer> SearchJobOffers(string searchKeyword)
+        {
+            using (ISession session = NHibernateHelper.OpenSession())
+            {
+                var offers = session
+                            .CreateCriteria(typeof(JobOffer))
+                            .Add(Restrictions.Like("Title", searchKeyword, MatchMode.Anywhere) ||
+                                 Restrictions.Like("Positivism", searchKeyword, MatchMode.Anywhere) ||
+                                 Restrictions.Like("Negativism", searchKeyword, MatchMode.Anywhere))
+                            .AddOrder(Order.Desc("PublishDate"))
+                            .List<JobOffer>();
+                return offers;
+            }
+        }
         #endregion
 
         #region Private methods

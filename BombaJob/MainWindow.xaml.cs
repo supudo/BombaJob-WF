@@ -28,6 +28,8 @@ namespace BombaJob
 {
     public partial class MainWindow : MetroWindow
     {
+        IBombaJobRepository dbRepo;
+
         public MainWindow()
         {
             Properties.Resources.Culture = new CultureInfo(System.Configuration.ConfigurationManager.AppSettings["Culture"]);
@@ -39,18 +41,34 @@ namespace BombaJob
         {
             ThemeManager.ChangeTheme(this, ThemeManager.DefaultAccents.First(a => a.Name == "Orange"), Theme.Light);
 
-            IBombaJobRepository repo = new BombaJobRepository();
-            this.newestList.ItemsSource = repo.GetNewestOffers(AppSettings.OffersPerPage);
-            this.jobOffersList.ItemsSource = repo.GetCategoriesFor(true);
-            this.peopleOffersList.ItemsSource = repo.GetCategoriesFor(false);
+            this.tbContent.SelectionChanged += new SelectionChangedEventHandler(tbContent_SelectionChanged);
+
+            if (this.dbRepo == null)
+                this.dbRepo = new BombaJobRepository();
+
+            this.newestList.ItemsSource = this.dbRepo.GetNewestOffers(AppSettings.OffersPerPage);
+            this.jobOffersList.ItemsSource = this.dbRepo.GetCategoriesFor(true);
+            this.peopleOffersList.ItemsSource = this.dbRepo.GetCategoriesFor(false);
         }
 
         private void txtSearch_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Enter)
+            if (e.Key == Key.Enter && !this.txtSearch.Text.Trim().Equals(""))
             {
-                AppSettings.LogThis("Searching for " + this.txtSearch.Text);
+                this.tbContent.SelectionChanged -= new SelectionChangedEventHandler(tbContent_SelectionChanged);
+                this.sepSearch.Visibility = Visibility.Visible;
+                this.tabSearch.Visibility = Visibility.Visible;
+                this.searchResultsList.ItemsSource = this.dbRepo.SearchJobOffers(this.txtSearch.Text.Trim());
+                this.tabSearch.IsSelected = true;
+                this.tbContent.SelectionChanged += new SelectionChangedEventHandler(tbContent_SelectionChanged);
             }
+        }
+
+        private void tbContent_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            this.sepSearch.Visibility = Visibility.Hidden;
+            this.tabSearch.Visibility = Visibility.Hidden;
+            this.txtSearch.Text = "";
         }
 
         private void btnSettings_Click(object sender, RoutedEventArgs e)
