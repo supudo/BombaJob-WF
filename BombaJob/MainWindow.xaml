@@ -1,0 +1,108 @@
+﻿<Controls:MetroWindow
+    x:Class="BombaJob.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+    xmlns:params="http://schemas.codeplex.com/elysium/params"       
+    xmlns:properties="clr-namespace:BombaJob.Properties" 
+    WindowStartupLocation="CenterScreen" 
+    Icon="/BombaJob;component/Images/bombajob.ico">
+ 
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colours.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.AnimatedSingleRowTabControl.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Window.Background>
+        <LinearGradientBrush MappingMode="Absolute" StartPoint="0,0" EndPoint="0,380">
+            <GradientStop Color="#EBEBEB" />
+            <GradientStop Color="White" Offset="1" />
+        </LinearGradientBrush>
+    </Window.Background>
+
+    <Controls:MetroWindow.WindowCommands>
+        <Controls:WindowCommands>
+            <Button Content="{x:Static properties:Resources.menu_Settings}" Name="btnSettings" Click="btnSettings_Click" />
+            <StackPanel>
+                <TextBox MinWidth="150" Name="txtSearch" Foreground="OrangeRed" KeyDown="txtSearch_KeyDown"></TextBox>
+            </StackPanel>
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.WindowCommands>
+
+    <Controls:MetroContentControl>
+        <Grid>
+            <TabControl Margin="0,0,0,10">
+                <TabItem Header="{x:Static properties:Resources.menu_Newest}">
+                    <TabItem.Content>
+                        <Grid>
+                            <ListBox Name="newestList" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                            <Image Source="{Binding HumanYn, Converter={StaticResource OfferIconConverter}}" Height="21" Width="35" VerticalAlignment="Top" Margin="0,10,8,0"/>
+                                            <StackPanel>
+                                                <TextBlock Text="{Binding Path=Title}" FontSize="24" TextWrapping="Wrap" Margin="12,0,0,0" Foreground="Black" />
+                                                <TextBlock Text="{Binding PublishDate, Converter={StaticResource OfferDateLongConverter}}" Foreground="#FFFF8D00" Margin="12,0,0,10" />
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </Grid>
+                    </TabItem.Content>
+                </TabItem>
+                <Separator BorderThickness="2" />
+                <TabItem Header="{x:Static properties:Resources.menu_Jobs}">
+                    <TabItem.Content>
+                        <Grid>
+                            <ListBox Name="jobOffersList" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                            <TextBlock Text="{Binding Path=OffersCount}" FontSize="24" TextWrapping="Wrap" Margin="12,0,0,0" Foreground="OrangeRed" />
+                                            <TextBlock Text="{Binding Path=Title}" FontSize="24" TextWrapping="Wrap" Margin="12,0,0,0" Foreground="Black" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </Grid>
+                    </TabItem.Content>
+                </TabItem>
+                <Separator BorderThickness="2" />
+                <TabItem Header="{x:Static properties:Resources.menu_People}" Foreground="Black">
+                    <TabItem.Content>
+                        <Grid>
+                            <ListBox Name="peopleOffersList" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                            <TextBlock Text="{Binding Path=OffersCount}" FontSize="24" TextWrapping="Wrap" Margin="12,0,0,0" Foreground="OrangeRed" />
+                                            <TextBlock Text="{Binding Path=Title}" FontSize="24" TextWrapping="Wrap" Margin="12,0,0,0" Foreground="Black" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </Grid>
+                    </TabItem.Content>
+                </TabItem>
+                <Separator BorderThickness="2" />
+                <TabItem Header="{x:Static properties:Resources.menu_Post}">
+                    <TabItem.Content>
+                        <Grid>
+                            <TextBlock>Post....</TextBlock>
+                            <Controls:ProgressRing Width="64" Height="64"/>
+                        </Grid>
+                    </TabItem.Content>
+                </TabItem>
+            </TabControl>
+        </Grid>
+    </Controls:MetroContentControl>
+</Controls:MetroWindow>

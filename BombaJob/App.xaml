@@ -1,0 +1,13 @@
+﻿<Application
+    x:Class="BombaJob.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    StartupUri="MainWindow.xaml">
+
+    <Application.Resources>
+        <bj:OfferIconConverter xmlns:bj="clr-namespace:BombaJob.Utilities.Converters" x:Key="OfferIconConverter" />
+        <bj:OfferDateShortConverter xmlns:bj="clr-namespace:BombaJob.Utilities.Converters" x:Key="OfferDateShortConverter" />
+        <bj:OfferDateLongConverter xmlns:bj="clr-namespace:BombaJob.Utilities.Converters" x:Key="OfferDateLongConverter" />
+    </Application.Resources>
+
+</Application>

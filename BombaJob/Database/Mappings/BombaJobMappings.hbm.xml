@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Bombajob"
+                   namespace="BombaJob.Database.Domain">
+
+    <class name="Text">
+        <id name="ID" unsaved-value="00000000-0000-0000-0000-000000000000">
+            <generator class="guid" />
+        </id>
+        <property name="TextID" />
+        <property name="Title" />
+        <property name="Content" />
+    </class>
+
+    <class name="Category">
+        <id name="ID" unsaved-value="00000000-0000-0000-0000-000000000000">
+            <generator class="guid" />
+        </id>
+        <property name="CategoryID" />
+        <property name="Title" />
+        <property name="OffersCount" />
+    </class>
+
+    <class name="JobOffer">
+        <id name="ID" unsaved-value="00000000-0000-0000-0000-000000000000">
+            <generator class="guid" />
+        </id>
+        <property name="OfferID" />
+        <property name="CategoryID" />
+        <property name="CategoryTitle" />
+        <property name="Title" />
+        <property name="Email" />
+        <property name="Negativism" />
+        <property name="Positivism" />
+        <property name="FreelanceYn" />
+        <property name="HumanYn" />
+        <property name="ReadYn" />
+        <property name="SentMessageYn" />
+        <property name="PublishDate" />
+    </class>
+
+</hibernate-mapping>

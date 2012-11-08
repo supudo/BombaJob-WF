@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO.Compression;
 using System.Linq;
-using System.Resources;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -36,11 +36,15 @@ namespace BombaJob
 
         #region Variables
         public static string AppName = "BombaJob";
-        public static ResourceManager langManager = new ResourceManager("BombaJob.LanguageResources", typeof(BombaJob).Assembly);
+        public static string SQLiteFile = "BombaJob.sqlite";
+        public static string DBConnectionString = "Data Source=" + AppSettings.SQLiteFile;
         public static string ServicesURL = "http://www.bombajob.bg/_mob_service.php";
         public static bool InDebug = true;
         public static string DateTimeFormat = "dd-MM-yyyy HH:mm:ss";
         public static int OffersPerPage = 20;
+        public static int OffersPerPageMax = 500;
+        public static string IconHuman = "Images/iconperson.png";
+        public static string IconCompany = "Images/iconcompany.png";
 
         public enum ServiceOp
         {
@@ -53,13 +57,6 @@ namespace BombaJob
             ServiceOpPost,
             ServiceOpSendEmail,
             ServiceOpSendPM
-        }
-        #endregion
-
-        #region Languages
-        public static string GetLanguageValue(string lbl)
-        {
-            return AppSettings.langManager.GetString(lbl);
         }
         #endregion
 
@@ -79,11 +76,11 @@ namespace BombaJob
             string date = "";
             date += dt.ToString("HH:mm");
             date += " ";
-            date += AppSettings.langManager.GetString("weekday_" + ((int)dt.DayOfWeek + 1));
+            date += Properties.Resources.ResourceManager.GetString("weekday_" + ((int)dt.DayOfWeek + 1));
             date += ", ";
             date += dt.Day;
             date += " ";
-            date += AppSettings.langManager.GetString("monthFull_" + dt.Month);
+            date += Properties.Resources.ResourceManager.GetString("monthFull_" + dt.Month);
             return date;
         }
 
@@ -94,11 +91,11 @@ namespace BombaJob
             string date = "";
             date += dt.ToString("HH:mm");
             date += " ";
-            date += AppSettings.langManager.GetString("weekday_" + ((int)dt.DayOfWeek + 1));
+            date += Properties.Resources.ResourceManager.GetString("weekday_" + ((int)dt.DayOfWeek + 1));
             date += ", ";
             date += dt.Day;
             date += " ";
-            date += AppSettings.langManager.GetString("monthShort_" + dt.Month);
+            date += Properties.Resources.ResourceManager.GetString("monthShort_" + dt.Month);
             return date;
         }
 
@@ -150,6 +147,10 @@ namespace BombaJob
         {
             return Regex.IsMatch(email, @"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*");
         }
+        #endregion
+
+        #region Settings
+        public static bool ConfInitSync = false;
         #endregion
     }
 }
