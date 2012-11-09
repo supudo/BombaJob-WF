@@ -11,6 +11,8 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.Text;
 
+using BombaJob.Utilities.Events;
+
 namespace BombaJob.Utilities.Network
 {
     public class NetworkHelper

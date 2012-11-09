@@ -16,6 +16,7 @@ using System.Windows.Threading;
 
 using BombaJob.Sync;
 using BombaJob.Utilities;
+using BombaJob.Utilities.Events;
 
 using MahApps.Metro.Controls;
 

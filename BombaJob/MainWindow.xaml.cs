@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Windows.Navigation;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,7 +11,6 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 using BombaJob.Database;
@@ -46,9 +46,9 @@ namespace BombaJob
             if (this.dbRepo == null)
                 this.dbRepo = new BombaJobRepository();
 
-            this.newestList.ItemsSource = this.dbRepo.GetNewestOffers(AppSettings.OffersPerPage);
-            this.jobOffersList.ItemsSource = this.dbRepo.GetCategoriesFor(true);
-            this.peopleOffersList.ItemsSource = this.dbRepo.GetCategoriesFor(false);
+            this.lstNewest.ItemsSource = this.dbRepo.GetNewestOffers(AppSettings.OffersPerPage);
+            this.lstJobOffers.ItemsSource = this.dbRepo.GetCategoriesFor(true);
+            this.lstPeopleOffers.ItemsSource = this.dbRepo.GetCategoriesFor(false);
         }
 
         private void txtSearch_KeyDown(object sender, KeyEventArgs e)
@@ -58,7 +58,7 @@ namespace BombaJob
                 this.tbContent.SelectionChanged -= new SelectionChangedEventHandler(tbContent_SelectionChanged);
                 this.sepSearch.Visibility = Visibility.Visible;
                 this.tabSearch.Visibility = Visibility.Visible;
-                this.searchResultsList.ItemsSource = this.dbRepo.SearchJobOffers(this.txtSearch.Text.Trim());
+                this.lstSearchResults.ItemsSource = this.dbRepo.SearchJobOffers(this.txtSearch.Text.Trim());
                 this.tabSearch.IsSelected = true;
                 this.tbContent.SelectionChanged += new SelectionChangedEventHandler(tbContent_SelectionChanged);
             }
@@ -73,6 +73,11 @@ namespace BombaJob
 
         private void btnSettings_Click(object sender, RoutedEventArgs e)
         {
+        }
+
+        private void newestList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            JobOffer jo = (JobOffer)this.lstNewest.SelectedItem;
         }
     }
 }

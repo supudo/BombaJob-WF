@@ -104,6 +104,9 @@
     <Compile Include="Database\Repository\BombaJobRepository.cs" />
     <Compile Include="Database\Repository\IBombaJobRepository.cs" />
     <Compile Include="Database\NHibernateHelper.cs" />
+    <Compile Include="OfferDetails.xaml.cs">
+      <DependentUpon>OfferDetails.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.bg-BG.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -113,7 +116,7 @@
       <DependentUpon>SplashScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="Sync\Synchronization.cs" />
-    <Compile Include="Utilities\BombaJobEventArgs.cs" />
+    <Compile Include="Utilities\Events\BombaJobEventArgs.cs" />
     <Compile Include="Utilities\Converters\OfferDateLongConverter.cs" />
     <Compile Include="Utilities\Converters\OfferDateShortConverter.cs" />
     <Compile Include="Utilities\Converters\OfferIconConverter.cs" />
@@ -131,6 +134,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="OfferDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SplashScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

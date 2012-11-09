@@ -43,7 +43,7 @@
                 <TabItem Header="{x:Static properties:Resources.menu_Newest}">
                     <TabItem.Content>
                         <Grid>
-                            <ListBox Name="newestList" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                            <ListBox Name="lstNewest" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Auto" SelectionChanged="newestList_SelectionChanged">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
@@ -63,10 +63,10 @@
                 <TabItem Header="{x:Static properties:Resources.menu_Jobs}">
                     <TabItem.Content>
                         <Grid>
-                            <ListBox Name="jobOffersList" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                            <ListBox Name="lstJobOffers" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Auto">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
-                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10">
                                             <TextBlock Text="{Binding Path=OffersCount}" FontSize="24" TextWrapping="Wrap" Margin="12,0,0,0" Foreground="OrangeRed" />
                                             <TextBlock Text="{Binding Path=Title}" FontSize="24" TextWrapping="Wrap" Margin="12,0,0,0" Foreground="Black" />
                                         </StackPanel>
@@ -80,10 +80,10 @@
                 <TabItem Header="{x:Static properties:Resources.menu_People}" Foreground="Black">
                     <TabItem.Content>
                         <Grid>
-                            <ListBox Name="peopleOffersList" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                            <ListBox Name="lstPeopleOffers" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Auto">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
-                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10">
                                             <TextBlock Text="{Binding Path=OffersCount}" FontSize="24" TextWrapping="Wrap" Margin="12,0,0,0" Foreground="OrangeRed" />
                                             <TextBlock Text="{Binding Path=Title}" FontSize="24" TextWrapping="Wrap" Margin="12,0,0,0" Foreground="Black" />
                                         </StackPanel>
@@ -106,7 +106,7 @@
                 <TabItem Name="tabSearch" Header="{x:Static properties:Resources.menu_Search}" Visibility="Hidden">
                     <TabItem.Content>
                         <Grid>
-                            <ListBox Name="searchResultsList" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                            <ListBox Name="lstSearchResults" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Auto">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
