@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using BombaJob.Database;
 using BombaJob.Database.Domain;
 using BombaJob.Utilities;
+using BombaJob.Views;
 
 using NHibernate;
 using NHibernate.Cfg;
@@ -51,6 +52,13 @@ namespace BombaJob
             this.lstPeopleOffers.ItemsSource = this.dbRepo.GetCategoriesFor(false);
         }
 
+        private void tbContent_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            this.sepSearch.Visibility = Visibility.Hidden;
+            this.tabSearch.Visibility = Visibility.Hidden;
+            this.txtSearch.Text = "";
+        }
+
         private void txtSearch_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter && !this.txtSearch.Text.Trim().Equals(""))
@@ -64,13 +72,6 @@ namespace BombaJob
             }
         }
 
-        private void tbContent_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            this.sepSearch.Visibility = Visibility.Hidden;
-            this.tabSearch.Visibility = Visibility.Hidden;
-            this.txtSearch.Text = "";
-        }
-
         private void btnSettings_Click(object sender, RoutedEventArgs e)
         {
         }
@@ -78,6 +79,7 @@ namespace BombaJob
         private void newestList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             JobOffer jo = (JobOffer)this.lstNewest.SelectedItem;
+            this.tabNewest.Content = new OfferDetails(jo);
         }
     }
 }

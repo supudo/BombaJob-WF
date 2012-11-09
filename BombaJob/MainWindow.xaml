@@ -3,11 +3,10 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-    xmlns:params="http://schemas.codeplex.com/elysium/params"       
     xmlns:properties="clr-namespace:BombaJob.Properties" 
     WindowStartupLocation="CenterScreen" 
     Icon="/BombaJob;component/Images/bombajob.ico">
- 
+
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -40,7 +39,7 @@
     <Controls:MetroContentControl>
         <Grid>
             <TabControl Name="tbContent" Margin="0,0,0,10">
-                <TabItem Header="{x:Static properties:Resources.menu_Newest}">
+                <TabItem Header="{x:Static properties:Resources.menu_Newest}" Name="tabNewest">
                     <TabItem.Content>
                         <Grid>
                             <ListBox Name="lstNewest" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Auto" SelectionChanged="newestList_SelectionChanged">

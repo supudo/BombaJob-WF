@@ -8,7 +8,7 @@
     ResizeMode="NoResize" ShowInTaskbar="False" Topmost="True" WindowStartupLocation="CenterScreen"
     SizeToContent="Manual" WindowStyle="None" Background="#FFED973C"
     ShowTitleBar="False" ShowCloseButton="False">
-    
+
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -20,7 +20,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-    
+
     <Grid x:Name="LayoutRoot" Width="195" Height="300" Background="#FFED973C">
         <Image Height="170" HorizontalAlignment="Left" Margin="12,12,0,0" Name="image1" Stretch="None" VerticalAlignment="Top" Width="171" Source="/BombaJob;component/Images/splash.png" />
         <Controls:ProgressRing IsActive="True" Margin="70,224,62,12" Foreground="Black" Background="{x:Null}" />
