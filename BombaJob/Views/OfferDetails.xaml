@@ -22,12 +22,11 @@
                 </StackPanel>
                 <StackPanel Orientation="Vertical" VerticalAlignment="Top">
                     <TextBlock Name="txtPositivLabel" Text="Positiv" Foreground="#FF000000" FontSize="24" FontWeight="Bold" Margin="0,10,10,0"></TextBlock>
-                    <WebBrowser Name="wPositiv" />
-                    <RichTextBox Name="rtbPositiv" Foreground="#FF000000" FontSize="24" Margin="0,0,0,20" IsReadOnly="True" />
+                    <WebBrowser Name="wvPositiv" />
                 </StackPanel>
                 <StackPanel Orientation="Vertical" VerticalAlignment="Top">
                     <TextBlock Name="txtNegativLabel" Text="Negativ" Foreground="#FF000000" FontSize="24" FontWeight="Bold" Margin="0,10,10,0"></TextBlock>
-                    <RichTextBox Name="rtbNegativ" Foreground="#FF000000" FontSize="24" Margin="0,0,0,20" />
+                    <WebBrowser Name="wvNegativ" />
                 </StackPanel>
             </StackPanel>
         </Grid>

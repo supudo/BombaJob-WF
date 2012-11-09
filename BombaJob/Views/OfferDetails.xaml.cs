@@ -65,12 +65,14 @@ namespace BombaJob.Views
             else
                 this.txtPositivLabel.Text = Properties.Resources.ResourceManager.GetString("offer_Company_Positiv");
 
-            this.rtbPositiv.Document.Blocks.Clear();
-            //this.rtbPositiv.Document.Blocks.Add(new Paragraph(new Run(AppSettings.Hyperlinkify(this.currentOffer.Positivism))));
-            this.wPositiv.NavigateToString(this.currentOffer.Positivism);
+            string t = "<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'>";
+            t += this.currentOffer.Positivism;
+            this.wvPositiv.NavigateToString(t);
 
-            this.rtbNegativ.Document.Blocks.Clear();
-            this.rtbNegativ.Document.Blocks.Add(new Paragraph(new Run(AppSettings.Hyperlinkify(this.currentOffer.Negativism))));
+            //this.rtbNegativ.Document.Blocks.Add(new Paragraph(new Run(AppSettings.Hyperlinkify(this.currentOffer.Negativism))));
+            t = "<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'>";
+            t += this.currentOffer.Negativism;
+            this.wvNegativ.NavigateToString(t);
         }
     }
 }
