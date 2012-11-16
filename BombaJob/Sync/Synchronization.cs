@@ -12,6 +12,7 @@ using BombaJob.Database;
 using BombaJob.Database.Domain;
 using BombaJob.Utilities;
 using BombaJob.Utilities.Events;
+using BombaJob.Utilities.Interfaces;
 using BombaJob.Utilities.Network;
 
 using NHibernate;
@@ -22,15 +23,14 @@ namespace BombaJob.Sync
 {
     public class Synchronization
     {
+        #region Variables
         public delegate void EventHandler(Object sender, BombaJobEventArgs e);
         public event EventHandler SyncComplete;
         public event EventHandler SyncError;
-
         NetworkHelper _networkHelper;
-
         private AppSettings.ServiceOp currentOp;
-
         BackgroundWorker bgWorker;
+        #endregion
 
         #region Constructor
         public Synchronization()

@@ -1,0 +1,64 @@
+﻿<mah:MetroWindow
+    x:Class="BombaJob.Views.BombaJobMainView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+    xmlns:properties="clr-namespace:BombaJob.Properties" 
+    xmlns:views="clr-namespace:BombaJob.Views"
+    WindowStartupLocation="CenterScreen" 
+    Icon="/BombaJob;component/Images/bombajob.ico">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colours.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.AnimatedSingleRowTabControl.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Window.Background>
+        <LinearGradientBrush MappingMode="Absolute" StartPoint="0,0" EndPoint="0,380">
+            <GradientStop Color="#EBEBEB"  />
+            <GradientStop Color="White" Offset="1" />
+        </LinearGradientBrush>
+    </Window.Background>
+
+    <mah:MetroWindow.WindowCommands>
+        <mah:WindowCommands>
+            <Button Content="{x:Static properties:Resources.menu_Sync}" Name="btnSync" IsEnabled="{Binding IsBusy}" />
+            <Button Content="{x:Static properties:Resources.menu_Settings}" Name="btnSettings" IsEnabled="{Binding IsBusy}" />
+            <StackPanel>
+                <TextBox MinWidth="150" Name="txtSearch" Foreground="OrangeRed" IsReadOnly="{Binding IsBusy}" />
+            </StackPanel>
+        </mah:WindowCommands>
+    </mah:MetroWindow.WindowCommands>
+
+    <mah:MetroContentControl>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Border Grid.RowSpan="2" BorderBrush="Black" BorderThickness="1" Background="#80FF8D00" Visibility="{Binding IsBusy, Converter={StaticResource boolToVisibilityConverter}}">
+                <Grid Width="195" Height="300" VerticalAlignment="Top">
+                    <Image Height="170" HorizontalAlignment="Left" Margin="12,12,0,0" Stretch="None" VerticalAlignment="Top" Width="171" Source="/BombaJob;component/Images/splashtr.png" />
+                    <mah:ProgressRing IsActive="True" Margin="70,224,62,12" Foreground="Black" Background="{x:Null}" />
+                    <Label Content="{x:Static properties:Resources.loading}" Height="28" HorizontalAlignment="Left" Margin="12,191,0,0" VerticalAlignment="Top" Width="171" HorizontalContentAlignment="Center" FontWeight="Bold" FontSize="14" />
+                </Grid>
+            </Border>
+            <TabControl Grid.Row="0" x:Name="Items" Margin="0,0,0,10">
+                <TabControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding DisplayName}" />
+                    </DataTemplate>
+                </TabControl.ItemTemplate>
+            </TabControl>
+        </Grid>
+    </mah:MetroContentControl>
+
+</mah:MetroWindow>

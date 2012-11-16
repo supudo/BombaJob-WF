@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO.Compression;
 using System.Linq;
 using System.Text;
@@ -43,8 +44,8 @@ namespace BombaJob
         public static string DateTimeFormat = "dd-MM-yyyy HH:mm:ss";
         public static int OffersPerPage = 20;
         public static int OffersPerPageMax = 500;
-        public static string IconHuman = "Images/iconperson.png";
-        public static string IconCompany = "Images/iconcompany.png";
+        public static string IconHuman = "/BombaJob;component/Images/iconperson.png";
+        public static string IconCompany = "/BombaJob;component/Images/iconcompany.png";
 
         public enum ServiceOp
         {
@@ -61,6 +62,7 @@ namespace BombaJob
         #endregion
 
         #region Helpers
+        [Conditional("DEBUG")]
         public static void LogThis(params string[] logs)
         {
             if (AppSettings.InDebug)
@@ -150,7 +152,7 @@ namespace BombaJob
         #endregion
 
         #region Settings
-        public static bool ConfInitSync = false;
+        public static bool ConfInitSync = true;
         #endregion
     }
 }

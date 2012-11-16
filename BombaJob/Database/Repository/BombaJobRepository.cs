@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 using NHibernate;
 using NHibernate.Criterion;
 
 using BombaJob.Database.Domain;
+using BombaJob.Utilities.Interfaces;
 
 namespace BombaJob.Database
 {
@@ -152,12 +154,12 @@ namespace BombaJob.Database
             this.DeleteEntity(ent);
         }
 
-        public ICollection<JobOffer> GetNewestOffers()
+        public ObservableCollection<JobOffer> GetNewestOffers()
         {
             return this.GetNewestOffers(AppSettings.OffersPerPageMax);
         }
 
-        public ICollection<JobOffer> GetNewestOffers(int offersLimit)
+        public ObservableCollection<JobOffer> GetNewestOffers(int offersLimit)
         {
             using (ISession session = NHibernateHelper.OpenSession())
             {
@@ -166,7 +168,7 @@ namespace BombaJob.Database
                             .AddOrder(Order.Desc("PublishDate"))
                             .SetMaxResults(offersLimit)
                             .List<JobOffer>();
-                return offers;
+                return new ObservableCollection<JobOffer>(offers);
             }
         }
 

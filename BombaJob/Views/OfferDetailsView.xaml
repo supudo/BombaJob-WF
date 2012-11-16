@@ -1,0 +1,35 @@
+﻿<UserControl
+    x:Class="BombaJob.Views.OfferDetailsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+    xmlns:properties="clr-namespace:BombaJob.Properties" 
+    mc:Ignorable="d" 
+    d:DesignHeight="600"
+    d:DesignWidth="600">
+
+    <Controls:MetroContentControl>
+        <Grid>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top">
+                <TextBlock Name="txtTitle" Text="{Binding JobOffer, Path=Title}" Foreground="#FF000000" FontSize="24" Margin="20"></TextBlock>
+                <TextBlock Name="txtDate" Text="Date..." Foreground="#FF000000" FontSize="24" Margin="20"></TextBlock>
+                <TextBlock Name="txtCategory" Text="Category..." Foreground="#FF000000" FontSize="24" Margin="20"></TextBlock>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="20">
+                    <TextBlock Name="txtFreelanceLabel" Text="Freelance..." Foreground="#FF000000" FontWeight="Bold" FontSize="24"></TextBlock>
+                    <TextBlock Name="txtFreelance" Text="Yes" Foreground="#FF000000" FontSize="24"></TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="20">
+                    <TextBlock Name="txtPositivLabel" Text="Positiv" Foreground="#FF000000" FontSize="24" FontWeight="Bold"></TextBlock>
+                    <RichTextBox Name="rtbPositiv" Foreground="#FF000000" FontSize="24" BorderBrush="Transparent" BorderThickness="0" />
+                </StackPanel>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="20">
+                    <TextBlock Name="txtNegativLabel" Text="Negativ" Foreground="#FF000000" FontSize="24" FontWeight="Bold"></TextBlock>
+                    <RichTextBox Name="rtbNegativ" Foreground="#FF000000" FontSize="24" BorderBrush="Transparent" BorderThickness="0" />
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Controls:MetroContentControl>
+
+</UserControl>
