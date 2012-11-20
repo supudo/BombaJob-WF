@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using BombaJob.Database.Domain;
 
@@ -10,14 +9,14 @@ namespace BombaJob.Utilities.Interfaces
         void AddText(Text ent);
         void UpdateText(Text ent);
         void RemoveText(Text ent);
-        ICollection<Text> GetTexts();
+        ObservableCollection<Text> GetTexts();
         Text GetTextById(int textID);
 
         void AddCategory(Category ent);
         void UpdateCategory(Category ent);
         void RemoveCategory(Category ent);
-        ICollection<Category> GetCategories();
-        ICollection<Category> GetCategoriesFor(bool humanYn);
+        ObservableCollection<Category> GetCategories();
+        ObservableCollection<Category> GetCategoriesFor(bool humanYn);
         Category GetCategoryById(int entID);
 
         void AddJobOffer(JobOffer ent);
@@ -25,8 +24,12 @@ namespace BombaJob.Utilities.Interfaces
         void RemoveJobOffer(JobOffer ent);
         ObservableCollection<JobOffer> GetNewestOffers();
         ObservableCollection<JobOffer> GetNewestOffers(int offersPerPage);
+        ObservableCollection<JobOffer> GetJobOffers();
+        ObservableCollection<JobOffer> GetJobOffers(int offersPerPage);
+        ObservableCollection<JobOffer> GetPeopleOffers();
+        ObservableCollection<JobOffer> GetPeopleOffers(int offersPerPage);
         JobOffer GetJobOfferById(int entID);
-        ICollection<JobOffer> GetByCategoryID(int categoryID);
-        ICollection<JobOffer> SearchJobOffers(string searchKeyword);
+        ObservableCollection<JobOffer> GetByCategoryID(int categoryID);
+        ObservableCollection<JobOffer> SearchJobOffers(string searchKeyword);
     }
 }

@@ -28,9 +28,5 @@ namespace BombaJob.ViewModels
                 this.dbRepo = new BombaJobRepository();
             this.OffersList = this.dbRepo.GetNewestOffers(AppSettings.OffersPerPage);
         }
-
-        public void OffersList_SelectionChanged(JobOffer offer)
-        {
-        }
     }
 }

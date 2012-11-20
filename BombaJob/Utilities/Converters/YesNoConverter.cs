@@ -5,18 +5,23 @@ using System.Windows.Data;
 
 namespace BombaJob.Utilities.Converters
 {
-    public class BoolToVisibilityConverter : IValueConverter
+    public class YesNoConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            if (value == null)
+                return null;
             try
             {
-                var v = (bool)value;
-                return v ? Visibility.Visible : Visibility.Hidden;
+                if ((bool)value)
+                    return Properties.Resources.yes;
+                else
+                    return Properties.Resources.no;
             }
-            catch (InvalidCastException)
+            catch (Exception ex)
             {
-                return Visibility.Collapsed;
+                AppSettings.LogThis("YesNoConverter - " + ex.Message);
+                return "";
             }
         }
 

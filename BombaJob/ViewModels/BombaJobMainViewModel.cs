@@ -9,6 +9,7 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Threading;
 
+using BombaJob.Database.Domain;
 using BombaJob.Sync;
 using BombaJob.Utilities;
 using BombaJob.Utilities.Events;
@@ -22,6 +23,7 @@ using NHibernate.Tool.hbm2ddl;
 
 using MahApps.Metro;
 using MahApps.Metro.Controls;
+using System.Windows.Controls;
 
 namespace BombaJob.ViewModels
 {
@@ -35,7 +37,6 @@ namespace BombaJob.ViewModels
         public BombaJobMainViewModel()
         {
             this.DisplayName = Properties.Resources.appName;
-            
             Properties.Resources.Culture = new CultureInfo(System.Configuration.ConfigurationManager.AppSettings["Culture"]);
             this.StartSynchronization();
         }
@@ -77,13 +78,64 @@ namespace BombaJob.ViewModels
         private void FinishSync()
         {
             this.IsBusy = false;
-            this.NotifyOfPropertyChange(() => this.IsBusy);
+            NotifyOfPropertyChange(() => IsBusy);
 
             Items.Add(new NewestOffersViewModel());
             Items.Add(new JobOffersViewModel());
             Items.Add(new PeopleOffersViewModel());
             Items.Add(new PostViewModel());
             ActivateItem(Items.First());
+        }
+        #endregion
+
+        #region Main bar
+        public void Synchronize()
+        {
+            if (!this.IsBusy)
+            {
+                AppSettings.LogThis("Synchronization called...");
+            }
+        }
+
+        public void Settings()
+        {
+            if (!this.IsBusy)
+            {
+                AppSettings.LogThis("Settings called...");
+            }
+        }
+
+        public void Search(TextBox txt, System.Windows.Input.KeyEventArgs e)
+        {
+            if (!this.IsBusy)
+            {
+                if (e.Key == Key.Enter && !txt.Text.Trim().Equals(""))
+                {
+                    AppSettings.LogThis("Search called (enter)..." + txt.Text);
+                }
+            }
+        }
+        #endregion
+
+        #region Tab actions
+        public void TabSelected(TabControl tabc)
+        {
+            if (Items.Count > 4)
+            {
+                if (tabc != null && tabc.SelectedIndex < 3)
+                    Items.RemoveAt(Items.Count - 1);
+            }
+        }
+
+        public void OffersList_SelectionChanged(JobOffer jobOffer)
+        {
+            this.DisplayOffer(jobOffer);
+        }
+
+        public void DisplayOffer(JobOffer jobOffer)
+        {
+            OfferDetailsViewModel od = new OfferDetailsViewModel(jobOffer);
+            ActivateItem(od);
         }
         #endregion
     }

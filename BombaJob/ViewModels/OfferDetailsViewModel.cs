@@ -6,41 +6,40 @@ using BombaJob.Database.Domain;
 
 using Caliburn.Micro;
 
-namespace BombaJob.View
+namespace BombaJob.ViewModels
 {
     [Export(typeof(OfferDetailsViewModel))]
     public partial class OfferDetailsViewModel : Screen
     {
-        public JobOffer currentOffer { get; set; }
+        public JobOffer CurrentJobOffer { get; set; }
+        public string OfferPositiv { get; set; }
+        public string OfferNegativ { get; set; }
+
+        public OfferDetailsViewModel()
+        {
+            this.DisplayName = "";
+            this.DisplayOffer(null);
+        }
 
         public OfferDetailsViewModel(JobOffer jo)
         {
-            this.currentOffer = jo;
-            /*
-            this.txtTitle.Text = this.currentOffer.Title;
+            this.DisplayOffer(jo);
+        }
 
-            this.txtCategory.Text = this.currentOffer.CategoryTitle;
-            this.txtDate.Text = AppSettings.DoLongDate(this.currentOffer.PublishDate);
-
-            this.txtFreelanceLabel.Text = Properties.Resources.ResourceManager.GetString("offer_FreelanceYn");
-            if (this.currentOffer.FreelanceYn)
-                this.txtFreelance.Text = Properties.Resources.ResourceManager.GetString("yes");
+        private void DisplayOffer(JobOffer jo)
+        {
+            this.DisplayName = " | #" + jo.OfferID;
+            this.CurrentJobOffer = jo;
+            if (jo.HumanYn)
+            {
+                this.OfferPositiv = Properties.Resources.offer_Human_Positiv;
+                this.OfferNegativ = Properties.Resources.offer_Human_Negativ;
+            }
             else
-                this.txtFreelance.Text = Properties.Resources.ResourceManager.GetString("no");
-
-            if (this.currentOffer.HumanYn)
-                this.txtNegativLabel.Text = Properties.Resources.ResourceManager.GetString("offer_Human_Negativ");
-            else
-                this.txtNegativLabel.Text = Properties.Resources.ResourceManager.GetString("offer_Company_Negativ");
-
-            if (this.currentOffer.HumanYn)
-                this.txtPositivLabel.Text = Properties.Resources.ResourceManager.GetString("offer_Human_Positiv");
-            else
-                this.txtPositivLabel.Text = Properties.Resources.ResourceManager.GetString("offer_Company_Positiv");
-
-            RichTextBoxExtensions.SetLinkedText(this.rtbNegativ, AppSettings.Hyperlinkify(this.currentOffer.Negativism));
-            RichTextBoxExtensions.SetLinkedText(this.rtbPositiv, AppSettings.Hyperlinkify(this.currentOffer.Positivism));
-             * */
+            {
+                this.OfferPositiv = Properties.Resources.offer_Company_Positiv;
+                this.OfferNegativ = Properties.Resources.offer_Company_Negativ;
+            }
         }
     }
 }

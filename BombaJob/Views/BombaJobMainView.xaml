@@ -4,9 +4,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
     xmlns:properties="clr-namespace:BombaJob.Properties" 
-    xmlns:views="clr-namespace:BombaJob.Views"
+    xmlns:cal="http://www.caliburnproject.org"
     WindowStartupLocation="CenterScreen" 
-    Icon="/BombaJob;component/Images/bombajob.ico">
+    Icon="/BombaJob;component/Images/bombajob.ico"
+    SizeChanged="MetroWindow_SizeChanged">
 
     <Window.Resources>
         <ResourceDictionary>
@@ -30,34 +31,27 @@
 
     <mah:MetroWindow.WindowCommands>
         <mah:WindowCommands>
-            <Button Content="{x:Static properties:Resources.menu_Sync}" Name="btnSync" IsEnabled="{Binding IsBusy}" />
-            <Button Content="{x:Static properties:Resources.menu_Settings}" Name="btnSettings" IsEnabled="{Binding IsBusy}" />
+            <Button Content="{x:Static properties:Resources.menu_Sync}"
+                    x:Name="Synchronize" cal:Message.Attach="Synchronize" />
+            <Button Content="{x:Static properties:Resources.menu_Settings}"
+                    x:Name="Settings" cal:Message.Attach="Settings"/>
             <StackPanel>
-                <TextBox MinWidth="150" Name="txtSearch" Foreground="OrangeRed" IsReadOnly="{Binding IsBusy}" />
+                <TextBox MinWidth="150" Name="txtSearch" Foreground="OrangeRed"
+                         cal:Message.Attach="[Event KeyUp] = [Action Search($source, $eventArgs)]"/>
             </StackPanel>
         </mah:WindowCommands>
     </mah:MetroWindow.WindowCommands>
 
     <mah:MetroContentControl>
         <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <Border Grid.RowSpan="2" BorderBrush="Black" BorderThickness="1" Background="#80FF8D00" Visibility="{Binding IsBusy, Converter={StaticResource boolToVisibilityConverter}}">
-                <Grid Width="195" Height="300" VerticalAlignment="Top">
-                    <Image Height="170" HorizontalAlignment="Left" Margin="12,12,0,0" Stretch="None" VerticalAlignment="Top" Width="171" Source="/BombaJob;component/Images/splashtr.png" />
-                    <mah:ProgressRing IsActive="True" Margin="70,224,62,12" Foreground="Black" Background="{x:Null}" />
-                    <Label Content="{x:Static properties:Resources.loading}" Height="28" HorizontalAlignment="Left" Margin="12,191,0,0" VerticalAlignment="Top" Width="171" HorizontalContentAlignment="Center" FontWeight="Bold" FontSize="14" />
-                </Grid>
-            </Border>
-            <TabControl Grid.Row="0" x:Name="Items" Margin="0,0,0,10">
+            <TabControl x:Name="Items" Margin="0,0,0,10" cal:Message.Attach="[Event SelectionChanged] = [Action TabSelected($source)]">
                 <TabControl.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding DisplayName}" />
                     </DataTemplate>
                 </TabControl.ItemTemplate>
             </TabControl>
+            <mah:ProgressRing IsVisibleChanged="ProgressRing_IsVisibleChanged" IsActive="True" Margin="70,224,62,12" Foreground="Black" Background="{x:Null}" Visibility="{Binding IsBusy, Converter={StaticResource boolToVisibilityConverter}}" />
         </Grid>
     </mah:MetroContentControl>
 

@@ -152,7 +152,7 @@ namespace BombaJob
         #endregion
 
         #region Settings
-        public static bool ConfInitSync = true;
+        public static bool ConfInitSync = false;
         #endregion
     }
 }

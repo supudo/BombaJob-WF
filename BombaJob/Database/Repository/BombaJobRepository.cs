@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 using NHibernate;
@@ -38,7 +37,7 @@ namespace BombaJob.Database
             this.DeleteEntity(ent);
         }
 
-        public ICollection<Text> GetTexts()
+        public ObservableCollection<Text> GetTexts()
         {
             using (ISession session = NHibernateHelper.OpenSession())
             {
@@ -46,7 +45,7 @@ namespace BombaJob.Database
                             .CreateCriteria(typeof(Text))
                             .AddOrder(Order.Asc("TextID"))
                             .List<Text>();
-                return txts;
+                return new ObservableCollection<Text>(txts);
             }
         }
 
@@ -89,7 +88,7 @@ namespace BombaJob.Database
             this.DeleteEntity(ent);
         }
 
-        public ICollection<Category> GetCategories()
+        public ObservableCollection<Category> GetCategories()
         {
             using (ISession session = NHibernateHelper.OpenSession())
             {
@@ -97,21 +96,22 @@ namespace BombaJob.Database
                             .CreateCriteria(typeof(Category))
                             .AddOrder(Order.Asc("Title"))
                             .List<Category>();
-                return cats;
+                return new ObservableCollection<Category>(cats);
             }
         }
 
-        public ICollection<Category> GetCategoriesFor(bool humanYn)
+        public ObservableCollection<Category> GetCategoriesFor(bool humanYn)
         {
             using (ISession session = NHibernateHelper.OpenSession())
             {
-                return session.CreateCriteria<Category>()
+                var cats = session.CreateCriteria<Category>()
                         .Add(Subqueries.PropertyIn("CategoryID",
                             DetachedCriteria.For<JobOffer>()
                                 .Add(Restrictions.Eq("HumanYn", humanYn))
                                 .SetProjection(Projections.Property("CategoryID"))
                             ))
                         .List<Category>();
+                return new ObservableCollection<Category>(cats);
             }
         }
 
@@ -172,6 +172,44 @@ namespace BombaJob.Database
             }
         }
 
+        public ObservableCollection<JobOffer> GetJobOffers()
+        {
+            return this.GetJobOffers(AppSettings.OffersPerPageMax);
+        }
+
+        public ObservableCollection<JobOffer> GetJobOffers(int offersLimit)
+        {
+            using (ISession session = NHibernateHelper.OpenSession())
+            {
+                var offers = session
+                            .CreateCriteria(typeof(JobOffer))
+                            .Add(Restrictions.Eq("HumanYn", false))
+                            .AddOrder(Order.Desc("PublishDate"))
+                            .SetMaxResults(offersLimit)
+                            .List<JobOffer>();
+                return new ObservableCollection<JobOffer>(offers);
+            }
+        }
+
+        public ObservableCollection<JobOffer> GetPeopleOffers()
+        {
+            return this.GetPeopleOffers(AppSettings.OffersPerPageMax);
+        }
+
+        public ObservableCollection<JobOffer> GetPeopleOffers(int offersLimit)
+        {
+            using (ISession session = NHibernateHelper.OpenSession())
+            {
+                var offers = session
+                            .CreateCriteria(typeof(JobOffer))
+                            .Add(Restrictions.Eq("HumanYn", true))
+                            .AddOrder(Order.Desc("PublishDate"))
+                            .SetMaxResults(offersLimit)
+                            .List<JobOffer>();
+                return new ObservableCollection<JobOffer>(offers);
+            }
+        }
+
         public JobOffer GetJobOfferById(int entID)
         {
             using (ISession session = NHibernateHelper.OpenSession())
@@ -184,7 +222,7 @@ namespace BombaJob.Database
             }
         }
 
-        public ICollection<JobOffer> GetByCategoryID(int categoryID)
+        public ObservableCollection<JobOffer> GetByCategoryID(int categoryID)
         {
             using (ISession session = NHibernateHelper.OpenSession())
             {
@@ -193,11 +231,11 @@ namespace BombaJob.Database
                             .Add(Restrictions.Eq("CategoryID", categoryID))
                             .AddOrder(Order.Desc("PublishDate"))
                             .List<JobOffer>();
-                return offers;
+                return new ObservableCollection<JobOffer>(offers);
             }
         }
 
-        public ICollection<JobOffer> SearchJobOffers(string searchKeyword)
+        public ObservableCollection<JobOffer> SearchJobOffers(string searchKeyword)
         {
             using (ISession session = NHibernateHelper.OpenSession())
             {
@@ -208,7 +246,7 @@ namespace BombaJob.Database
                                  Restrictions.Like("Negativism", searchKeyword, MatchMode.Anywhere))
                             .AddOrder(Order.Desc("PublishDate"))
                             .List<JobOffer>();
-                return offers;
+                return new ObservableCollection<JobOffer>(offers);
             }
         }
         #endregion

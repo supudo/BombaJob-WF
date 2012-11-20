@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel.Composition;
 using System.Linq;
 using System.Text;
+using System.Windows.Controls;
 
 using BombaJob.Database;
 using BombaJob.Database.Domain;
@@ -13,7 +14,7 @@ using Caliburn.Micro;
 
 namespace BombaJob.ViewModels
 {
-    [Export(typeof(JobOffersViewModel))]
+    [Export(typeof(NewestOffersViewModel))]
     public class JobOffersViewModel : Screen
     {
         private IBombaJobRepository dbRepo;
@@ -25,7 +26,7 @@ namespace BombaJob.ViewModels
 
             if (this.dbRepo == null)
                 this.dbRepo = new BombaJobRepository();
-            this.OffersList = this.dbRepo.GetNewestOffers(AppSettings.OffersPerPage);
+            this.OffersList = this.dbRepo.GetJobOffers(AppSettings.OffersPerPage);
         }
     }
 }

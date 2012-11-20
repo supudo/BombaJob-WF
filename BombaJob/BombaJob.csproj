@@ -107,6 +107,15 @@
     <Compile Include="BombaJobBootstrapper.cs" />
     <Compile Include="Database\Domain\BombaJobDomain.cs" />
     <Compile Include="Database\Repository\BombaJobRepository.cs" />
+    <Compile Include="Utilities\Converters\RTFToFlowDocumentConverter.cs" />
+    <Compile Include="Utilities\Converters\YesNoConverter.cs" />
+    <Compile Include="Utilities\HtmlToXaml\HtmlCssParser.cs" />
+    <Compile Include="Utilities\HtmlToXaml\HtmlFromXamlConverter.cs" />
+    <Compile Include="Utilities\HtmlToXaml\HtmlLexicalAnalyzer.cs" />
+    <Compile Include="Utilities\HtmlToXaml\HtmlParser.cs" />
+    <Compile Include="Utilities\HtmlToXaml\HtmlSchema.cs" />
+    <Compile Include="Utilities\HtmlToXaml\HtmlTokenType.cs" />
+    <Compile Include="Utilities\HtmlToXaml\HtmlToXamlConverter.cs" />
     <Compile Include="Utilities\Interfaces\IBombaJobRepository.cs" />
     <Compile Include="Database\NHibernateHelper.cs" />
     <Compile Include="Utilities\Interfaces\IShell.cs" />
@@ -252,9 +261,7 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Utilities\Commands\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -11,24 +11,29 @@
     d:DesignWidth="600">
 
     <Controls:MetroContentControl>
-        <Grid>
-            <StackPanel Orientation="Vertical" VerticalAlignment="Top">
-                <TextBlock Name="txtTitle" Text="{Binding JobOffer, Path=Title}" Foreground="#FF000000" FontSize="24" Margin="20"></TextBlock>
-                <TextBlock Name="txtDate" Text="Date..." Foreground="#FF000000" FontSize="24" Margin="20"></TextBlock>
-                <TextBlock Name="txtCategory" Text="Category..." Foreground="#FF000000" FontSize="24" Margin="20"></TextBlock>
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="20">
-                    <TextBlock Name="txtFreelanceLabel" Text="Freelance..." Foreground="#FF000000" FontWeight="Bold" FontSize="24"></TextBlock>
-                    <TextBlock Name="txtFreelance" Text="Yes" Foreground="#FF000000" FontSize="24"></TextBlock>
-                </StackPanel>
-                <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="20">
-                    <TextBlock Name="txtPositivLabel" Text="Positiv" Foreground="#FF000000" FontSize="24" FontWeight="Bold"></TextBlock>
-                    <RichTextBox Name="rtbPositiv" Foreground="#FF000000" FontSize="24" BorderBrush="Transparent" BorderThickness="0" />
-                </StackPanel>
-                <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="20">
-                    <TextBlock Name="txtNegativLabel" Text="Negativ" Foreground="#FF000000" FontSize="24" FontWeight="Bold"></TextBlock>
-                    <RichTextBox Name="rtbNegativ" Foreground="#FF000000" FontSize="24" BorderBrush="Transparent" BorderThickness="0" />
-                </StackPanel>
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            
+            <TextBlock Grid.Row="0" Text="{Binding Path=CurrentJobOffer.Title}" Foreground="#FF000000" FontSize="24" Margin="20,10,0,0"></TextBlock>
+            <TextBlock Grid.Row="1" Text="{Binding Path=CurrentJobOffer.PublishDate, Converter={StaticResource OfferDateLongConverter}}" Foreground="#FF000000" FontSize="14" Margin="20,0,0,0"></TextBlock>
+            <TextBlock Grid.Row="2" Text="{Binding Path=CurrentJobOffer.CategoryTitle}" Foreground="#FF000000" FontSize="20" Margin="20,10,0,0"></TextBlock>
+            <StackPanel Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Top" Margin="20,10,0,0">
+                <TextBlock Text="{x:Static properties:Resources.offer_FreelanceYn}" Foreground="#FF000000" FontSize="20"></TextBlock>
+                <TextBlock Text="{Binding Path=CurrentJobOffer.FreelanceYn, Converter={StaticResource YesNoConverter}}" Foreground="#FF000000" FontSize="20" Margin="10,0,0,0"></TextBlock>
             </StackPanel>
+            <TextBlock Grid.Row="4" Name="txtPositiv" Text="{Binding OfferPositiv}" Foreground="#FF000000" FontSize="20" FontWeight="Bold" Margin="20, 10, 20, 0"></TextBlock>
+            <FlowDocumentScrollViewer Grid.Row="5" Name="fdPositiv" Document="{Binding Path=CurrentJobOffer.Negativism, Converter={StaticResource RTFToFlowDocumentConverter}}" Foreground="#FF000000" FontSize="24" BorderBrush="Transparent" BorderThickness="0" Margin="0" />
+            <TextBlock Grid.Row="6" Text="{Binding OfferNegativ}" Foreground="#FF000000" FontSize="20" FontWeight="Bold" Margin="20, 0, 20, 0"></TextBlock>
+            <FlowDocumentScrollViewer Grid.Row="7" Name="fdNegativ" Document="{Binding Path=CurrentJobOffer.Positivism, Converter={StaticResource RTFToFlowDocumentConverter}}" Foreground="#FF000000" FontSize="24" BorderBrush="Transparent" BorderThickness="0" Margin="0" />
         </Grid>
     </Controls:MetroContentControl>
 

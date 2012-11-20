@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-    xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+    xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
     xmlns:properties="clr-namespace:BombaJob.Properties" 
     xmlns:cal="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro"
     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
@@ -12,10 +12,10 @@
     d:DesignHeight="600"
     d:DesignWidth="600">
 
-    <Controls:MetroContentControl>
+    <!-- Height="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=ActualHeight}" -->
+    <mah:MetroContentControl>
         <Grid>
-            <ListBox x:Name="OffersList" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                     ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <ListBox x:Name="OffersList" ScrollViewer.VerticalScrollBarVisibility="Auto">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
@@ -29,6 +29,7 @@
                 </ListBox.ItemTemplate>
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="SelectionChanged">
+                        <!-- MouseDoubleClick -->
                         <cal:ActionMessage MethodName="OffersList_SelectionChanged">
                             <cal:Parameter Value="{Binding ElementName=OffersList, Path=SelectedItem}"></cal:Parameter>
                         </cal:ActionMessage>
@@ -36,6 +37,6 @@
                 </i:Interaction.Triggers>
             </ListBox>
         </Grid>
-    </Controls:MetroContentControl>
+    </mah:MetroContentControl>
 
 </UserControl>
