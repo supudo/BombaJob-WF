@@ -77,9 +77,6 @@ namespace BombaJob.ViewModels
 
         private void FinishSync()
         {
-            this.IsBusy = false;
-            NotifyOfPropertyChange(() => IsBusy);
-
             Items.Add(new NewestOffersViewModel());
             Items.Add(new JobOffersViewModel());
             Items.Add(new PeopleOffersViewModel());
@@ -120,6 +117,11 @@ namespace BombaJob.ViewModels
         #region Tab actions
         public void TabSelected(TabControl tabc)
         {
+            if (this.IsBusy)
+            {
+                this.IsBusy = false;
+                NotifyOfPropertyChange(() => IsBusy);
+            }
             if (Items.Count > 4)
             {
                 if (tabc != null && tabc.SelectedIndex < 3)
@@ -130,6 +132,11 @@ namespace BombaJob.ViewModels
         public void OffersList_SelectionChanged(JobOffer jobOffer)
         {
             this.DisplayOffer(jobOffer);
+        }
+
+        public void Link_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            AppSettings.LogThis("Link_Click ... ");
         }
 
         public void DisplayOffer(JobOffer jobOffer)

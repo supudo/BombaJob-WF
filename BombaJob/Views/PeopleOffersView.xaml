@@ -14,8 +14,7 @@
 
     <mah:MetroContentControl>
         <Grid>
-            <ListBox x:Name="OffersList" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                     ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <ListBox x:Name="OffersList" ScrollViewer.VerticalScrollBarVisibility="Auto">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Top">

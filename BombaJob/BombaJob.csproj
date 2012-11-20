@@ -224,9 +224,6 @@
     <Resource Include="Images\bombajob.ico" />
     <Resource Include="Images\iconcompany.png" />
     <Resource Include="Images\iconperson.png" />
-    <Content Include="Images\splash.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Resource Include="Images\splashtr.png" />
     <Content Include="x64\SQLite.Interop.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

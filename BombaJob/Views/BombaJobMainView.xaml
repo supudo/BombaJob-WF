@@ -44,14 +44,17 @@
 
     <mah:MetroContentControl>
         <Grid>
-            <TabControl x:Name="Items" Margin="0,0,0,10" cal:Message.Attach="[Event SelectionChanged] = [Action TabSelected($source)]">
+            <TabControl x:Name="Items" Margin="0,0,0,10"
+                        cal:Message.Attach="[Event SelectionChanged] = [Action TabSelected($source)]">
                 <TabControl.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding DisplayName}" />
                     </DataTemplate>
                 </TabControl.ItemTemplate>
             </TabControl>
-            <mah:ProgressRing IsVisibleChanged="ProgressRing_IsVisibleChanged" IsActive="True" Margin="70,224,62,12" Foreground="Black" Background="{x:Null}" Visibility="{Binding IsBusy, Converter={StaticResource boolToVisibilityConverter}}" />
+            <mah:ProgressRing IsVisibleChanged="ProgressRing_IsVisibleChanged" IsActive="True" Foreground="Black" Background="{x:Null}"
+                              Visibility="{Binding IsBusy, Converter={StaticResource boolToVisibilityConverter}}"
+                              HorizontalAlignment="Center" VerticalAlignment="Center" />
         </Grid>
     </mah:MetroContentControl>
 
