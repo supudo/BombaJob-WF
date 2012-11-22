@@ -3,6 +3,7 @@ using System.ComponentModel.Composition;
 using System.Windows;
 
 using BombaJob.Database.Domain;
+using BombaJob.Utilities.Events;
 
 using Caliburn.Micro;
 
@@ -21,14 +22,15 @@ namespace BombaJob.ViewModels
             this.DisplayOffer(null);
         }
 
-        public OfferDetailsViewModel(JobOffer jo)
+        public OfferDetailsViewModel(JobOffer offer)
         {
-            this.DisplayOffer(jo);
+            this.DisplayName = " | #" + offer.OfferID;
+            this.CurrentJobOffer = offer;
+            this.DisplayOffer(offer);
         }
 
         private void DisplayOffer(JobOffer jo)
         {
-            this.DisplayName = " | #" + jo.OfferID;
             this.CurrentJobOffer = jo;
             if (jo.HumanYn)
             {

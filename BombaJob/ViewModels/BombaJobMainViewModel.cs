@@ -32,8 +32,9 @@ namespace BombaJob.ViewModels
     {
         public bool IsBusy { get; set; }
         private Synchronization syncManager;
-        Thread loadingThread;
+        private Thread loadingThread;
 
+        [ImportingConstructor]
         public BombaJobMainViewModel()
         {
             this.DisplayName = Properties.Resources.appName;
@@ -132,11 +133,6 @@ namespace BombaJob.ViewModels
         public void OffersList_SelectionChanged(JobOffer jobOffer)
         {
             this.DisplayOffer(jobOffer);
-        }
-
-        public void Link_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            AppSettings.LogThis("Link_Click ... ");
         }
 
         public void DisplayOffer(JobOffer jobOffer)

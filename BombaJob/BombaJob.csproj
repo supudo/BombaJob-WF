@@ -107,15 +107,11 @@
     <Compile Include="BombaJobBootstrapper.cs" />
     <Compile Include="Database\Domain\BombaJobDomain.cs" />
     <Compile Include="Database\Repository\BombaJobRepository.cs" />
-    <Compile Include="Utilities\Converters\RTFToFlowDocumentConverter.cs" />
+    <Compile Include="Utilities\Adorners\OverlayAdorner.cs" />
+    <Compile Include="Utilities\Commands\HyperlinkCommand.cs" />
+    <Compile Include="Utilities\Converters\HTMLtoFDConverter.cs" />
     <Compile Include="Utilities\Converters\YesNoConverter.cs" />
-    <Compile Include="Utilities\HtmlToXaml\HtmlCssParser.cs" />
-    <Compile Include="Utilities\HtmlToXaml\HtmlFromXamlConverter.cs" />
-    <Compile Include="Utilities\HtmlToXaml\HtmlLexicalAnalyzer.cs" />
-    <Compile Include="Utilities\HtmlToXaml\HtmlParser.cs" />
-    <Compile Include="Utilities\HtmlToXaml\HtmlSchema.cs" />
-    <Compile Include="Utilities\HtmlToXaml\HtmlTokenType.cs" />
-    <Compile Include="Utilities\HtmlToXaml\HtmlToXamlConverter.cs" />
+    <Compile Include="Utilities\Events\HyperlinkEvent.cs" />
     <Compile Include="Utilities\Interfaces\IBombaJobRepository.cs" />
     <Compile Include="Database\NHibernateHelper.cs" />
     <Compile Include="Utilities\Interfaces\IShell.cs" />
@@ -130,7 +126,6 @@
     <Compile Include="Utilities\Converters\OfferDateLongConverter.cs" />
     <Compile Include="Utilities\Converters\OfferDateShortConverter.cs" />
     <Compile Include="Utilities\Converters\OfferIconConverter.cs" />
-    <Compile Include="Utilities\Extensions\RichTextBoxExtensions.cs" />
     <Compile Include="Utilities\Network\NetworkHelper.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
@@ -139,6 +134,7 @@
     <Compile Include="AppSettings.cs" />
     <Compile Include="ViewModels\BombaJobMainViewModel.cs" />
     <Compile Include="ViewModels\JobOffersViewModel.cs" />
+    <Compile Include="ViewModels\MessageBoxViewModel.cs" />
     <Compile Include="ViewModels\NewestOffersViewModel.cs" />
     <Compile Include="ViewModels\OfferDetailsViewModel.cs" />
     <Compile Include="ViewModels\PeopleOffersViewModel.cs" />
@@ -148,6 +144,9 @@
     </Compile>
     <Compile Include="Views\JobOffersView.xaml.cs">
       <DependentUpon>JobOffersView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MessageBoxView.xaml.cs">
+      <DependentUpon>MessageBoxView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\NewestOffersView.xaml.cs">
       <DependentUpon>NewestOffersView.xaml</DependentUpon>
@@ -238,6 +237,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\JobOffersView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MessageBoxView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

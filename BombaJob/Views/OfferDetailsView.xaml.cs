@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Windows.Controls;
 
+using BombaJob.Utilities.Events;
+
+using Caliburn.Micro;
+
 namespace BombaJob.Views
 {
     public partial class OfferDetailsView : UserControl

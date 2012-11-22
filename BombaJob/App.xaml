@@ -14,7 +14,7 @@
                     <convs:OfferDateShortConverter x:Key="OfferDateShortConverter" />
                     <convs:OfferDateLongConverter x:Key="OfferDateLongConverter" />
                     <convs:YesNoConverter x:Key="YesNoConverter" />
-                    <convs:RTFToFlowDocumentConverter x:Key="RTFToFlowDocumentConverter" />
+                    <convs:HTMLtoFDConverter x:Key="HTMLtoFDConverter" />
                     <convs:BoolToVisibilityConverter x:Key="boolToVisibilityConverter"/>
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>

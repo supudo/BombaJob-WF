@@ -378,4 +378,10 @@
   <data name="yes" xml:space="preserve">
     <value>Да</value>
   </data>
+  <data name="errorTitle" xml:space="preserve">
+    <value>Грешка</value>
+  </data>
+  <data name="noLinkClient" xml:space="preserve">
+    <value>Нямате настроен клиент за този тип линкове.</value>
+  </data>
 </root>

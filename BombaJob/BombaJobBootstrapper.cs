@@ -53,19 +53,5 @@ namespace BombaJob
         {
             this.container.SatisfyImportsOnce(instance);
         }
-
-        protected override void OnStartup(object sender, System.Windows.StartupEventArgs e)
-        {
-            IWindowManager windowManager;
-            try
-            {
-                windowManager = IoC.Get<IWindowManager>();
-            }
-            catch
-            {
-                windowManager = new WindowManager();
-            }
-            windowManager.ShowWindow(new BombaJobMainViewModel());
-        }
     }
 }
