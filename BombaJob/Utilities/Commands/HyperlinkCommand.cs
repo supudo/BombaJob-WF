@@ -4,7 +4,6 @@ using System.Windows.Documents;
 using System.Windows.Input;
 
 using BombaJob.ViewModels;
-using BombaJob.Utilities.Adorners;
 
 using Caliburn.Micro;
 
@@ -49,8 +48,6 @@ namespace BombaJob.Utilities.Commands
                     windowManager = new WindowManager();
                 }
                 MessageBoxViewModel mBox = new MessageBoxViewModel(Properties.Resources.noLinkClient, Properties.Resources.errorTitle, MessageBoxButton.OK);
-                //AdornerLayer al = AdornerLayer.GetAdornerLayer(Application.Current.MainWindow);
-                //al.Add(new OverlayAdorner((MahApps.Metro.Controls.MetroWindow)mBox.GetView()));
                 windowManager.ShowDialog(mBox);
             }
         }

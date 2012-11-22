@@ -38,23 +38,25 @@
     </Window.Background>
 
     <mah:MetroContentControl>
-        <Border HorizontalAlignment="Center" Name="cnt">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Label Content="{Binding Path=Title}" FontSize="24" FontWeight="Bold" Margin="10"/>
-                <TextBlock Grid.Row="1" Text="{Binding Path=Message}" TextWrapping="Wrap" FontSize="18" Margin="20,6,0,0" Style="{DynamicResource DefaultTextStyle}" />
-                <StackPanel Grid.Row="2" HorizontalAlignment="Right" Margin="0,0,10,10" Orientation="Horizontal">
-                    <Button Width="70" Margin="10,0,0,0" Style="{DynamicResource SquareButtonStyle}" Visibility="{Binding Path=IsYesButtonVisible, Converter={StaticResource boolToVisibilityConverter}}" cal:Message.Attach="Yes" Content="Yes" />
-                    <Button Width="70" Margin="10,0,0,0" Style="{DynamicResource SquareButtonStyle}" Visibility="{Binding Path=IsNoButtonVisible, Converter={StaticResource boolToVisibilityConverter}}" cal:Message.Attach="No" Content="No" />
-                    <Button Width="70" Margin="10,0,0,0" Style="{DynamicResource SquareButtonStyle}" Visibility="{Binding Path=IsOkButtonVisible, Converter={StaticResource boolToVisibilityConverter}}" cal:Message.Attach="Ok" Content="OK" />
-                    <Button Width="70" Margin="10,0,0,0" IsCancel="True" Style="{DynamicResource SquareButtonStyle}" Visibility="{Binding Path=IsCancelButtonVisible, Converter={StaticResource boolToVisibilityConverter}}" cal:Message.Attach="Cancel" Content="Cancel" />
-                </StackPanel>
-            </Grid>
-        </Border>
+        <AdornerDecorator>
+            <Border HorizontalAlignment="Center" Name="cnt">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Label Content="{Binding Path=Title}" FontSize="24" FontWeight="Bold" Margin="10"/>
+                    <TextBlock Grid.Row="1" Text="{Binding Path=Message}" TextWrapping="Wrap" FontSize="18" Margin="20,6,0,0" Style="{DynamicResource DefaultTextStyle}" />
+                    <StackPanel Grid.Row="2" HorizontalAlignment="Right" Margin="0,0,10,10" Orientation="Horizontal">
+                        <Button Width="70" Margin="10,0,0,0" Style="{DynamicResource SquareButtonStyle}" Visibility="{Binding Path=IsYesButtonVisible, Converter={StaticResource boolToVisibilityConverter}}" cal:Message.Attach="Yes" Content="Yes" />
+                        <Button Width="70" Margin="10,0,0,0" Style="{DynamicResource SquareButtonStyle}" Visibility="{Binding Path=IsNoButtonVisible, Converter={StaticResource boolToVisibilityConverter}}" cal:Message.Attach="No" Content="No" />
+                        <Button Width="70" Margin="10,0,0,0" Style="{DynamicResource SquareButtonStyle}" Visibility="{Binding Path=IsOkButtonVisible, Converter={StaticResource boolToVisibilityConverter}}" cal:Message.Attach="Ok" Content="OK" />
+                        <Button Width="70" Margin="10,0,0,0" IsCancel="True" Style="{DynamicResource SquareButtonStyle}" Visibility="{Binding Path=IsCancelButtonVisible, Converter={StaticResource boolToVisibilityConverter}}" cal:Message.Attach="Cancel" Content="Cancel" />
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </AdornerDecorator>
     </mah:MetroContentControl>
 
 </mah:MetroWindow>

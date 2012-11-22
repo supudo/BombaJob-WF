@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Interop;
+
+using BombaJob.Utilities.Adorners;
 
 using MahApps.Metro;
 using MahApps.Metro.Controls;
@@ -17,6 +20,9 @@ namespace BombaJob.Views
         {
             InitializeComponent();
             ThemeManager.ChangeTheme(this, ThemeManager.DefaultAccents.First(a => a.Name == "Orange"), Theme.Light);
+
+            AdornerLayer al = AdornerLayer.GetAdornerLayer(this.cnt);
+            al.Add(new OverlayAdorner(this));
 
             this.SourceInitialized += new EventHandler(MessageBoxView_SourceInitialized);
         }
