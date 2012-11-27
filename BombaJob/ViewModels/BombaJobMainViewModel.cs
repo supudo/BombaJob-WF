@@ -1,17 +1,21 @@
 ﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.Composition;
 using System.Dynamic;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Threading;
 
 using BombaJob.Database.Domain;
 using BombaJob.Sync;
 using BombaJob.Utilities;
+using BombaJob.Utilities.Adorners;
 using BombaJob.Utilities.Events;
 using BombaJob.Utilities.Interfaces;
 
@@ -23,7 +27,6 @@ using NHibernate.Tool.hbm2ddl;
 
 using MahApps.Metro;
 using MahApps.Metro.Controls;
-using System.Windows.Controls;
 
 namespace BombaJob.ViewModels
 {
@@ -33,6 +36,7 @@ namespace BombaJob.ViewModels
         public bool IsBusy { get; set; }
         private Synchronization syncManager;
         private Thread loadingThread;
+        private int _overlayDependencies;
 
         [ImportingConstructor]
         public BombaJobMainViewModel()
@@ -132,13 +136,33 @@ namespace BombaJob.ViewModels
 
         public void OffersList_SelectionChanged(JobOffer jobOffer)
         {
-            this.DisplayOffer(jobOffer);
-        }
-
-        public void DisplayOffer(JobOffer jobOffer)
-        {
             OfferDetailsViewModel od = new OfferDetailsViewModel(jobOffer);
             ActivateItem(od);
+        }
+        #endregion
+
+        #region Message box
+        public void ShowOverlay()
+        {
+            _overlayDependencies++;
+            NotifyOfPropertyChange(() => IsOverlayVisible);
+            AppSettings.LogThis(" ------ ShowOverlay...");
+        }
+
+        public void HideOverlay()
+        {
+            _overlayDependencies--;
+            NotifyOfPropertyChange(() => IsOverlayVisible);
+            AppSettings.LogThis(" ------ HideOverlay...");
+        }
+
+        public bool IsOverlayVisible
+        {
+            get
+            {
+                AppSettings.LogThis(" ------ IsOverlayVisible ... " + _overlayDependencies);
+                return _overlayDependencies > 0;
+            }
         }
         #endregion
     }

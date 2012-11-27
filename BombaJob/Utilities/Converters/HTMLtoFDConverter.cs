@@ -10,6 +10,8 @@ using System.Windows.Documents;
 
 using BombaJob.Utilities.Commands;
 
+using Caliburn.Micro;
+
 namespace BombaJob.Utilities.Converters
 {
     public class HTMLtoFDConverter : IValueConverter
@@ -66,8 +68,10 @@ namespace BombaJob.Utilities.Converters
                 fdoc.Blocks.Add(paragraph);
             }
             var run = new Run { Text = text };
-            var link = new Hyperlink { NavigateUri = uri, Foreground = fdoc.Foreground, Command = new HyperlinkCommand(uri) };
-
+            var link = new Hyperlink { NavigateUri = uri,
+                                       Foreground = fdoc.Foreground,
+                                       Command = new HyperlinkCommand(uri) };
+            
             link.Inlines.Add(run);
             paragraph.Inlines.Add(link);
         }

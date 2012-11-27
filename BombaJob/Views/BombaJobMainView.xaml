@@ -6,8 +6,7 @@
     xmlns:properties="clr-namespace:BombaJob.Properties" 
     xmlns:cal="http://www.caliburnproject.org"
     WindowStartupLocation="CenterScreen" 
-    Icon="/BombaJob;component/Images/bombajob.ico"
-    SizeChanged="MetroWindow_SizeChanged">
+    Icon="/BombaJob;component/Images/bombajob.ico">
 
     <Window.Resources>
         <ResourceDictionary>
@@ -44,6 +43,10 @@
 
     <mah:MetroContentControl>
         <Grid>
+            <TextBox Text="XYZ-XYZ-123" IsEnabled="{Binding IsOverlayVisible}" />
+            <Border Background="Blue" Opacity="0.7"
+                    Visibility="{Binding IsOverlayVisible, Converter={StaticResource boolToVisibilityConverter}}"
+                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
             <TabControl x:Name="Items" Margin="0,0,0,10"
                         cal:Message.Attach="[Event SelectionChanged] = [Action TabSelected($source)]">
                 <TabControl.ItemTemplate>
@@ -52,7 +55,7 @@
                     </DataTemplate>
                 </TabControl.ItemTemplate>
             </TabControl>
-            <mah:ProgressRing IsVisibleChanged="ProgressRing_IsVisibleChanged" IsActive="True" Foreground="Black" Background="{x:Null}"
+            <mah:ProgressRing IsActive="True" Foreground="Black" Background="{x:Null}"
                               Visibility="{Binding IsBusy, Converter={StaticResource boolToVisibilityConverter}}"
                               HorizontalAlignment="Center" VerticalAlignment="Center" />
         </Grid>

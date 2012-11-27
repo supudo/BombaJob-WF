@@ -21,10 +21,14 @@ namespace BombaJob.Views
             InitializeComponent();
             ThemeManager.ChangeTheme(this, ThemeManager.DefaultAccents.First(a => a.Name == "Orange"), Theme.Light);
 
-            AdornerLayer al = AdornerLayer.GetAdornerLayer(this.cnt);
-            al.Add(new OverlayAdorner(this));
-
             this.SourceInitialized += new EventHandler(MessageBoxView_SourceInitialized);
+            this.Loaded += new System.Windows.RoutedEventHandler(MessageBoxView_Loaded);
+        }
+
+        void MessageBoxView_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            //AdornerLayer al = AdornerLayer.GetAdornerLayer(this.cnt);
+            //al.Add(new OverlayAdorner(this.cnt));
         }
 
         void MessageBoxView_SourceInitialized(object sender, EventArgs e)

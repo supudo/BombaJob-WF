@@ -26,6 +26,7 @@ namespace BombaJob
 
             var batch = new CompositionBatch();
 
+            batch.AddExportedValue<BombaJobMainViewModel>(new BombaJobMainViewModel());
             batch.AddExportedValue<IWindowManager>(new WindowManager());
             batch.AddExportedValue<IEventAggregator>(new EventAggregator());
             batch.AddExportedValue(this.container);

@@ -19,7 +19,6 @@ namespace BombaJob.ViewModels
         public OfferDetailsViewModel()
         {
             this.DisplayName = "";
-            this.DisplayOffer(null);
         }
 
         public OfferDetailsViewModel(JobOffer offer)

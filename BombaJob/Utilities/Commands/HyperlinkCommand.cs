@@ -4,6 +4,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 
 using BombaJob.ViewModels;
+using BombaJob.Utilities.Extensions;
 
 using Caliburn.Micro;
 
@@ -31,7 +32,6 @@ namespace BombaJob.Utilities.Commands
 
         public void Execute(object parameter)
         {
-            AppSettings.LogThis("HyperlinkCommand invoked... " + this.URI.AbsoluteUri);
             try
             {
                 System.Diagnostics.Process.Start(this.URI.AbsoluteUri);
@@ -47,8 +47,7 @@ namespace BombaJob.Utilities.Commands
                 {
                     windowManager = new WindowManager();
                 }
-                MessageBoxViewModel mBox = new MessageBoxViewModel(Properties.Resources.noLinkClient, Properties.Resources.errorTitle, MessageBoxButton.OK);
-                windowManager.ShowDialog(mBox);
+                windowManager.ShowMessageBox(Properties.Resources.noLinkClient, Properties.Resources.errorTitle, MessageBoxButton.OK);
             }
         }
     }
