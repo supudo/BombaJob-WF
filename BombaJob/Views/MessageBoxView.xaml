@@ -65,7 +65,7 @@
     </Window.Background>
 
     <mah:MetroContentControl>
-        <Border HorizontalAlignment="Center" Name="cnt">
+        <Border HorizontalAlignment="Center">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />

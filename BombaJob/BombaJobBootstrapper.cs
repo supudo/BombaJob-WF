@@ -9,12 +9,19 @@ using BombaJob.Utilities.Interfaces;
 using BombaJob.ViewModels;
 
 using Caliburn.Micro;
+using Caliburn.Micro.Logging;
 
 namespace BombaJob
 {
     public class BombaJobBootstrapper : Bootstrapper<IShell>
     {
         private CompositionContainer container;
+
+        static BombaJobBootstrapper()
+        {
+            if (AppSettings.CaliburnDebug)
+                LogManager.GetLog = type => new TraceLogger(type);
+        }
 
         protected override void Configure()
         {
@@ -26,7 +33,7 @@ namespace BombaJob
 
             var batch = new CompositionBatch();
 
-            batch.AddExportedValue<BombaJobMainViewModel>(new BombaJobMainViewModel());
+            batch.AddExportedValue<ShellViewModel>(new ShellViewModel());
             batch.AddExportedValue<IWindowManager>(new WindowManager());
             batch.AddExportedValue<IEventAggregator>(new EventAggregator());
             batch.AddExportedValue(this.container);

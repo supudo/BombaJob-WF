@@ -1,0 +1,64 @@
+﻿<mah:MetroWindow
+    x:Class="BombaJob.Views.ShellView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+    xmlns:properties="clr-namespace:BombaJob.Properties" 
+    xmlns:cal="http://www.caliburnproject.org"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    WindowStartupLocation="CenterScreen" 
+    Icon="/BombaJob;component/Images/bombajob.ico"
+    mc:Ignorable="d" 
+    d:DesignHeight="600"
+    d:DesignWidth="600">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colours.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.AnimatedSingleRowTabControl.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Window.Background>
+        <LinearGradientBrush MappingMode="Absolute" StartPoint="0,0" EndPoint="0,380">
+            <GradientStop Color="#EBEBEB"  />
+            <GradientStop Color="White" Offset="1" />
+        </LinearGradientBrush>
+    </Window.Background>
+
+    <mah:MetroWindow.WindowCommands>
+        <mah:WindowCommands>
+            <Button Content="{x:Static properties:Resources.menu_Sync}"
+                    x:Name="Synchronize" cal:Message.Attach="Synchronize"
+                    IsEnabled="{Binding TabberEnabled}"/>
+            <Button Content="{x:Static properties:Resources.menu_Settings}"
+                    x:Name="Settings" cal:Message.Attach="Settings"
+                    IsEnabled="{Binding TabberEnabled}"/>
+            <StackPanel>
+                <TextBox MinWidth="150" Name="txtSearch" Foreground="OrangeRed"
+                         cal:Message.Attach="[Event KeyUp] = [Action Search($source, $eventArgs)]"
+                         IsEnabled="{Binding TabberEnabled}"/>
+            </StackPanel>
+        </mah:WindowCommands>
+    </mah:MetroWindow.WindowCommands>
+
+    <mah:MetroContentControl>
+        <Grid>
+            <Border Background="White" Opacity="0.7"
+                    Visibility="{Binding IsOverlayVisible, Converter={StaticResource boolToVisibilityConverter}}"
+                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            <ContentControl x:Name="Tabber" IsEnabled="{Binding TabberEnabled}" Opacity="{Binding TabberOpacity}" />
+            <mah:ProgressRing IsActive="True" Foreground="Black" Background="{x:Null}"
+                              Visibility="{Binding IsOverlayVisible, Converter={StaticResource boolToVisibilityConverter}}"
+                              HorizontalAlignment="Center" VerticalAlignment="Center" />
+        </Grid>
+    </mah:MetroContentControl>
+
+</mah:MetroWindow>

@@ -41,6 +41,8 @@ namespace BombaJob
         public static string DBConnectionString = "Data Source=" + AppSettings.SQLiteFile;
         public static string ServicesURL = "http://www.bombajob.bg/_mob_service.php";
         public static bool InDebug = true;
+        public static bool CaliburnDebug = false;
+        public static bool SyncDebug = false;
         public static string DateTimeFormat = "dd-MM-yyyy HH:mm:ss";
         public static int OffersPerPage = 20;
         public static int OffersPerPageMax = 500;
@@ -66,9 +68,14 @@ namespace BombaJob
         public static void LogThis(params string[] logs)
         {
             if (AppSettings.InDebug)
-            {
                 Console.WriteLine("[____BombaJob-Log] " + string.Join(" ", logs));
-            }
+        }
+
+        [Conditional("DEBUG")]
+        public static void SyncLogThis(params string[] logs)
+        {
+            if (AppSettings.SyncDebug)
+                Console.WriteLine("[____BombaJob-Log-Sync] " + string.Join(" ", logs));
         }
 
         public static string DoLongDate(DateTime dt)

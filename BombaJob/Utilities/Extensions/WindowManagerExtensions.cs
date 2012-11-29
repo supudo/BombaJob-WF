@@ -15,7 +15,7 @@ namespace BombaJob.Utilities.Extensions
         public static MessageBoxResult ShowMessageBox(this IWindowManager @this, string message, string title, MessageBoxButton buttons)
         {
             MessageBoxResult retval;
-            BombaJobMainViewModel shellViewModel = IoC.Get<BombaJobMainViewModel>();
+            ShellViewModel shellViewModel = IoC.Get<ShellViewModel>();
             try
             {
                 shellViewModel.ShowOverlay();
