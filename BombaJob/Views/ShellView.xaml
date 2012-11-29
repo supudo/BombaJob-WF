@@ -52,12 +52,17 @@
     <mah:MetroContentControl>
         <Grid>
             <Border Background="White" Opacity="0.7"
-                    Visibility="{Binding IsOverlayVisible, Converter={StaticResource boolToVisibilityConverter}}"
-                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                Visibility="{Binding IsOverlayVisible, Converter={StaticResource boolToVisibilityConverter}}"
+                HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
             <ContentControl x:Name="Tabber" IsEnabled="{Binding TabberEnabled}" Opacity="{Binding TabberOpacity}" />
             <mah:ProgressRing IsActive="True" Foreground="Black" Background="{x:Null}"
-                              Visibility="{Binding IsOverlayVisible, Converter={StaticResource boolToVisibilityConverter}}"
-                              HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            Visibility="{Binding IsOverlayVisible, Converter={StaticResource boolToVisibilityConverter}}"
+                            HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <StatusBar VerticalAlignment="Bottom">
+                <StatusBarItem Content="{Binding SBStatus}" Width="100" Margin="2" />
+                <Separator/>
+                <StatusBarItem Content="{Binding SBOffers}" />
+            </StatusBar>
         </Grid>
     </mah:MetroContentControl>
 

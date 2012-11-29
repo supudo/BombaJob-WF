@@ -4,8 +4,6 @@ using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Interop;
 
-using BombaJob.Utilities.Adorners;
-
 using MahApps.Metro;
 using MahApps.Metro.Controls;
 

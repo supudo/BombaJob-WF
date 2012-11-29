@@ -249,6 +249,19 @@ namespace BombaJob.Database
                 return new ObservableCollection<JobOffer>(offers);
             }
         }
+
+        public int GetJobOffersCount()
+        {
+            int offersCount = 0;
+            using (ISession session = NHibernateHelper.OpenSession())
+            {
+                var offers = session
+                            .CreateCriteria(typeof(JobOffer))
+                            .List<JobOffer>();
+                offersCount = offers.Count;
+            }
+            return offersCount;
+        }
         #endregion
 
         #region Private methods

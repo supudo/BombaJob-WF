@@ -5,6 +5,7 @@ using System.Dynamic;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -14,9 +15,9 @@ using System.Windows.Threading;
 
 using BombaJob.Sync;
 using BombaJob.Utilities;
-using BombaJob.Utilities.Adorners;
 using BombaJob.Utilities.Events;
 using BombaJob.Utilities.Interfaces;
+using BombaJob.Utilities.Network;
 using BombaJob.Views;
 
 using Caliburn.Micro;
@@ -35,11 +36,17 @@ namespace BombaJob.ViewModels
     {
         #region Properties
         private Synchronization syncManager;
-        private Thread loadingThread;
+        private Thread thinkThread;
         private int _overlayVisible;
+        private NetworkHelper netHelper = new NetworkHelper();
+        private BackgroundWorker bgWorker;
+        private bool connRunning;
+
         public bool IsBusy { get; set; }
         public bool TabberEnabled { get; set; }
         public double TabberOpacity { get; set; }
+        public string SBStatus { get; set; }
+        public string SBOffers { get; set; }
 
         public bool IsOverlayVisible
         {
@@ -68,21 +75,27 @@ namespace BombaJob.ViewModels
             this.DisplayName = Properties.Resources.appName;
             Properties.Resources.Culture = new CultureInfo(System.Configuration.ConfigurationManager.AppSettings["Culture"]);
             ActivateItem(this.Tabber);
+
+            if (this.syncManager == null)
+                this.syncManager = new Synchronization();
+
+            this.connRunning = false;
+
+            this.SBStatus = Properties.Resources.sb_status + " " + Properties.Resources.sb_status_online;
+            this.SBOffers = Properties.Resources.sb_offers + " " + this.syncManager.GetJobOffersCount();
             this.StartSynchronization();
         }
 
         #region Synchronization
         private void StartSynchronization()
         {
-            if (this.syncManager == null)
-                this.syncManager = new Synchronization();
             this.syncManager.SyncError += new Synchronization.EventHandler(syncManager_SyncError);
             this.syncManager.SyncComplete += new Synchronization.EventHandler(syncManager_SyncComplete);
 
-            this.ShowOverlay();
             this.IsBusy = true;
-            this.loadingThread = new Thread(load);
-            this.loadingThread.Start();
+            this.ShowOverlay();
+            this.thinkThread = new Thread(load);
+            this.thinkThread.Start();
         }
 
         private void load()
@@ -112,6 +125,45 @@ namespace BombaJob.ViewModels
         private void FinishSync()
         {
             this.HideOverlay();
+            this.StartConnectivityCheck();
+        }
+        #endregion
+
+        #region Connectivity check
+        private void StartConnectivityCheck()
+        {
+            AppSettings.LogThis(" ---- StartConnectivityCheck ... ");
+            this.bgWorker = new BackgroundWorker();
+            this.connectivityHandler();
+        }
+
+        private void connectivityHandler()
+        {
+            if (!this.bgWorker.IsBusy)
+            {
+                this.bgWorker.DoWork += delegate(object s, DoWorkEventArgs args)
+                {
+                    this.connRunning = true;
+                    args.Result = this.netHelper.hasConnection();
+                };
+                this.bgWorker.RunWorkerCompleted += delegate(object s, RunWorkerCompletedEventArgs args)
+                {
+                    bool hasInternet = (bool)args.Result;
+                    this.SBStatus = Properties.Resources.sb_status + " ";
+                    if (hasInternet)
+                        this.SBStatus += Properties.Resources.sb_status_online;
+                    else
+                        this.SBStatus += Properties.Resources.sb_status_offline;
+                    Thread.Sleep(5000);
+                    this.connRunning = false;
+                    this.connectivityHandler();
+                };
+                if (!this.connRunning)
+                {
+                    AppSettings.LogThis(" ---- RunWorkerAsync ... ");
+                    this.bgWorker.RunWorkerAsync();
+                }
+            }
         }
         #endregion
 

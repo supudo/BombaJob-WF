@@ -384,4 +384,16 @@
   <data name="noLinkClient" xml:space="preserve">
     <value>Нямате настроен клиент за този тип линкове.</value>
   </data>
+  <data name="sb_offers" xml:space="preserve">
+    <value>Оферти:</value>
+  </data>
+  <data name="sb_status" xml:space="preserve">
+    <value>Статус:</value>
+  </data>
+  <data name="sb_status_offline" xml:space="preserve">
+    <value>Офлайн</value>
+  </data>
+  <data name="sb_status_online" xml:space="preserve">
+    <value>Онлайн</value>
+  </data>
 </root>

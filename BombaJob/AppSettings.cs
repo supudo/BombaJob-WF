@@ -48,6 +48,7 @@ namespace BombaJob
         public static int OffersPerPageMax = 500;
         public static string IconHuman = "/BombaJob;component/Images/iconperson.png";
         public static string IconCompany = "/BombaJob;component/Images/iconcompany.png";
+        public static int ConnectivityCheckTimer = 500;
 
         public enum ServiceOp
         {
@@ -68,14 +69,14 @@ namespace BombaJob
         public static void LogThis(params string[] logs)
         {
             if (AppSettings.InDebug)
-                Console.WriteLine("[____BombaJob-Log] " + string.Join(" ", logs));
+                Console.WriteLine("[____BombaJob-Log] [" + DateTime.Now.ToString() + "] " + string.Join(" ", logs));
         }
 
         [Conditional("DEBUG")]
         public static void SyncLogThis(params string[] logs)
         {
             if (AppSettings.SyncDebug)
-                Console.WriteLine("[____BombaJob-Log-Sync] " + string.Join(" ", logs));
+                Console.WriteLine("[____BombaJob-Log-Sync] [" + DateTime.Now.ToString() + "] " + string.Join(" ", logs));
         }
 
         public static string DoLongDate(DateTime dt)

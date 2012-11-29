@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Windows;
 
-using BombaJob.Utilities.Adorners;
-
 using Caliburn.Micro;
 
 namespace BombaJob.ViewModels

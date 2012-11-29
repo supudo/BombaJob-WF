@@ -727,6 +727,42 @@ namespace BombaJob.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Оферти:.
+        /// </summary>
+        public static string sb_offers {
+            get {
+                return ResourceManager.GetString("sb_offers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Статус:.
+        /// </summary>
+        public static string sb_status {
+            get {
+                return ResourceManager.GetString("sb_status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Офлайн.
+        /// </summary>
+        public static string sb_status_offline {
+            get {
+                return ResourceManager.GetString("sb_status_offline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Онлайн.
+        /// </summary>
+        public static string sb_status_online {
+            get {
+                return ResourceManager.GetString("sb_status_online", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Проект/Freelance.
         /// </summary>
         public static string search_Freelance {

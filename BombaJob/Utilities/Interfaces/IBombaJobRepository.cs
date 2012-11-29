@@ -31,5 +31,6 @@ namespace BombaJob.Utilities.Interfaces
         JobOffer GetJobOfferById(int entID);
         ObservableCollection<JobOffer> GetByCategoryID(int categoryID);
         ObservableCollection<JobOffer> SearchJobOffers(string searchKeyword);
+        int GetJobOffersCount();
     }
 }

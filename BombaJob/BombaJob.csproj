@@ -112,7 +112,6 @@
     <Compile Include="Caliburn\Micro\Logging\DebugLogger.cs" />
     <Compile Include="Database\Domain\BombaJobDomain.cs" />
     <Compile Include="Database\Repository\BombaJobRepository.cs" />
-    <Compile Include="Utilities\Adorners\OverlayAdorner.cs" />
     <Compile Include="Utilities\Commands\HyperlinkCommand.cs" />
     <Compile Include="Utilities\Converters\HTMLtoFDConverter.cs" />
     <Compile Include="Utilities\Converters\YesNoConverter.cs" />

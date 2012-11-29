@@ -38,7 +38,7 @@ namespace BombaJob.Utilities.Network
         #endregion
 
         #region Helpers
-        private bool hasConnection()
+        public bool hasConnection()
         {
             return this.hasConnection(AppSettings.ServicesURL);
         }
@@ -47,6 +47,7 @@ namespace BombaJob.Utilities.Network
         {
             try
             {
+                AppSettings.LogThis("NET hasConnection... ");
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(URL);
                 request.Timeout = 5000;
                 request.Credentials = CredentialCache.DefaultNetworkCredentials;

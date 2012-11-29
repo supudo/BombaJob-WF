@@ -248,6 +248,12 @@ namespace BombaJob.Sync
             }
             this.SynchronizationComplete();
         }
+
+        public int GetJobOffersCount()
+        {
+            IBombaJobRepository repo = new BombaJobRepository();
+            return repo.GetJobOffersCount();
+        }
         #endregion
 
         #region Parsers
