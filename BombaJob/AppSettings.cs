@@ -48,7 +48,7 @@ namespace BombaJob
         public static int OffersPerPageMax = 500;
         public static string IconHuman = "/BombaJob;component/Images/iconperson.png";
         public static string IconCompany = "/BombaJob;component/Images/iconcompany.png";
-        public static int ConnectivityCheckTimer = 500;
+        public static int ConnectivityCheckTimer = 60000;
 
         public enum ServiceOp
         {

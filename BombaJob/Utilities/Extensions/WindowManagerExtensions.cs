@@ -8,7 +8,7 @@ using BombaJob.ViewModels;
 
 using Caliburn.Micro;
 
-namespace BombaJob.Utilities.Extensions
+namespace BombaJob.Utilities.Controls
 {
     public static class WindowManagerExtensions
     {

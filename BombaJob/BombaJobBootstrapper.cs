@@ -61,5 +61,21 @@ namespace BombaJob
         {
             this.container.SatisfyImportsOnce(instance);
         }
+
+        protected override void OnStartup(object sender, System.Windows.StartupEventArgs e)
+        {
+            var viewModel = IoC.Get<ShellViewModel>();
+            IWindowManager windowManager;
+            try
+            {
+                windowManager = IoC.Get<IWindowManager>();
+            }
+            catch
+            {
+                windowManager = new WindowManager();
+            }
+            viewModel.Bom();
+            windowManager.ShowWindow(viewModel);
+        }
     }
 }

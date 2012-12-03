@@ -4,7 +4,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 
 using BombaJob.ViewModels;
-using BombaJob.Utilities.Extensions;
+using BombaJob.Utilities.Controls;
 
 using Caliburn.Micro;
 

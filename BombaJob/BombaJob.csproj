@@ -113,9 +113,11 @@
     <Compile Include="Database\Domain\BombaJobDomain.cs" />
     <Compile Include="Database\Repository\BombaJobRepository.cs" />
     <Compile Include="Utilities\Commands\HyperlinkCommand.cs" />
+    <Compile Include="Utilities\Controls\OfferCountTicker.cs" />
     <Compile Include="Utilities\Converters\HTMLtoFDConverter.cs" />
     <Compile Include="Utilities\Converters\YesNoConverter.cs" />
     <Compile Include="Utilities\Events\HyperlinkEvent.cs" />
+    <Compile Include="Utilities\Controls\TimeTicker.cs" />
     <Compile Include="Utilities\Extensions\WindowManagerExtensions.cs" />
     <Compile Include="Utilities\Interfaces\IBombaJobRepository.cs" />
     <Compile Include="Database\NHibernateHelper.cs" />

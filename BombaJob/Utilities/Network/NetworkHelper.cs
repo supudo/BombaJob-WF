@@ -21,10 +21,9 @@ namespace BombaJob.Utilities.Network
         public event EventHandler DownloadComplete;
         public event EventHandler DownloadError;
         public event EventHandler DownloadInBackgroundComplete;
+        public bool InBackground;
 
         private WebClient webClient;
-
-        public bool InBackground;
         private AppSettings.ServiceOp webServiceOp;
 
         #region Constructor
