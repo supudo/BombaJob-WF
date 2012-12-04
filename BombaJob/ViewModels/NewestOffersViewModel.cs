@@ -9,6 +9,7 @@ using System.Windows.Controls;
 
 using BombaJob.Database;
 using BombaJob.Database.Domain;
+using BombaJob.Database.Repository;
 using BombaJob.Utilities.Interfaces;
 
 using Caliburn.Micro;
@@ -38,9 +39,16 @@ namespace BombaJob.ViewModels
 
             if (this.dbRepo == null)
                 this.dbRepo = new BombaJobRepository();
-            this.OffersList = this.dbRepo.GetNewestOffers(AppSettings.OffersPerPage);
+            this.LoadOffers();
         }
 
+        private void LoadOffers()
+        {
+            this.OffersList = this.dbRepo.GetNewestOffers(AppSettings.OffersPerPage);
+            NotifyOfPropertyChange(() => OffersList);
+        }
+
+        #region Context menu
         public void OffersList_Menu_View(JobOffer jobOffer)
         {
             if (this.tabm != null)
@@ -49,12 +57,16 @@ namespace BombaJob.ViewModels
 
         public void OffersList_Menu_Message(JobOffer jobOffer)
         {
-            AppSettings.LogThis("--- MOUSE OffersList_Menu_Message ..." + ((jobOffer != null) ? "" + jobOffer.OfferID : "0"));
+            if (this.tabm != null)
+                this.tabm.OffersList_Menu_Message(jobOffer);
         }
 
         public void OffersList_Menu_Mark(JobOffer jobOffer)
         {
-            AppSettings.LogThis("--- MOUSE OffersList_Menu_Mark ..." + ((jobOffer != null) ? "" + jobOffer.OfferID : "0"));
+            IBombaJobRepository dbRepo = new BombaJobRepository();
+            dbRepo.MarkAsRead(jobOffer);
+            this.LoadOffers();
         }
+        #endregion
     }
 }
