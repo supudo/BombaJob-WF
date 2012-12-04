@@ -7,7 +7,7 @@ using NHibernate.Criterion;
 using BombaJob.Database.Domain;
 using BombaJob.Utilities.Interfaces;
 
-namespace BombaJob.Database
+namespace BombaJob.Database.Repository
 {
     public class BombaJobRepository : IBombaJobRepository
     {
@@ -154,6 +154,12 @@ namespace BombaJob.Database
             this.DeleteEntity(ent);
         }
 
+        public void MarkAsRead(JobOffer ent)
+        {
+            ent.ReadYn = true;
+            this.UpdateJobOffer(ent);
+        }
+
         public ObservableCollection<JobOffer> GetNewestOffers()
         {
             return this.GetNewestOffers(AppSettings.OffersPerPageMax);
@@ -165,7 +171,7 @@ namespace BombaJob.Database
             {
                 var offers = session
                             .CreateCriteria(typeof(JobOffer))
-                            .AddOrder(Order.Desc("ReadYn"))
+                            .AddOrder(Order.Asc("ReadYn"))
                             .AddOrder(Order.Desc("PublishDate"))
                             .SetMaxResults(offersLimit)
                             .List<JobOffer>();

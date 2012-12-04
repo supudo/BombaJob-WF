@@ -3,9 +3,9 @@ using System.Windows.Controls;
 
 namespace BombaJob.Views
 {
-    public partial class PostView : UserControl
+    public partial class SendMessageView : UserControl
     {
-        public PostView()
+        public SendMessageView()
         {
             InitializeComponent();
         }

@@ -32,7 +32,7 @@ using MahApps.Metro.Controls;
 namespace BombaJob.ViewModels
 {
     [Export(typeof(IShell))]
-    public class ShellViewModel : Conductor<IScreen>
+    public class ShellViewModel : Conductor<IScreen>.Collection.OneActive
     {
         #region Properties
         private Synchronization syncManager;
@@ -56,16 +56,29 @@ namespace BombaJob.ViewModels
             }
         }
 
-        private TabberViewModel tabber = new TabberViewModel();
-        public TabberViewModel Tabber
+        private TabberViewModel vmTab = new TabberViewModel();
+        public TabberViewModel VMTab
         {
             get
             {
-                return this.tabber;
+                return this.vmTab;
             }
             private set
             {
-                this.tabber = value;
+                this.vmTab = value;
+            }
+        }
+
+        private SettingsViewModel vmSettings;
+        public SettingsViewModel VMSettings
+        {
+            get
+            {
+                return this.vmSettings;
+            }
+            private set
+            {
+                this.vmSettings = value;
             }
         }
         #endregion
@@ -75,7 +88,8 @@ namespace BombaJob.ViewModels
         {
             this.DisplayName = Properties.Resources.appName;
             Properties.Resources.Culture = new CultureInfo(System.Configuration.ConfigurationManager.AppSettings["Culture"]);
-            ActivateItem(this.Tabber);
+            this.vmSettings = new SettingsViewModel(this);
+            ActivateItem(this.VMTab);
         }
 
         public void Bom()
@@ -94,10 +108,10 @@ namespace BombaJob.ViewModels
         #region Synchronization
         private void StartSynchronization()
         {
+            this.IsBusy = true;
             this.syncManager.SyncError += new Synchronization.EventHandler(syncManager_SyncError);
             this.syncManager.SyncComplete += new Synchronization.EventHandler(syncManager_SyncComplete);
 
-            this.IsBusy = true;
             this.ShowOverlay();
             this.thinkThread = new Thread(load);
             this.thinkThread.Start();
@@ -129,6 +143,10 @@ namespace BombaJob.ViewModels
 
         private void FinishSync()
         {
+            this.IsBusy = false;
+            if (!this.VMTab.IsActive)
+                ActivateItem(this.VMTab);
+            NotifyOfPropertyChange(() => VMTab);
             this.HideOverlay();
             this.StartConnectivityCheck();
         }
@@ -177,13 +195,13 @@ namespace BombaJob.ViewModels
         public void Synchronize()
         {
             if (!this.IsBusy)
-                AppSettings.LogThis("Synchronization called...");
+                this.StartSynchronization();
         }
 
         public void Settings()
         {
             if (!this.IsBusy)
-                AppSettings.LogThis("Settings called...");
+                ActivateItem(this.VMSettings);
         }
 
         public void Search(TextBox txt, System.Windows.Input.KeyEventArgs e)
@@ -191,8 +209,18 @@ namespace BombaJob.ViewModels
             if (!this.IsBusy)
             {
                 if (e.Key == Key.Enter && !txt.Text.Trim().Equals(""))
+                {
                     AppSettings.LogThis("Search called (enter)..." + txt.Text);
+                    this.VMTab.RefreshTabs(true, txt.Text);
+                    txt.Text = "";
+                    ActivateItem(this.VMTab);
+                }
             }
+        }
+
+        public void ActivateTabber()
+        {
+            ActivateItem(this.VMTab);
         }
         #endregion
 

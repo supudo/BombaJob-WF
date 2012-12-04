@@ -10,6 +10,7 @@ using System.Xml.Linq;
 
 using BombaJob.Database;
 using BombaJob.Database.Domain;
+using BombaJob.Database.Repository;
 using BombaJob.Utilities;
 using BombaJob.Utilities.Events;
 using BombaJob.Utilities.Interfaces;

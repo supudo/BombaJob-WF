@@ -30,7 +30,7 @@ namespace BombaJob.ViewModels
 
             if (this.dbRepo == null)
                 this.dbRepo = new BombaJobRepository();
-            this.OffersList = this.dbRepo.GetNewestOffers(AppSettings.OffersPerPage);
+            this.LoadOffers();
         }
 
         public NewestOffersViewModel()

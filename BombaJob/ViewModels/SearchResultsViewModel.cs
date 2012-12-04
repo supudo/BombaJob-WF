@@ -11,20 +11,17 @@ using Caliburn.Micro;
 
 namespace BombaJob.ViewModels
 {
-    [Export(typeof(PostViewModel))]
-    public class PostViewModel : Screen
+    [Export(typeof(SearchResultsViewModel))]
+    public class SearchResultsViewModel : Screen
     {
         private TabberViewModel tabm;
+        public string SearchQuery { get; set; }
 
-        public PostViewModel(TabberViewModel _tabm)
+        public SearchResultsViewModel(TabberViewModel _tabm, string sQuery)
         {
             this.tabm = _tabm;
-            this.DisplayName = Properties.Resources.menu_Post;
-        }
-
-        public PostViewModel()
-        {
-            this.DisplayName = Properties.Resources.menu_Post;
+            this.SearchQuery = sQuery;
+            this.DisplayName = " | " + Properties.Resources.menu_Search;
         }
     }
 }
