@@ -19,7 +19,7 @@ namespace BombaJob.ViewModels
         {
             this.DisplayName = Resources.appName;
 
-            Items.Add(new NewestOffersViewModel());
+            Items.Add(new NewestOffersViewModel(this));
             Items.Add(new JobOffersViewModel());
             Items.Add(new PeopleOffersViewModel());
             Items.Add(new PostViewModel());
@@ -44,9 +44,9 @@ namespace BombaJob.ViewModels
             ActivateItem(od);
         }
 
-        public void OffersList_Menu_View(object e)
+        public void OffersList_Menu_View(JobOffer jobOffer)
         {
-            AppSettings.LogThis("--- OffersList_Menu_View ...");
+            this.OffersList_SelectionChanged(jobOffer);
         }
         #endregion
     }

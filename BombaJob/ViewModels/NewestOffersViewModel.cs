@@ -20,6 +20,17 @@ namespace BombaJob.ViewModels
     {
         private IBombaJobRepository dbRepo;
         public ObservableCollection<JobOffer> OffersList { get; set; }
+        private TabberViewModel tabm;
+
+        public NewestOffersViewModel(TabberViewModel _tabm)
+        {
+            this.tabm = _tabm;
+            this.DisplayName = Properties.Resources.menu_Newest;
+
+            if (this.dbRepo == null)
+                this.dbRepo = new BombaJobRepository();
+            this.OffersList = this.dbRepo.GetNewestOffers(AppSettings.OffersPerPage);
+        }
 
         public NewestOffersViewModel()
         {
@@ -32,7 +43,8 @@ namespace BombaJob.ViewModels
 
         public void OffersList_Menu_View(JobOffer jobOffer)
         {
-            AppSettings.LogThis("--- MOUSE OffersList_Menu_View ..." + ((jobOffer != null) ? "" + jobOffer.OfferID : "0"));
+            if (this.tabm != null)
+                this.tabm.OffersList_Menu_View(jobOffer);
         }
 
         public void OffersList_Menu_Message(JobOffer jobOffer)
