@@ -165,6 +165,7 @@ namespace BombaJob.Database
             {
                 var offers = session
                             .CreateCriteria(typeof(JobOffer))
+                            .AddOrder(Order.Desc("ReadYn"))
                             .AddOrder(Order.Desc("PublishDate"))
                             .SetMaxResults(offersLimit)
                             .List<JobOffer>();

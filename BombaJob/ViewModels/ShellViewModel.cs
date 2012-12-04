@@ -143,7 +143,7 @@ namespace BombaJob.ViewModels
 
         private void connectivityHandler()
         {
-            if (!this.bgWorker.IsBusy)
+            if (!this.bgWorker.IsBusy && !AppSettings.InDebug)
             {
                 this.bgWorker.DoWork += delegate(object s, DoWorkEventArgs args)
                 {
@@ -162,7 +162,7 @@ namespace BombaJob.ViewModels
                     else
                         this.SBStatus += Properties.Resources.sb_status_offline;
                     this.connRunning = false;
-                    Thread.Sleep(5000);
+                    Thread.Sleep(AppSettings.ConnectivityCheckTimer);
                     this.connectivityHandler();
                 };
                 if (!this.connRunning)

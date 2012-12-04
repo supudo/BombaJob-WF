@@ -4,6 +4,7 @@ using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.ComponentModel.Composition.Primitives;
 using System.Linq;
+using System.Windows;
 
 using BombaJob.Utilities.Interfaces;
 using BombaJob.ViewModels;

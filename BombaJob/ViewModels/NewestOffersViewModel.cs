@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel.Composition;
 using System.Linq;
 using System.Text;
+using System.Windows;
 using System.Windows.Controls;
 
 using BombaJob.Database;
@@ -27,6 +28,21 @@ namespace BombaJob.ViewModels
             if (this.dbRepo == null)
                 this.dbRepo = new BombaJobRepository();
             this.OffersList = this.dbRepo.GetNewestOffers(AppSettings.OffersPerPage);
+        }
+
+        public void OffersList_Menu_View(JobOffer jobOffer)
+        {
+            AppSettings.LogThis("--- MOUSE OffersList_Menu_View ..." + ((jobOffer != null) ? "" + jobOffer.OfferID : "0"));
+        }
+
+        public void OffersList_Menu_Message(JobOffer jobOffer)
+        {
+            AppSettings.LogThis("--- MOUSE OffersList_Menu_Message ..." + ((jobOffer != null) ? "" + jobOffer.OfferID : "0"));
+        }
+
+        public void OffersList_Menu_Mark(JobOffer jobOffer)
+        {
+            AppSettings.LogThis("--- MOUSE OffersList_Menu_Mark ..." + ((jobOffer != null) ? "" + jobOffer.OfferID : "0"));
         }
     }
 }

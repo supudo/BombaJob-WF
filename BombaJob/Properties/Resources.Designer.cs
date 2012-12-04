@@ -115,6 +115,33 @@ namespace BombaJob.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Маркирай като прочетена.
+        /// </summary>
+        public static string ctxmenu_MarkAsRead {
+            get {
+                return ResourceManager.GetString("ctxmenu_MarkAsRead", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Изпрати съобщение.
+        /// </summary>
+        public static string ctxmenu_SendMessage {
+            get {
+                return ResourceManager.GetString("ctxmenu_SendMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Преглед.
+        /// </summary>
+        public static string ctxmenu_View {
+            get {
+                return ResourceManager.GetString("ctxmenu_View", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to В момента няма интернет връзка. Опитайте по-късно пак..
         /// </summary>
         public static string error_NoInternet {

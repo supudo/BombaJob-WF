@@ -35,11 +35,18 @@ namespace BombaJob.ViewModels
                     Items.RemoveAt(Items.Count - 1);
             }
         }
+        #endregion
 
+        #region Controlls actions
         public void OffersList_SelectionChanged(JobOffer jobOffer)
         {
             OfferDetailsViewModel od = new OfferDetailsViewModel(jobOffer);
             ActivateItem(od);
+        }
+
+        public void OffersList_Menu_View(object e)
+        {
+            AppSettings.LogThis("--- OffersList_Menu_View ...");
         }
         #endregion
     }

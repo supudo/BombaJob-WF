@@ -77,7 +77,7 @@
                         </Grid>
                     </ItemsPanelTemplate>
                 </StatusBar.ItemsPanel>
-                <StatusBarItem Content="{Binding Source={StaticResource ocTicker}, Path=OffersCount, Mode=OneWay}" />
+                <StatusBarItem Content="{Binding Source={StaticResource ocTicker}, Path=OffersCount, Mode=OneWay}" FontWeight="Bold" />
                 <StatusBarItem Grid.Column="1">
                     <StackPanel Visibility="{Binding IsOverlayVisible, Converter={StaticResource boolToVisibilityConverter}}">
                         <mah:ProgressIndicator Width="100" Height="18" ProgressColour="{StaticResource AccentColorBrush}" />

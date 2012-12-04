@@ -396,4 +396,13 @@
   <data name="sb_status_online" xml:space="preserve">
     <value>Онлайн</value>
   </data>
+  <data name="ctxmenu_MarkAsRead" xml:space="preserve">
+    <value>Маркирай като прочетена</value>
+  </data>
+  <data name="ctxmenu_SendMessage" xml:space="preserve">
+    <value>Изпрати съобщение</value>
+  </data>
+  <data name="ctxmenu_View" xml:space="preserve">
+    <value>Преглед</value>
+  </data>
 </root>
