@@ -15,6 +15,7 @@
             <Setter Property="IsReadOnly" Value="True" />
             <Setter Property="TextWrapping" Value="Wrap" />
         </Style>
+        <properties:Settings x:Key="Settings" />
     </UserControl.Resources>
 
     <mah:MetroContentControl>
@@ -26,31 +27,31 @@
                 </Grid.RowDefinitions>
                 <StackPanel Grid.Row="0" Orientation="Vertical" VerticalAlignment="Stretch">
                     <TextBox Text="{x:Static properties:Resources.menu_Settings}" Foreground="#FF000000" FontSize="24" Margin="20,10,0,10" />
-                    <CheckBox Name="chkPrivateData"
+                    <CheckBox x:Name="stPrivateData"
                               FontWeight="Bold" Foreground="#FF000000" FontSize="18" Margin="20,20,20,10">
                         <TextBlock Text="{x:Static properties:Resources.conf_PrivateData}" Margin="0,-8,0,0" />
                     </CheckBox>
                     <TextBlock Text="{x:Static properties:Resources.conf_PrivateData_Desc}"
                                Foreground="#FF000000" FontSize="16" Margin="20,0,0,10" TextWrapping="Wrap"/>
-                    <CheckBox Name="chkInitSync"
+                    <CheckBox x:Name="stInitSync"
                               FontWeight="Bold" Foreground="#FF000000" FontSize="18" Margin="20,20,20,10">
                         <TextBlock Text="{x:Static properties:Resources.conf_InitSync}" Margin="0,-8,0,0" />
                     </CheckBox>
                     <TextBlock Text="{x:Static properties:Resources.conf_InitSync_Desc}"
                                Foreground="#FF000000" FontSize="16" Margin="20,0,0,10" TextWrapping="Wrap"/>
-                    <CheckBox Name="chkOnlineSearch"
+                    <CheckBox x:Name="stOnlineSearch"
                               FontWeight="Bold" Foreground="#FF000000" FontSize="18" Margin="20,20,20,10">
                         <TextBlock Text="{x:Static properties:Resources.conf_OnlineSearch}" Margin="0,-8,0,0" />
                     </CheckBox>
                     <TextBlock Text="{x:Static properties:Resources.conf_OnlineSearch_Desc}"
                                Foreground="#FF000000" FontSize="16" Margin="20,0,0,10" TextWrapping="Wrap"/>
-                    <CheckBox Name="chkInAppEmail"
+                    <CheckBox x:Name="stInAppEmail"
                               FontWeight="Bold" Foreground="#FF000000" FontSize="18" Margin="20,20,20,10">
                         <TextBlock Text="{x:Static properties:Resources.conf_InAppEmail}" Margin="0,-8,0,0" />
                     </CheckBox>
                     <TextBlock Text="{x:Static properties:Resources.conf_InAppEmail_Desc}"
                                Foreground="#FF000000" FontSize="16" Margin="20,0,0,10" TextWrapping="Wrap"/>
-                    <CheckBox Name="chkShowCategories"
+                    <CheckBox x:Name="stShowCategories"
                               FontWeight="Bold" Foreground="#FF000000" FontSize="18" Margin="20,20,20,10">
                         <TextBlock Text="{x:Static properties:Resources.conf_ShowCategories}" Margin="0,-8,0,0" />
                     </CheckBox>
