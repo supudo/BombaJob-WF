@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-    xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+    xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
     xmlns:properties="clr-namespace:BombaJob.Properties" 
     xmlns:cal="http://www.caliburnproject.org"
     mc:Ignorable="d" 
@@ -20,7 +20,7 @@
         </Style>
     </UserControl.Resources>
 
-    <Controls:MetroContentControl>
+    <mah:MetroContentControl>
         <ScrollViewer>
             <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto">
                 <Grid.RowDefinitions>
@@ -51,6 +51,6 @@
                                       Foreground="#FF000000" FontSize="24" BorderBrush="Transparent" BorderThickness="0" Margin="0"/>
             </Grid>
         </ScrollViewer>
-    </Controls:MetroContentControl>
+    </mah:MetroContentControl>
 
 </UserControl>

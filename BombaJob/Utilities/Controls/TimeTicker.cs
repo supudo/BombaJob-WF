@@ -14,9 +14,9 @@ namespace BombaJob.Utilities.Controls
             timer.Start();
         }
 
-        public DateTime Now
+        public String Now
         {
-            get { return DateTime.Now; }
+            get { return AppSettings.DoLongDate(DateTime.Now); } // .Now.ToString("H:mm:ss / MM/dd/yyyy")
         }
 
         void timer_Elapsed(object sender, ElapsedEventArgs e)

@@ -130,7 +130,7 @@
     <value>Онлайн търсене</value>
   </data>
   <data name="conf_PrivateData" xml:space="preserve">
-    <value>Запази лични данни</value>
+    <value>Запомни лични данни</value>
   </data>
   <data name="conf_ShowCategories" xml:space="preserve">
     <value>Показвай категориите</value>
@@ -404,5 +404,23 @@
   </data>
   <data name="ctxmenu_View" xml:space="preserve">
     <value>Преглед</value>
+  </data>
+  <data name="save" xml:space="preserve">
+    <value>Запиши</value>
+  </data>
+  <data name="conf_InAppEmail_Desc" xml:space="preserve">
+    <value>Изпращането на съобщения може да става през вашият имейл клиент или през сайта. Избирането на това, ще укаже да се изпращат имейли през вашият имейл клиент.</value>
+  </data>
+  <data name="conf_InitSync_Desc" xml:space="preserve">
+    <value>Синхронизиране на последните данни със сайта, при първоначално стартиране на приложението</value>
+  </data>
+  <data name="conf_OnlineSearch_Desc" xml:space="preserve">
+    <value>Търсенето да е онлайн (когато има възможност), за по-релевантни и последни данни</value>
+  </data>
+  <data name="conf_PrivateData_Desc" xml:space="preserve">
+    <value>Запомняне на име и имейл за последващо бързо попълване на формите</value>
+  </data>
+  <data name="conf_ShowCategories_Desc" xml:space="preserve">
+    <value>Показването на офертите може да става както на сайта - през първоначален лист от категории. Това ще укаже да се използва такъв лист.</value>
   </data>
 </root>

@@ -79,11 +79,29 @@ namespace BombaJob.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Изпращането на съобщения може да става през вашият имейл клиент или през сайта. Избирането на това, ще укаже да се изпращат имейли през вашият имейл клиент..
+        /// </summary>
+        public static string conf_InAppEmail_Desc {
+            get {
+                return ResourceManager.GetString("conf_InAppEmail_Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Начална синхронизация.
         /// </summary>
         public static string conf_InitSync {
             get {
                 return ResourceManager.GetString("conf_InitSync", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Синхронизиране на последните данни със сайта, при първоначално стартиране на приложението.
+        /// </summary>
+        public static string conf_InitSync_Desc {
+            get {
+                return ResourceManager.GetString("conf_InitSync_Desc", resourceCulture);
             }
         }
         
@@ -97,11 +115,29 @@ namespace BombaJob.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Запази лични данни.
+        ///   Looks up a localized string similar to Търсенето да е онлайн (когато има възможност), за по-релевантни и последни данни.
+        /// </summary>
+        public static string conf_OnlineSearch_Desc {
+            get {
+                return ResourceManager.GetString("conf_OnlineSearch_Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Запомни лични данни.
         /// </summary>
         public static string conf_PrivateData {
             get {
                 return ResourceManager.GetString("conf_PrivateData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Запомняне на име и имейл за последващо бързо попълване на формите.
+        /// </summary>
+        public static string conf_PrivateData_Desc {
+            get {
+                return ResourceManager.GetString("conf_PrivateData_Desc", resourceCulture);
             }
         }
         
@@ -111,6 +147,15 @@ namespace BombaJob.Properties {
         public static string conf_ShowCategories {
             get {
                 return ResourceManager.GetString("conf_ShowCategories", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Показването на офертите може да става както на сайта - през първоначален лист от категории. Това ще укаже да се използва такъв лист..
+        /// </summary>
+        public static string conf_ShowCategories_Desc {
+            get {
+                return ResourceManager.GetString("conf_ShowCategories_Desc", resourceCulture);
             }
         }
         
@@ -750,6 +795,15 @@ namespace BombaJob.Properties {
         public static string popup_OK {
             get {
                 return ResourceManager.GetString("popup_OK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Запиши.
+        /// </summary>
+        public static string save {
+            get {
+                return ResourceManager.GetString("save", resourceCulture);
             }
         }
         

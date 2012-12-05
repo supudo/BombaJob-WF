@@ -57,7 +57,6 @@
             <Border Background="White" Opacity="0.7"
                 Visibility="{Binding IsOverlayVisible, Converter={StaticResource boolToVisibilityConverter}}"
                 HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
-            <!-- <ContentControl x:Name="VMTab" IsEnabled="{Binding TabberEnabled}" Opacity="{Binding TabberOpacity}" /> -->
             <ContentControl x:Name="ActiveItem" IsEnabled="{Binding TabberEnabled}" Opacity="{Binding TabberOpacity}" />
             <mah:ProgressRing IsActive="True" Foreground="Black" Background="{x:Null}"
                             Visibility="{Binding IsOverlayVisible, Converter={StaticResource boolToVisibilityConverter}}"
@@ -73,7 +72,7 @@
                                 <ColumnDefinition Width="4*"/>
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="200"/>
                             </Grid.ColumnDefinitions>
                         </Grid>
                     </ItemsPanelTemplate>
@@ -85,7 +84,7 @@
                     </StackPanel>
                 </StatusBarItem>
                 <StatusBarItem Grid.Column="2" Content="{Binding SBStatus}" />
-                <StatusBarItem Grid.Column="3" Content="{Binding Source={StaticResource timeTicker}, Path=Now, Mode=OneWay, StringFormat='H:mm:ss / MM/dd/yyyy'}"/>
+                <StatusBarItem Grid.Column="3" Content="{Binding Source={StaticResource timeTicker}, Path=Now, Mode=OneWay}"/>
             </StatusBar>
             
         </Grid>
