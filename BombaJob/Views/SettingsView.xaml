@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:properties="clr-namespace:BombaJob.Properties"
              xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             xmlns:cal="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="600">
 
@@ -28,37 +29,42 @@
                 <StackPanel Grid.Row="0" Orientation="Vertical" VerticalAlignment="Stretch">
                     <TextBox Text="{x:Static properties:Resources.menu_Settings}" Foreground="#FF000000" FontSize="24" Margin="20,10,0,10" />
                     <CheckBox x:Name="stPrivateData"
-                              FontWeight="Bold" Foreground="#FF000000" FontSize="18" Margin="20,20,20,10">
+                              FontWeight="Bold" Foreground="#FF000000" FontSize="18" Margin="20,20,20,10"
+                              cal:Message.Attach="[Event Click] = [Action SaveSetting()]">
                         <TextBlock Text="{x:Static properties:Resources.conf_PrivateData}" Margin="0,-8,0,0" />
                     </CheckBox>
                     <TextBlock Text="{x:Static properties:Resources.conf_PrivateData_Desc}"
                                Foreground="#FF000000" FontSize="16" Margin="20,0,0,10" TextWrapping="Wrap"/>
                     <CheckBox x:Name="stInitSync"
-                              FontWeight="Bold" Foreground="#FF000000" FontSize="18" Margin="20,20,20,10">
+                              FontWeight="Bold" Foreground="#FF000000" FontSize="18" Margin="20,20,20,10"
+                              cal:Message.Attach="[Event Click] = [Action SaveSetting()]">
                         <TextBlock Text="{x:Static properties:Resources.conf_InitSync}" Margin="0,-8,0,0" />
                     </CheckBox>
                     <TextBlock Text="{x:Static properties:Resources.conf_InitSync_Desc}"
                                Foreground="#FF000000" FontSize="16" Margin="20,0,0,10" TextWrapping="Wrap"/>
                     <CheckBox x:Name="stOnlineSearch"
-                              FontWeight="Bold" Foreground="#FF000000" FontSize="18" Margin="20,20,20,10">
+                              FontWeight="Bold" Foreground="#FF000000" FontSize="18" Margin="20,20,20,10"
+                              cal:Message.Attach="[Event Click] = [Action SaveSetting()]">
                         <TextBlock Text="{x:Static properties:Resources.conf_OnlineSearch}" Margin="0,-8,0,0" />
                     </CheckBox>
                     <TextBlock Text="{x:Static properties:Resources.conf_OnlineSearch_Desc}"
                                Foreground="#FF000000" FontSize="16" Margin="20,0,0,10" TextWrapping="Wrap"/>
                     <CheckBox x:Name="stInAppEmail"
-                              FontWeight="Bold" Foreground="#FF000000" FontSize="18" Margin="20,20,20,10">
+                              FontWeight="Bold" Foreground="#FF000000" FontSize="18" Margin="20,20,20,10"
+                              cal:Message.Attach="[Event Click] = [Action SaveSetting()]">
                         <TextBlock Text="{x:Static properties:Resources.conf_InAppEmail}" Margin="0,-8,0,0" />
                     </CheckBox>
                     <TextBlock Text="{x:Static properties:Resources.conf_InAppEmail_Desc}"
                                Foreground="#FF000000" FontSize="16" Margin="20,0,0,10" TextWrapping="Wrap"/>
                     <CheckBox x:Name="stShowCategories"
-                              FontWeight="Bold" Foreground="#FF000000" FontSize="18" Margin="20,20,20,10">
+                              FontWeight="Bold" Foreground="#FF000000" FontSize="18" Margin="20,20,20,10"
+                              cal:Message.Attach="[Event Click] = [Action SaveSetting()]">
                         <TextBlock Text="{x:Static properties:Resources.conf_ShowCategories}" Margin="0,-8,0,0" />
                     </CheckBox>
                     <TextBlock Text="{x:Static properties:Resources.conf_ShowCategories_Desc}"
                                Foreground="#FF000000" FontSize="16" Margin="20,0,0,10" TextWrapping="Wrap"/>
                 </StackPanel>
-                <Button Grid.Row="1" x:Name="SaveSettings" Content="{x:Static properties:Resources.save}"
+                <Button Grid.Row="1" x:Name="SaveSettings" Content="{x:Static properties:Resources.popup_OK}"
                         HorizontalAlignment="Stretch" VerticalAlignment="Bottom"
                         Foreground="#FF000000" FontSize="18" Margin="10,10,10,40" Padding="10" />
             </Grid>

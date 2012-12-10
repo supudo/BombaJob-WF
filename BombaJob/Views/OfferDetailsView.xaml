@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
     xmlns:properties="clr-namespace:BombaJob.Properties" 
-    xmlns:cal="http://www.caliburnproject.org"
+    xmlns:cal="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro"
     mc:Ignorable="d" 
     d:DesignHeight="600"
     d:DesignWidth="600">

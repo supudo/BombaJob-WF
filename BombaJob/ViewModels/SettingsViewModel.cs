@@ -82,6 +82,11 @@ namespace BombaJob.ViewModels
             this.DisplayName = Properties.Resources.menu_Settings;
         }
 
+        public void SaveSetting()
+        {
+            Properties.Settings.Default.Save();
+        }
+
         public void SaveSettings()
         {
             Properties.Settings.Default.Save();
