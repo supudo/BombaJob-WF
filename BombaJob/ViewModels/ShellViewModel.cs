@@ -120,7 +120,7 @@ namespace BombaJob.ViewModels
         private void load()
         {
             Thread.Sleep(500);
-            if (AppSettings.ConfInitSync)
+            if (Properties.Settings.Default.stInitSync)
                 this.syncManager.StartSync();
             else
             {

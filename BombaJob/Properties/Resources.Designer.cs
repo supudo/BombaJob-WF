@@ -853,7 +853,7 @@ namespace BombaJob.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Резултати.
+        ///   Looks up a localized string similar to Резултати за: .
         /// </summary>
         public static string search_Results {
             get {

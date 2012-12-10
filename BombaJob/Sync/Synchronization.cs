@@ -98,6 +98,15 @@ namespace BombaJob.Sync
             this._networkHelper.uploadURL(AppSettings.ServicesURL + "?action=postMessage", postParams);
         }
 
+        public void DoSearch(string searchKeyword)
+        {
+            this.currentOp = AppSettings.ServiceOp.ServiceOpSearch;
+            Dictionary<string, string> postParams = new Dictionary<string, string>();
+            postParams.Add("keyword", searchKeyword);
+            this.currentOp = AppSettings.ServiceOp.ServiceOpSearch;
+            this._networkHelper.uploadURL(AppSettings.ServicesURL + "?action=searchOffers", postParams);
+        }
+
         public void LoadOffersInBackground()
         {
             this.currentOp = AppSettings.ServiceOp.ServiceOpJobs;
@@ -228,25 +237,7 @@ namespace BombaJob.Sync
 
         private void doNewestOffers(string xmlContent)
         {
-            IBombaJobRepository repo = new BombaJobRepository();
-            XDocument doc = XDocument.Parse(xmlContent);
-            foreach (XElement job in doc.Descendants("job"))
-            {
-                var t = new JobOffer
-                {
-                    OfferID = (int)job.Attribute("id"),
-                    CategoryID = (int)job.Attribute("cid"),
-                    HumanYn = (bool)job.Attribute("hm"),
-                    FreelanceYn = (bool)job.Attribute("fyn"),
-                    Title = (string)job.Element("jottl"),
-                    Email = (string)job.Element("joem"),
-                    CategoryTitle = (string)job.Element("jocat"),
-                    Positivism = (string)job.Element("jopos"),
-                    Negativism = (string)job.Element("joneg"),
-                    PublishDate = DateTime.ParseExact((string)job.Element("jodt"), AppSettings.DateTimeFormat, null)
-                };
-                repo.AddJobOffer(t);
-            }
+            this.doJobOffers(xmlContent);
             this.SynchronizationComplete();
         }
 
@@ -260,8 +251,33 @@ namespace BombaJob.Sync
         #region Parsers
         private void doJobOffers(string xmlContent)
         {
-            if (this.currentOp != AppSettings.ServiceOp.ServiceOpJobs)
-                this.SyncComplete(this, new BombaJobEventArgs(false, "", ""));
+            if (this.currentOp == AppSettings.ServiceOp.ServiceOpJobs ||
+                this.currentOp == AppSettings.ServiceOp.ServiceOpSearch ||
+                this.currentOp == AppSettings.ServiceOp.ServiceOpNewestOffers)
+            {
+                IBombaJobRepository repo = new BombaJobRepository();
+                XDocument doc = XDocument.Parse(xmlContent);
+                foreach (XElement job in doc.Descendants("job"))
+                {
+                    var t = new JobOffer
+                    {
+                        OfferID = (int)job.Attribute("id"),
+                        CategoryID = (int)job.Attribute("cid"),
+                        HumanYn = (bool)job.Attribute("hm"),
+                        FreelanceYn = (bool)job.Attribute("fyn"),
+                        Title = (string)job.Element("jottl"),
+                        Email = (string)job.Element("joem"),
+                        CategoryTitle = (string)job.Element("jocat"),
+                        Positivism = (string)job.Element("jopos"),
+                        Negativism = (string)job.Element("joneg"),
+                        PublishDate = DateTime.ParseExact((string)job.Element("jodt"), AppSettings.DateTimeFormat, null)
+                    };
+                    repo.AddJobOffer(t);
+                }
+                this.SynchronizationComplete();
+            }
+            else
+                this.SynchronizationComplete();
         }
         #endregion
     }

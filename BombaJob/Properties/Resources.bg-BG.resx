@@ -337,7 +337,7 @@
     <value>Проект/Freelance</value>
   </data>
   <data name="search_Results" xml:space="preserve">
-    <value>Резултати</value>
+    <value>Резултати за: </value>
   </data>
   <data name="search_Search" xml:space="preserve">
     <value>Търси</value>

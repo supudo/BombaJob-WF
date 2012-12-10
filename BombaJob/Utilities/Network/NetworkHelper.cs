@@ -24,6 +24,7 @@ namespace BombaJob.Utilities.Network
         public bool InBackground;
 
         private WebClient webClient;
+        private WebRequest webRequest;
         private AppSettings.ServiceOp webServiceOp;
 
         #region Constructor
@@ -102,7 +103,6 @@ namespace BombaJob.Utilities.Network
         {
             if (this.hasConnection())
             {
-                this.webClient.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
                 var uri = new Uri(url, UriKind.Absolute);
 
                 StringBuilder postData = new StringBuilder();
@@ -113,22 +113,24 @@ namespace BombaJob.Utilities.Network
                     c++;
                 }
 
-                this.webClient.Headers[HttpRequestHeader.ContentLength] = postData.Length.ToString();
-                this.webClient.UploadStringCompleted += new UploadStringCompletedEventHandler(webClient_UploadStringCompleted);
-                this.webClient.UploadStringAsync(uri, "POST", postData.ToString());
-            }
-            else
-            {
-                this.DownloadError(this, new BombaJobEventArgs(true, Properties.Resources.error_NoInternet, ""));
-            }
-        }
+                this.webRequest = System.Net.WebRequest.Create(uri);
+                this.webRequest.ContentType = "application/x-www-form-urlencoded";
+                this.webRequest.Method = "POST";
 
-        void webClient_UploadStringCompleted(object sender, UploadStringCompletedEventArgs e)
-        {
-            if (e.Error != null)
-                this.DownloadError(this, new BombaJobEventArgs(true, e.Error.Message, ""));
+                byte[] bytes = System.Text.Encoding.ASCII.GetBytes(postData.ToString());
+                this.webRequest.ContentLength = bytes.Length;
+                System.IO.Stream os = this.webRequest.GetRequestStream();
+                os.Write(bytes, 0, bytes.Length);
+                os.Close();
+
+                System.Net.WebResponse resp = this.webRequest.GetResponse();
+                if (resp == null)
+                    this.DownloadError(this, new BombaJobEventArgs(true, Properties.Resources.error_NoInternet, ""));
+                System.IO.StreamReader sr = new System.IO.StreamReader(resp.GetResponseStream());
+                this.DownloadComplete(this, new BombaJobEventArgs(false, "", sr.ReadToEnd().Trim()));
+            }
             else
-                this.DownloadComplete(this, new BombaJobEventArgs(false, "", e.Result));
+                this.DownloadError(this, new BombaJobEventArgs(true, Properties.Resources.error_NoInternet, ""));
         }
         #endregion
     }
