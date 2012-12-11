@@ -601,7 +601,7 @@ namespace BombaJob.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Категория:.
+        ///   Looks up a localized string similar to Сфера на работа.
         /// </summary>
         public static string offer_Category {
             get {
@@ -610,7 +610,7 @@ namespace BombaJob.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Работя в:.
+        ///   Looks up a localized string similar to Работя в.
         /// </summary>
         public static string offer_category_title {
             get {
@@ -619,7 +619,7 @@ namespace BombaJob.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Email за връзка:.
+        ///   Looks up a localized string similar to Email за връзка.
         /// </summary>
         public static string offer_Company_Email {
             get {
@@ -628,7 +628,7 @@ namespace BombaJob.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Предимства на фирмата:.
+        ///   Looks up a localized string similar to Предимства на фирмата.
         /// </summary>
         public static string offer_Company_Negativ {
             get {
@@ -637,7 +637,7 @@ namespace BombaJob.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Описание на позицията:.
+        ///   Looks up a localized string similar to Описание на позицията.
         /// </summary>
         public static string offer_Company_Positiv {
             get {
@@ -646,7 +646,7 @@ namespace BombaJob.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Заглавие на позицията:.
+        ///   Looks up a localized string similar to Заглавие на позицията.
         /// </summary>
         public static string offer_Company_Title {
             get {
@@ -655,7 +655,7 @@ namespace BombaJob.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Проект/Freelance:.
+        ///   Looks up a localized string similar to Проект/Freelance.
         /// </summary>
         public static string offer_FreelanceYn {
             get {
@@ -664,7 +664,7 @@ namespace BombaJob.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Вашият email:.
+        ///   Looks up a localized string similar to Вашият email.
         /// </summary>
         public static string offer_Human_Email {
             get {
@@ -673,7 +673,7 @@ namespace BombaJob.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Умения:.
+        ///   Looks up a localized string similar to Умения.
         /// </summary>
         public static string offer_Human_Negativ {
             get {
@@ -682,7 +682,7 @@ namespace BombaJob.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Проблем:.
+        ///   Looks up a localized string similar to Проблем.
         /// </summary>
         public static string offer_Human_Positiv {
             get {
@@ -691,7 +691,7 @@ namespace BombaJob.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Заглавие на резюмето ви:.
+        ///   Looks up a localized string similar to Заглавие на резюмето ви.
         /// </summary>
         public static string offer_Human_Title {
             get {

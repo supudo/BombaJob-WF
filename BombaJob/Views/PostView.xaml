@@ -3,9 +3,72 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:properties="clr-namespace:BombaJob.Properties"
+             xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             xmlns:cal="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <TextBlock Text="POST OFFER"></TextBlock>
-    </Grid>
+             d:DesignHeight="600" d:DesignWidth="600">
+
+    <UserControl.Resources>
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="IsReadOnly" Value="True" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+        </Style>
+        <properties:Settings x:Key="Settings" />
+    </UserControl.Resources>
+
+    <mah:MetroContentControl>
+        <ScrollViewer>
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ScrollViewer.CanContentScroll="True"
+                  ScrollViewer.VerticalScrollBarVisibility="Auto">
+                <StackPanel Orientation="Vertical" VerticalAlignment="Stretch">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Margin="20,10,10,20">
+                        <TextBlock Text="{x:Static properties:Resources.offer_iam_title}"
+                                   Foreground="#FF000000" FontSize="16" TextWrapping="Wrap" Margin="0,0,20,0"/>
+                        <RadioButton GroupName="IAM" Content="{x:Static properties:Resources.offer_iam_human}" IsChecked="True"
+                                     FontSize="16" Margin="0,0,20,0" Tag="1"
+                                     cal:Message.Attach="[Event Click] = [Action SetLabels($source)]"/>
+                        <RadioButton GroupName="IAM" Content="{x:Static properties:Resources.offer_iam_company}"
+                                     FontSize="16" Tag="2"
+                                     cal:Message.Attach="[Event Click] = [Action SetLabels($source)]"/>
+                    </StackPanel>
+
+                    <TextBlock Text="{x:Static properties:Resources.offer_FreelanceYn}"
+                               Foreground="#FF000000" FontSize="16" Margin="20,0,10,10" TextWrapping="Wrap"/>
+                    <ComboBox x:Name="ddFreelance" CacheMode="BitmapCache"
+                              FontSize="16" Margin="20,0,10,10" 
+                              Foreground="Black" BorderBrush="#BF000000" Padding="0" />
+
+                    <TextBlock Text="{Binding LabelCategory}"
+                               Foreground="#FF000000" FontSize="16" Margin="20,0,10,10" TextWrapping="Wrap"/>
+                    <ComboBox x:Name="ddCategory" CacheMode="BitmapCache"
+                              FontSize="16" Margin="20,0,10,10" 
+                              Foreground="Black" BorderBrush="#BF000000" Padding="0" />
+
+                    <TextBlock Text="{Binding LabelTitle}"
+                               Foreground="#FF000000" FontSize="16" Margin="20,0,10,10" TextWrapping="Wrap"/>
+                    <TextBox Name="txtTitle" MaxLength="255" HorizontalAlignment="Stretch"
+                             Margin="20,0,10,10" BorderBrush="Orange" BorderThickness="1" FontSize="16"/>
+
+                    <TextBlock Text="{Binding LabelEmail}"
+                               Foreground="#FF000000" FontSize="16" Margin="20,0,10,10" TextWrapping="Wrap"/>
+                    <TextBox Name="txtEmail" MaxLength="255" HorizontalAlignment="Stretch"
+                             Margin="20,0,10,10" BorderBrush="Orange" BorderThickness="1" FontSize="16"/>
+
+                    <TextBlock Text="{Binding LabelPositiv}"
+                               Foreground="#FF000000" FontSize="16" Margin="20,0,10,10" TextWrapping="Wrap"/>
+                    <TextBox Name="txtPositiv" MaxLength="255" HorizontalAlignment="Stretch"
+                             Margin="20,0,10,10" BorderBrush="Orange" BorderThickness="1" FontSize="16"/>
+
+                    <TextBlock Text="{Binding LabelNegativ}"
+                               Foreground="#FF000000" FontSize="16" Margin="20,0,10,10" TextWrapping="Wrap"/>
+                    <TextBox Name="txtNegativ" MaxLength="255" HorizontalAlignment="Stretch"
+                             Margin="20,0,10,10" BorderBrush="Orange" BorderThickness="1" FontSize="16"/>
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+    </mah:MetroContentControl>
+
 </UserControl>
