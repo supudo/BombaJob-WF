@@ -423,4 +423,7 @@
   <data name="conf_ShowCategories_Desc" xml:space="preserve">
     <value>Показването на офертите може да става както на сайта - през първоначален лист от категории. Това ще укаже да се използва такъв лист.</value>
   </data>
+  <data name="search_For" xml:space="preserve">
+    <value>Търсене…. </value>
+  </data>
 </root>

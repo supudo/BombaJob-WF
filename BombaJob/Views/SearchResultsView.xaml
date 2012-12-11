@@ -19,7 +19,7 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="20,0,20,20">
-                <TextBlock Text="{x:Static properties:Resources.search_Results}" FontSize="24" FontWeight="Bold"  />
+                <TextBlock Text="{Binding SearchStatus}" FontSize="24" FontWeight="Bold"  />
                 <TextBlock Text="{Binding SearchQuery}" FontSize="24" FontWeight="Bold" />
             </StackPanel>
             <ListBox Grid.Row="1" x:Name="OffersList" ScrollViewer.VerticalScrollBarVisibility="Auto">

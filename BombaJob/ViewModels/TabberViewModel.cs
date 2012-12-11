@@ -15,11 +15,13 @@ namespace BombaJob.ViewModels
     public class TabberViewModel : Conductor<IScreen>.Collection.OneActive
     {
         private string searchQuery;
+        private ShellViewModel shellVM;
         public bool showSearch;
 
         [ImportingConstructor]
-        public TabberViewModel()
+        public TabberViewModel(ShellViewModel _shell)
         {
+            this.shellVM = _shell;
             this.DisplayName = Resources.appName;
             this.showSearch = false;
             this.RefreshTabs(false);
@@ -78,6 +80,18 @@ namespace BombaJob.ViewModels
         {
             SendMessageViewModel od = new SendMessageViewModel(jobOffer);
             ActivateItem(od);
+        }
+        #endregion
+
+        #region Shell gateway
+        public void StartLoading()
+        {
+            this.shellVM.ShowOverlay();
+        }
+
+        public void StopLoading()
+        {
+            this.shellVM.HideOverlay();
         }
         #endregion
     }

@@ -27,6 +27,7 @@ namespace BombaJob.ViewModels
         private Synchronization syncManager;
         private Thread thinkThread;
         public ObservableCollection<JobOffer> OffersList { get; set; }
+        public string SearchStatus { get; set; }
         public string SearchQuery { get; set; }
 
         public SearchResultsViewModel(TabberViewModel _tabm, string sQuery)
@@ -38,6 +39,7 @@ namespace BombaJob.ViewModels
             if (this.dbRepo == null)
                 this.dbRepo = new BombaJobRepository();
 
+            this.StartSearch();
             if (Properties.Settings.Default.stOnlineSearch)
                 this.DoSearch();
             else
@@ -77,6 +79,7 @@ namespace BombaJob.ViewModels
         {
             this.OffersList = this.dbRepo.SearchJobOffers(this.SearchQuery);
             NotifyOfPropertyChange(() => OffersList);
+            this.FinishSearch();
         }
         #endregion
 
@@ -98,6 +101,22 @@ namespace BombaJob.ViewModels
             IBombaJobRepository dbRepo = new BombaJobRepository();
             dbRepo.MarkAsRead(jobOffer);
             this.SearchOffers();
+        }
+        #endregion
+
+        #region Search status
+        private void StartSearch()
+        {
+            this.SearchStatus = Properties.Resources.search_For;
+            NotifyOfPropertyChange(() => SearchStatus);
+            this.tabm.StartLoading();
+        }
+
+        private void FinishSearch()
+        {
+            this.SearchStatus = Properties.Resources.search_Results;
+            NotifyOfPropertyChange(() => SearchStatus);
+            this.tabm.StopLoading();
         }
         #endregion
     }

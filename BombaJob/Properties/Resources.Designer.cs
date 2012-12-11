@@ -844,6 +844,15 @@ namespace BombaJob.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Търсене…. .
+        /// </summary>
+        public static string search_For {
+            get {
+                return ResourceManager.GetString("search_For", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Проект/Freelance.
         /// </summary>
         public static string search_Freelance {
