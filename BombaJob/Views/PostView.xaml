@@ -35,37 +35,41 @@
                                      cal:Message.Attach="[Event Click] = [Action SetLabels($source)]"/>
                     </StackPanel>
 
-                    <TextBlock Text="{x:Static properties:Resources.offer_FreelanceYn}"
-                               Foreground="#FF000000" FontSize="16" Margin="20,0,10,10" TextWrapping="Wrap"/>
-                    <ComboBox x:Name="ddFreelance" CacheMode="BitmapCache"
-                              FontSize="16" Margin="20,0,10,10" 
-                              Foreground="Black" BorderBrush="#BF000000" Padding="0" />
+                    <CheckBox x:Name="OfferFreelance" Foreground="#FF000000" FontSize="16" Margin="20,0,10,10">
+                        <TextBlock Text="{x:Static properties:Resources.offer_FreelanceCheck}" Margin="0,-8,0,0" />
+                    </CheckBox>
 
                     <TextBlock Text="{Binding LabelCategory}"
                                Foreground="#FF000000" FontSize="16" Margin="20,0,10,10" TextWrapping="Wrap"/>
-                    <ComboBox x:Name="ddCategory" CacheMode="BitmapCache"
-                              FontSize="16" Margin="20,0,10,10" 
-                              Foreground="Black" BorderBrush="#BF000000" Padding="0" />
+                    <ComboBox x:Name="Categories"
+                              FontSize="16" Margin="20,0,10,10" BorderBrush="Orange" BorderThickness="1"
+                              ItemsSource="{Binding Categories}" DisplayMemberPath="Title" SelectedValuePath="CategoryID"
+                              cal:Message.Attach="[Event SelectionChanged] = [Action SelectedItemChanged($this.SelectedItem)]"/>
 
                     <TextBlock Text="{Binding LabelTitle}"
                                Foreground="#FF000000" FontSize="16" Margin="20,0,10,10" TextWrapping="Wrap"/>
-                    <TextBox Name="txtTitle" MaxLength="255" HorizontalAlignment="Stretch"
-                             Margin="20,0,10,10" BorderBrush="Orange" BorderThickness="1" FontSize="16"/>
+                    <TextBox x:Name="OfferTitle" MaxLength="255" HorizontalAlignment="Stretch"
+                             Margin="20,0,10,10" BorderBrush="Orange" BorderThickness="1" FontSize="16" />
 
                     <TextBlock Text="{Binding LabelEmail}"
                                Foreground="#FF000000" FontSize="16" Margin="20,0,10,10" TextWrapping="Wrap"/>
-                    <TextBox Name="txtEmail" MaxLength="255" HorizontalAlignment="Stretch"
+                    <TextBox x:Name="OfferEmail" MaxLength="255" HorizontalAlignment="Stretch"
                              Margin="20,0,10,10" BorderBrush="Orange" BorderThickness="1" FontSize="16"/>
 
                     <TextBlock Text="{Binding LabelPositiv}"
                                Foreground="#FF000000" FontSize="16" Margin="20,0,10,10" TextWrapping="Wrap"/>
-                    <TextBox Name="txtPositiv" MaxLength="255" HorizontalAlignment="Stretch"
+                    <TextBox x:Name="OfferPositiv" HorizontalAlignment="Stretch"
                              Margin="20,0,10,10" BorderBrush="Orange" BorderThickness="1" FontSize="16"/>
 
                     <TextBlock Text="{Binding LabelNegativ}"
                                Foreground="#FF000000" FontSize="16" Margin="20,0,10,10" TextWrapping="Wrap"/>
-                    <TextBox Name="txtNegativ" MaxLength="255" HorizontalAlignment="Stretch"
+                    <TextBox x:Name="OfferNegativ" HorizontalAlignment="Stretch"
                              Margin="20,0,10,10" BorderBrush="Orange" BorderThickness="1" FontSize="16"/>
+
+                    <Button x:Name="PostOffer" Content="{x:Static properties:Resources.offer_Boom}"
+                            HorizontalAlignment="Stretch" VerticalAlignment="Bottom"
+                            FontSize="18" Margin="10,10,10,40" Padding="10"
+                            BorderBrush="Orange" BorderThickness="1"/>
                 </StackPanel>
             </Grid>
         </ScrollViewer>

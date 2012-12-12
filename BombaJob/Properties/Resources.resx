@@ -426,4 +426,7 @@
   <data name="search_For" xml:space="preserve">
     <value>Търсене…. </value>
   </data>
+  <data name="offer_FreelanceCheck" xml:space="preserve">
+    <value>Работа на проект/freelance</value>
+  </data>
 </root>

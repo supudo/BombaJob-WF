@@ -76,6 +76,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.SQLite, Version=1.0.82.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
@@ -121,6 +122,7 @@
     <Compile Include="Utilities\Extensions\WindowManagerExtensions.cs" />
     <Compile Include="Utilities\Interfaces\IBombaJobRepository.cs" />
     <Compile Include="Database\NHibernateHelper.cs" />
+    <Compile Include="Utilities\Interfaces\IError.cs" />
     <Compile Include="Utilities\Interfaces\IShell.cs" />
     <Compile Include="Properties\Resources.bg-BG.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -133,12 +135,15 @@
     <Compile Include="Utilities\Converters\OfferDateLongConverter.cs" />
     <Compile Include="Utilities\Converters\OfferDateShortConverter.cs" />
     <Compile Include="Utilities\Converters\OfferIconConverter.cs" />
+    <Compile Include="Utilities\Interfaces\IValidator.cs" />
+    <Compile Include="Utilities\Misc\DefaultError.cs" />
     <Compile Include="Utilities\Network\NetworkHelper.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AppSettings.cs" />
+    <Compile Include="Utilities\Misc\DefaultValidator.cs" />
     <Compile Include="ViewModels\SearchResultsViewModel.cs" />
     <Compile Include="ViewModels\SendMessageViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />

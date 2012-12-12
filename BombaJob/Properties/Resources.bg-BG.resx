@@ -426,4 +426,10 @@
   <data name="yes" xml:space="preserve">
     <value>Да</value>
   </data>
+  <data name="offer_FreelanceCheck" xml:space="preserve">
+    <value>Работа на проект/freelance</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value />
+  </data>
 </root>
