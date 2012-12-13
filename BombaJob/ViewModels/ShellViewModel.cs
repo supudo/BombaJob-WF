@@ -15,6 +15,7 @@ using System.Windows.Threading;
 
 using BombaJob.Sync;
 using BombaJob.Utilities;
+using BombaJob.Utilities.Controls;
 using BombaJob.Utilities.Events;
 using BombaJob.Utilities.Interfaces;
 using BombaJob.Utilities.Network;

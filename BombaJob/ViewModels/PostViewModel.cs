@@ -6,10 +6,14 @@ using System.ComponentModel.Composition;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using System.Threading;
+using System.Windows;
 using System.Windows.Controls;
 
 using BombaJob.Database.Domain;
 using BombaJob.Database.Repository;
+using BombaJob.Sync;
+using BombaJob.Utilities.Events;
 using BombaJob.Utilities.Interfaces;
 using BombaJob.Utilities.Misc;
 
@@ -24,9 +28,12 @@ namespace BombaJob.ViewModels
         private readonly IValidator validator = new DefaultValidator();
         private IBombaJobRepository dbRepo;
         private TabberViewModel tabm;
+        private Synchronization syncManager;
+        private Thread thinkThread;
         #endregion
 
         #region Properties
+        private bool IsHuman = false;
         public string LabelCategory { get; set; }
         public string LabelTitle { get; set; }
         public string LabelEmail { get; set; }
@@ -41,6 +48,17 @@ namespace BombaJob.ViewModels
             {
                 this._selectedCategory = value;
                 NotifyOfPropertyChange(() => SelectedCategory);
+            }
+        }
+
+        private bool offerFreelance;
+        public bool OfferFreelance
+        {
+            get { return this.offerFreelance; }
+            set
+            {
+                this.offerFreelance = value;
+                NotifyOfPropertyChange(() => OfferFreelance);
             }
         }
 
@@ -122,6 +140,7 @@ namespace BombaJob.ViewModels
                 this.dbRepo = new BombaJobRepository();
             this.Categories = this.dbRepo.GetCategories();
             NotifyOfPropertyChange(() => Categories);
+            this.SelectedCategory = this.Categories[0];
         }
 
         public void SetLabels(RadioButton rb)
@@ -131,6 +150,7 @@ namespace BombaJob.ViewModels
 
         public void SetLabels(bool humanYn)
         {
+            this.IsHuman = humanYn;
             if (humanYn)
             {
                 this.LabelCategory = Properties.Resources.offer_category_title;
@@ -182,7 +202,69 @@ namespace BombaJob.ViewModels
         #region Post
         public void PostOffer()
         {
+            this.tabm.StartLoading();
             AppSettings.LogThis("Post offer... " + this.SelectedCategory.CategoryID);
+            if (this.syncManager == null)
+                this.syncManager = new Synchronization();
+            this.syncManager.SyncError += new Synchronization.EventHandler(syncManager_SearchError);
+            this.syncManager.SyncComplete += new Synchronization.EventHandler(syncManager_SearchComplete);
+            this.thinkThread = new Thread(post);
+            this.thinkThread.Start();
+        }
+
+        private void post()
+        {
+            Thread.Sleep(500);
+            this.PostFinished();
+            /*
+            Dictionary<string, string> postParams = new Dictionary<string, string>();
+            postParams.Add("oid", "0");
+            postParams.Add("cid", "" + this.SelectedCategory.CategoryID);
+            postParams.Add("h", (this.IsHuman ? "1" : "0"));
+            postParams.Add("fr", (this.OfferFreelance ? "1" : "0"));
+            postParams.Add("tt", this.OfferTitle);
+            postParams.Add("em", this.OfferEmail);
+            postParams.Add("pos", this.OfferPositiv);
+            postParams.Add("neg", this.OfferNegativ);
+            postParams.Add("mob_app", "win");
+            this.syncManager.DoPostOffer(postParams);
+             * */
+        }
+
+        private void syncManager_SearchComplete(object sender, BombaJobEventArgs e)
+        {
+            this.PostFinished();
+        }
+
+        private void syncManager_SearchError(object sender, BombaJobEventArgs e)
+        {
+            this.tabm.StopLoading();
+            if (e.IsError)
+                MessageBox.Show(e.ErrorMessage);
+        }
+
+        private void PostFinished()
+        {
+            MessageBoxResult result = MessageBox.Show(Properties.Resources.offer_ThankYou);
+            if (result == MessageBoxResult.OK)
+            {
+                this.SelectedCategory = this.Categories[0];
+                this.IsHuman = true;
+                this.SetLabels(this.IsHuman);
+                this.OfferFreelance = true;
+                this.OfferTitle = "";
+                this.OfferEmail = "";
+                this.OfferPositiv = "";
+                this.OfferNegativ = "";
+                NotifyOfPropertyChange(() => SelectedCategory);
+                NotifyOfPropertyChange(() => IsHuman);
+                NotifyOfPropertyChange(() => OfferFreelance);
+                NotifyOfPropertyChange(() => OfferTitle);
+                NotifyOfPropertyChange(() => OfferEmail);
+                NotifyOfPropertyChange(() => OfferPositiv);
+                NotifyOfPropertyChange(() => OfferNegativ);
+                this.tabm.StopLoading();
+            }
         }
         #endregion
     }
