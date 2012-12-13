@@ -53,13 +53,15 @@
                                Foreground="#FF000000" FontSize="16" Margin="20,0,10,10" TextWrapping="Wrap"/>
                     <TextBox x:Name="OfferPositiv" HorizontalAlignment="Stretch"
                              Margin="20,0,10,10" BorderBrush="Orange" BorderThickness="1" FontSize="16"
-                             mah:TextboxHelper.ClearTextButton="True"/>
+                             mah:TextboxHelper.ClearTextButton="True"
+                             TextWrapping="Wrap" AcceptsReturn="True" Height="Auto" VerticalScrollBarVisibility="Visible"/>
 
                     <TextBlock Text="{Binding LabelNegativ}"
                                Foreground="#FF000000" FontSize="16" Margin="20,0,10,10" TextWrapping="Wrap"/>
                     <TextBox Name="OfferNegativ" HorizontalAlignment="Stretch"
                              Margin="20,0,10,10" BorderBrush="Orange" BorderThickness="1" FontSize="16"
-                             mah:TextboxHelper.ClearTextButton="True"/>
+                             mah:TextboxHelper.ClearTextButton="True"
+                             TextWrapping="Wrap" AcceptsReturn="True" Height="Auto" VerticalScrollBarVisibility="Visible"/>
 
                     <Button x:Name="PostOffer" Content="{x:Static properties:Resources.offer_Boom}"
                             HorizontalAlignment="Stretch" VerticalAlignment="Bottom"
