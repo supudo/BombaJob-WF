@@ -248,6 +248,8 @@ namespace BombaJob.ViewModels
             MessageBoxResult result = MessageBox.Show(Properties.Resources.offer_ThankYou);
             if (result == MessageBoxResult.OK)
             {
+                if (Properties.Settings.Default.stPrivateData)
+                    Properties.Settings.Default.stPDEmail = this.OfferEmail;
                 this.SelectedCategory = this.Categories[0];
                 this.IsHuman = true;
                 this.SetLabels(this.IsHuman);

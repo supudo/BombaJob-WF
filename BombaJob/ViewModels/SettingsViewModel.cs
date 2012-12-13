@@ -85,11 +85,21 @@ namespace BombaJob.ViewModels
         public void SaveSetting()
         {
             Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.stPrivateData)
+            {
+                Properties.Settings.Default.stPDEmail = "";
+                Properties.Settings.Default.Save();
+            }
         }
 
         public void SaveSettings()
         {
             Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.stPrivateData)
+            {
+                Properties.Settings.Default.stPDEmail = "";
+                Properties.Settings.Default.Save();
+            }
             this.vmShell.ActivateTabber();
         }
     }
