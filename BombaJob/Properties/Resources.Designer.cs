@@ -619,6 +619,15 @@ namespace BombaJob.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Категория....
+        /// </summary>
+        public static string offer_CategoryWatermark {
+            get {
+                return ResourceManager.GetString("offer_CategoryWatermark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email за връзка.
         /// </summary>
         public static string offer_Company_Email {
@@ -651,6 +660,51 @@ namespace BombaJob.Properties {
         public static string offer_Company_Title {
             get {
                 return ResourceManager.GetString("offer_Company_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Трябва да попълните Email полето..
+        /// </summary>
+        public static string offer_error_Email {
+            get {
+                return ResourceManager.GetString("offer_error_Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email полето трябва да е валиден адрес..
+        /// </summary>
+        public static string offer_error_Email_Valid {
+            get {
+                return ResourceManager.GetString("offer_error_Email_Valid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Трябва да попълните полето..
+        /// </summary>
+        public static string offer_error_Negativ {
+            get {
+                return ResourceManager.GetString("offer_error_Negativ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Трябва да попълните полето..
+        /// </summary>
+        public static string offer_error_Positiv {
+            get {
+                return ResourceManager.GetString("offer_error_Positiv", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Трябва да попълните заглавието..
+        /// </summary>
+        public static string offer_error_Title {
+            get {
+                return ResourceManager.GetString("offer_error_Title", resourceCulture);
             }
         }
         

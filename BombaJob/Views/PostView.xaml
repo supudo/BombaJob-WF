@@ -9,16 +9,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="600">
 
-    <UserControl.Resources>
-        <Style TargetType="{x:Type TextBox}">
-            <Setter Property="Background" Value="Transparent" />
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="IsReadOnly" Value="True" />
-            <Setter Property="TextWrapping" Value="Wrap" />
-        </Style>
-        <properties:Settings x:Key="Settings" />
-    </UserControl.Resources>
-
     <mah:MetroContentControl>
         <ScrollViewer>
             <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ScrollViewer.CanContentScroll="True"
@@ -42,6 +32,7 @@
                     <TextBlock Text="{Binding LabelCategory}"
                                Foreground="#FF000000" FontSize="16" Margin="20,0,10,10" TextWrapping="Wrap"/>
                     <ComboBox x:Name="Categories"
+                              mah:TextboxHelper.Watermark="{x:Static properties:Resources.offer_CategoryWatermark}"
                               FontSize="16" Margin="20,0,10,10" BorderBrush="Orange" BorderThickness="1"
                               ItemsSource="{Binding Categories}" DisplayMemberPath="Title" SelectedValuePath="CategoryID"
                               cal:Message.Attach="[Event SelectionChanged] = [Action SelectedItemChanged($this.SelectedItem)]"/>
@@ -49,22 +40,26 @@
                     <TextBlock Text="{Binding LabelTitle}"
                                Foreground="#FF000000" FontSize="16" Margin="20,0,10,10" TextWrapping="Wrap"/>
                     <TextBox x:Name="OfferTitle" MaxLength="255" HorizontalAlignment="Stretch"
-                             Margin="20,0,10,10" BorderBrush="Orange" BorderThickness="1" FontSize="16" />
+                             Margin="20,0,10,10" BorderBrush="Orange" BorderThickness="1" FontSize="16"
+                             mah:TextboxHelper.ClearTextButton="True"/>
 
                     <TextBlock Text="{Binding LabelEmail}"
                                Foreground="#FF000000" FontSize="16" Margin="20,0,10,10" TextWrapping="Wrap"/>
                     <TextBox x:Name="OfferEmail" MaxLength="255" HorizontalAlignment="Stretch"
-                             Margin="20,0,10,10" BorderBrush="Orange" BorderThickness="1" FontSize="16"/>
+                             Margin="20,0,10,10" BorderBrush="Orange" BorderThickness="1" FontSize="16"
+                             mah:TextboxHelper.ClearTextButton="True"/>
 
                     <TextBlock Text="{Binding LabelPositiv}"
                                Foreground="#FF000000" FontSize="16" Margin="20,0,10,10" TextWrapping="Wrap"/>
                     <TextBox x:Name="OfferPositiv" HorizontalAlignment="Stretch"
-                             Margin="20,0,10,10" BorderBrush="Orange" BorderThickness="1" FontSize="16"/>
+                             Margin="20,0,10,10" BorderBrush="Orange" BorderThickness="1" FontSize="16"
+                             mah:TextboxHelper.ClearTextButton="True"/>
 
                     <TextBlock Text="{Binding LabelNegativ}"
                                Foreground="#FF000000" FontSize="16" Margin="20,0,10,10" TextWrapping="Wrap"/>
-                    <TextBox x:Name="OfferNegativ" HorizontalAlignment="Stretch"
-                             Margin="20,0,10,10" BorderBrush="Orange" BorderThickness="1" FontSize="16"/>
+                    <TextBox Name="OfferNegativ" HorizontalAlignment="Stretch"
+                             Margin="20,0,10,10" BorderBrush="Orange" BorderThickness="1" FontSize="16"
+                             mah:TextboxHelper.ClearTextButton="True"/>
 
                     <Button x:Name="PostOffer" Content="{x:Static properties:Resources.offer_Boom}"
                             HorizontalAlignment="Stretch" VerticalAlignment="Bottom"

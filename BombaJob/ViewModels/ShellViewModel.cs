@@ -56,7 +56,7 @@ namespace BombaJob.ViewModels
             }
         }
 
-        private TabberViewModel vmTab;// = new TabberViewModel();
+        private TabberViewModel vmTab;
         public TabberViewModel VMTab
         {
             get

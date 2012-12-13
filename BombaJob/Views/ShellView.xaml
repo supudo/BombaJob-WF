@@ -46,6 +46,7 @@
                     IsEnabled="{Binding TabberEnabled}"/>
             <StackPanel>
                 <TextBox MinWidth="150" Name="txtSearch" Foreground="OrangeRed"
+                         mah:TextboxHelper.Watermark="{x:Static properties:Resources.search_For}" mah:TextboxHelper.ClearTextButton="True"
                          cal:Message.Attach="[Event KeyUp] = [Action Search($source, $eventArgs)]"
                          IsEnabled="{Binding TabberEnabled}"/>
             </StackPanel>

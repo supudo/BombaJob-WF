@@ -45,7 +45,7 @@ namespace BombaJob.ViewModels
         }
 
         private string offerTitle;
-        [Required]
+        [Required(ErrorMessageResourceType = typeof(Properties.Resources), ErrorMessageResourceName = "offer_error_Title")]
         public string OfferTitle
         {
             get { return this.offerTitle; }
@@ -58,7 +58,8 @@ namespace BombaJob.ViewModels
         }
 
         private string offerEmail;
-        [RegularExpression(@"^(?("")("".+?""@)|(([0-9a-zA-Z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-zA-Z])@))(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,6}))$")]
+        [Required(ErrorMessageResourceType = typeof(Properties.Resources), ErrorMessageResourceName = "offer_error_Email")]
+        [RegularExpression(@"^(?("")("".+?""@)|(([0-9a-zA-Z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-zA-Z])@))(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,6}))$", ErrorMessageResourceType = typeof(Properties.Resources), ErrorMessageResourceName = "offer_error_Email_Valid")]
         public string OfferEmail
         {
             get { return this.offerEmail; }
@@ -71,7 +72,7 @@ namespace BombaJob.ViewModels
         }
 
         private string offerPositiv;
-        [Required]
+        [Required(ErrorMessageResourceType = typeof(Properties.Resources), ErrorMessageResourceName = "offer_error_Positiv")]
         public string OfferPositiv
         {
             get { return this.offerPositiv; }
@@ -84,7 +85,7 @@ namespace BombaJob.ViewModels
         }
 
         private string offerNegativ;
-        [Required]
+        [Required(ErrorMessageResourceType = typeof(Properties.Resources), ErrorMessageResourceName = "offer_error_Negativ")]
         public string OfferNegativ
         {
             get { return this.offerNegativ; }
