@@ -67,7 +67,7 @@ namespace BombaJob.ViewModels
         #region Controlls actions
         public void OffersList_SelectionChanged(JobOffer jobOffer)
         {
-            OfferDetailsViewModel od = new OfferDetailsViewModel(jobOffer);
+            OfferDetailsViewModel od = new OfferDetailsViewModel(this, jobOffer);
             ActivateItem(od);
         }
 

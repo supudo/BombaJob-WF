@@ -447,4 +447,10 @@
   <data name="offer_error_Title" xml:space="preserve">
     <value>Трябва да попълните заглавието.</value>
   </data>
+  <data name="ctxmenu_Copy" xml:space="preserve">
+    <value>Копирай</value>
+  </data>
+  <data name="ctxmenu_Search" xml:space="preserve">
+    <value>Търси</value>
+  </data>
 </root>

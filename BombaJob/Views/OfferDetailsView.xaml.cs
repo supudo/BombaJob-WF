@@ -17,8 +17,8 @@ namespace BombaJob.Views
 
         void OfferDetailsView_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
-            this.fdPositiv.FontFamily = this.txtPositiv.FontFamily;
-            this.fdNegativ.FontFamily = this.txtPositiv.FontFamily;
+            this.FDOfferPositiv.FontFamily = this.txtPositiv.FontFamily;
+            this.FDOfferNegativ.FontFamily = this.txtPositiv.FontFamily;
         }
     }
 }

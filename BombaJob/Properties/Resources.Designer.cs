@@ -160,11 +160,29 @@ namespace BombaJob.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Копирай.
+        /// </summary>
+        public static string ctxmenu_Copy {
+            get {
+                return ResourceManager.GetString("ctxmenu_Copy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Маркирай като прочетена.
         /// </summary>
         public static string ctxmenu_MarkAsRead {
             get {
                 return ResourceManager.GetString("ctxmenu_MarkAsRead", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Търси.
+        /// </summary>
+        public static string ctxmenu_Search {
+            get {
+                return ResourceManager.GetString("ctxmenu_Search", resourceCulture);
             }
         }
         

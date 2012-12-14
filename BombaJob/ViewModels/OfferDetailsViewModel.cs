@@ -12,18 +12,15 @@ namespace BombaJob.ViewModels
     [Export(typeof(OfferDetailsViewModel))]
     public partial class OfferDetailsViewModel : Screen
     {
+        private TabberViewModel tabvm;
         public JobOffer CurrentJobOffer { get; set; }
         public string OfferPositiv { get; set; }
         public string OfferNegativ { get; set; }
 
-        public OfferDetailsViewModel()
-        {
-            this.DisplayName = "";
-        }
-
-        public OfferDetailsViewModel(JobOffer offer)
+        public OfferDetailsViewModel(TabberViewModel tab, JobOffer offer)
         {
             this.DisplayName = " | #" + offer.OfferID;
+            this.tabvm = tab;
             this.CurrentJobOffer = offer;
             this.DisplayOffer(offer);
         }
@@ -41,6 +38,11 @@ namespace BombaJob.ViewModels
                 this.OfferPositiv = Properties.Resources.offer_Company_Positiv;
                 this.OfferNegativ = Properties.Resources.offer_Company_Negativ;
             }
+        }
+
+        public void OffersList_Menu_Message()
+        {
+            this.tabvm.OffersList_Menu_Message(this.CurrentJobOffer);
         }
     }
 }
