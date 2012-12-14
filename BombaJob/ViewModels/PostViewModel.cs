@@ -207,8 +207,8 @@ namespace BombaJob.ViewModels
             AppSettings.LogThis("Post offer... " + this.SelectedCategory.CategoryID);
             if (this.syncManager == null)
                 this.syncManager = new Synchronization();
-            this.syncManager.SyncError += new Synchronization.EventHandler(syncManager_SearchError);
-            this.syncManager.SyncComplete += new Synchronization.EventHandler(syncManager_SearchComplete);
+            this.syncManager.SyncError += new Synchronization.EventHandler(syncManager_Error);
+            this.syncManager.SyncComplete += new Synchronization.EventHandler(syncManager_Complete);
             this.thinkThread = new Thread(post);
             this.thinkThread.Start();
         }
@@ -229,16 +229,16 @@ namespace BombaJob.ViewModels
             this.syncManager.DoPostOffer(postParams);
         }
 
-        private void syncManager_SearchComplete(object sender, BombaJobEventArgs e)
+        private void syncManager_Complete(object sender, BombaJobEventArgs e)
         {
             this.PostFinished();
         }
 
-        private void syncManager_SearchError(object sender, BombaJobEventArgs e)
+        private void syncManager_Error(object sender, BombaJobEventArgs e)
         {
             this.tabm.StopLoading();
             if (e.IsError)
-                MessageBox.Show(e.ErrorMessage);
+                Caliburn.Micro.Execute.OnUIThread(() => IoC.Get<IWindowManager>().ShowMessageBox(e.ErrorMessage, Properties.Resources.errorTitle, MessageBoxButton.OK));
         }
 
         private void PostFinished()

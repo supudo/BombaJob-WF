@@ -12,6 +12,7 @@ using BombaJob.Database;
 using BombaJob.Database.Domain;
 using BombaJob.Database.Repository;
 using BombaJob.Sync;
+using BombaJob.Utilities.Controls;
 using BombaJob.Utilities.Events;
 using BombaJob.Utilities.Interfaces;
 
@@ -72,7 +73,7 @@ namespace BombaJob.ViewModels
         {
             this.SearchOffers();
             if (e.IsError)
-                MessageBox.Show(e.ErrorMessage);
+                Caliburn.Micro.Execute.OnUIThread(() => IoC.Get<IWindowManager>().ShowMessageBox(e.ErrorMessage, Properties.Resources.errorTitle, MessageBoxButton.OK));
         }
 
         private void SearchOffers()

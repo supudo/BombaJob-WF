@@ -78,7 +78,7 @@ namespace BombaJob.ViewModels
 
         public void OffersList_Menu_Message(JobOffer jobOffer)
         {
-            SendMessageViewModel od = new SendMessageViewModel(jobOffer);
+            SendMessageViewModel od = new SendMessageViewModel(this, jobOffer);
             ActivateItem(od);
         }
         #endregion

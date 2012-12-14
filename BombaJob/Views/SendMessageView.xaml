@@ -3,9 +3,35 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:properties="clr-namespace:BombaJob.Properties"
+             xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             xmlns:cal="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <TextBlock Text="Send message"></TextBlock>
-    </Grid>
+             d:DesignHeight="600" d:DesignWidth="600">
+
+    <mah:MetroContentControl>
+        <ScrollViewer>
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ScrollViewer.CanContentScroll="True"
+                  ScrollViewer.VerticalScrollBarVisibility="Auto">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Text="{x:Static properties:Resources.offer_Message}"
+                            Foreground="#FF000000" FontSize="16" Margin="20,0,10,10" TextWrapping="Wrap"/>
+                <TextBox Grid.Row="1" Name="OfferMessage" HorizontalAlignment="Stretch"
+                            Margin="20,0,10,10" BorderBrush="Orange" BorderThickness="1" FontSize="16"
+                            mah:TextboxHelper.ClearTextButton="True" TabIndex="8"
+                            TextWrapping="Wrap" AcceptsReturn="True" Height="Auto"
+                            VerticalScrollBarVisibility="Visible" VerticalAlignment="Stretch"/>
+
+                <Button Grid.Row="2" x:Name="SendPM" Content="{x:Static properties:Resources.offer_Boom}"
+                        HorizontalAlignment="Stretch" VerticalAlignment="Bottom"
+                        FontSize="18" Margin="20,10,10,40" Padding="10" TabIndex="9"
+                        BorderBrush="Orange" BorderThickness="1"/>
+            </Grid>
+        </ScrollViewer>
+    </mah:MetroContentControl>
+    
 </UserControl>

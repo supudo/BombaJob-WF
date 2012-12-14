@@ -140,7 +140,7 @@ namespace BombaJob.ViewModels
         {
             this.FinishSync();
             if (e.IsError)
-                MessageBox.Show(e.ErrorMessage);
+                Caliburn.Micro.Execute.OnUIThread(() => IoC.Get<IWindowManager>().ShowMessageBox(e.ErrorMessage, Properties.Resources.errorTitle, MessageBoxButton.OK));
         }
 
         private void FinishSync()
