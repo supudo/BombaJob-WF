@@ -21,7 +21,6 @@ namespace BombaJob.Utilities.Controls
                 shellViewModel.ShowOverlay();
                 var model = new MessageBoxViewModel(message, title, buttons);
                 @this.ShowDialog(model);
-
                 retval = model.Result;
             }
             finally

@@ -82,5 +82,17 @@ namespace BombaJob.Properties {
                 this["stShowCategories"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string stPDEmail {
+            get {
+                return ((string)(this["stPDEmail"]));
+            }
+            set {
+                this["stPDEmail"] = value;
+            }
+        }
     }
 }

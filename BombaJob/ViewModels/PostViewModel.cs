@@ -13,6 +13,7 @@ using System.Windows.Controls;
 using BombaJob.Database.Domain;
 using BombaJob.Database.Repository;
 using BombaJob.Sync;
+using BombaJob.Utilities.Controls;
 using BombaJob.Utilities.Events;
 using BombaJob.Utilities.Interfaces;
 using BombaJob.Utilities.Misc;
@@ -215,8 +216,6 @@ namespace BombaJob.ViewModels
         private void post()
         {
             Thread.Sleep(500);
-            this.PostFinished();
-            /*
             Dictionary<string, string> postParams = new Dictionary<string, string>();
             postParams.Add("oid", "0");
             postParams.Add("cid", "" + this.SelectedCategory.CategoryID);
@@ -228,7 +227,6 @@ namespace BombaJob.ViewModels
             postParams.Add("neg", this.OfferNegativ);
             postParams.Add("mob_app", "win");
             this.syncManager.DoPostOffer(postParams);
-             * */
         }
 
         private void syncManager_SearchComplete(object sender, BombaJobEventArgs e)
@@ -245,28 +243,26 @@ namespace BombaJob.ViewModels
 
         private void PostFinished()
         {
-            MessageBoxResult result = MessageBox.Show(Properties.Resources.offer_ThankYou);
-            if (result == MessageBoxResult.OK)
-            {
-                if (Properties.Settings.Default.stPrivateData)
-                    Properties.Settings.Default.stPDEmail = this.OfferEmail;
-                this.SelectedCategory = this.Categories[0];
-                this.IsHuman = true;
-                this.SetLabels(this.IsHuman);
-                this.OfferFreelance = true;
-                this.OfferTitle = "";
-                this.OfferEmail = "";
-                this.OfferPositiv = "";
-                this.OfferNegativ = "";
-                NotifyOfPropertyChange(() => SelectedCategory);
-                NotifyOfPropertyChange(() => IsHuman);
-                NotifyOfPropertyChange(() => OfferFreelance);
-                NotifyOfPropertyChange(() => OfferTitle);
-                NotifyOfPropertyChange(() => OfferEmail);
-                NotifyOfPropertyChange(() => OfferPositiv);
-                NotifyOfPropertyChange(() => OfferNegativ);
-                this.tabm.StopLoading();
-            }
+            if (Properties.Settings.Default.stPrivateData)
+                Properties.Settings.Default.stPDEmail = this.OfferEmail;
+            this.SelectedCategory = this.Categories[0];
+            this.IsHuman = true;
+            this.SetLabels(this.IsHuman);
+            this.OfferFreelance = true;
+            this.OfferTitle = "";
+            this.OfferEmail = "";
+            this.OfferPositiv = "";
+            this.OfferNegativ = "";
+            NotifyOfPropertyChange(() => SelectedCategory);
+            NotifyOfPropertyChange(() => IsHuman);
+            NotifyOfPropertyChange(() => OfferFreelance);
+            NotifyOfPropertyChange(() => OfferTitle);
+            NotifyOfPropertyChange(() => OfferEmail);
+            NotifyOfPropertyChange(() => OfferPositiv);
+            NotifyOfPropertyChange(() => OfferNegativ);
+            this.tabm.StopLoading();
+
+            Caliburn.Micro.Execute.OnUIThread(() => IoC.Get<IWindowManager>().ShowMessageBox(Properties.Resources.offer_ThankYou, Properties.Resources.offer_Boom, MessageBoxButton.OK));
         }
         #endregion
     }

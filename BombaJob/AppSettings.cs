@@ -42,7 +42,7 @@ namespace BombaJob
         public static string ServicesURL = "http://www.bombajob.bg/_mob_service.php";
         public static bool InDebug = true;
         public static bool CaliburnDebug = false;
-        public static bool SyncDebug = true;
+        public static bool SyncDebug = false;
         public static string DateTimeFormat = "dd-MM-yyyy HH:mm:ss";
         public static int OffersPerPage = 20;
         public static int OffersPerPageMax = 500;

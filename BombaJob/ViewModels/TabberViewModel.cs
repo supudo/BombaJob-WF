@@ -58,7 +58,7 @@ namespace BombaJob.ViewModels
         {
             if (Items.Count > 4)
             {
-                if (tabc != null && tabc.SelectedIndex < 3)
+                if (tabc != null && tabc.SelectedIndex <= 3)
                     Items.RemoveAt(Items.Count - 1);
             }
         }
