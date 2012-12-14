@@ -39,7 +39,10 @@ namespace BombaJob.ViewModels
             Items.Clear();
 
             Items.Add(new NewestOffersViewModel(this));
-            Items.Add(new JobOffersViewModel(this));
+            if (Properties.Settings.Default.stShowCategories)
+                Items.Add(new JobOffersPanViewModel(this));
+            else
+                Items.Add(new JobOffersViewModel(this));
             Items.Add(new PeopleOffersViewModel(this));
             Items.Add(new PostViewModel(this));
 

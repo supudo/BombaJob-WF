@@ -62,18 +62,6 @@ namespace BombaJob.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool stInAppEmail {
-            get {
-                return ((bool)(this["stInAppEmail"]));
-            }
-            set {
-                this["stInAppEmail"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool stShowCategories {
             get {
                 return ((bool)(this["stShowCategories"]));

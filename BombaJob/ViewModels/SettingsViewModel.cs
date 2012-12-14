@@ -52,18 +52,6 @@ namespace BombaJob.ViewModels
             }
         }
 
-        public bool stInAppEmail
-        {
-            get
-            {
-                return Properties.Settings.Default.stInAppEmail;
-            }
-            set
-            {
-                Properties.Settings.Default.stInAppEmail = value;
-            }
-        }
-
         public bool stShowCategories
         {
             get

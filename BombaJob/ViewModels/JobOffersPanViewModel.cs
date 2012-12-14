@@ -12,40 +12,43 @@ using BombaJob.Database.Domain;
 using BombaJob.Database.Repository;
 using BombaJob.Utilities.Interfaces;
 
+using MahApps.Metro.Controls;
+
 using Caliburn.Micro;
 
 namespace BombaJob.ViewModels
 {
-    [Export(typeof(PeopleOffersViewModel))]
-    public class PeopleOffersViewModel : Screen
+    [Export(typeof(JobOffersPanViewModel))]
+    public class JobOffersPanViewModel : Screen
     {
         private IBombaJobRepository dbRepo;
-        public ObservableCollection<JobOffer> OffersList { get; set; }
         private TabberViewModel tabm;
+        private PanoramaGroup PGOffers;
+        private PanoramaGroup PGCategories;
+        public ObservableCollection<JobOffer> ListOffers { get; set; }
+        public ObservableCollection<Category> ListCategories { get; set; }
+        public ObservableCollection<PanoramaGroup> PGOffersCategories { get; set; }
 
-        public PeopleOffersViewModel(TabberViewModel _tabm)
+        public JobOffersPanViewModel(TabberViewModel _tabm)
         {
             this.tabm = _tabm;
-            this.DisplayName = Properties.Resources.menu_People;
+            this.DisplayName = Properties.Resources.menu_Jobs;
 
             if (this.dbRepo == null)
                 this.dbRepo = new BombaJobRepository();
-            this.LoadOffers();
+            this.LoadLists();
         }
 
-        public PeopleOffersViewModel()
+        private void LoadLists()
         {
-            this.DisplayName = Properties.Resources.menu_People;
+            this.ListOffers = this.dbRepo.GetJobOffers(AppSettings.OffersPerPage);
+            this.ListCategories = this.dbRepo.GetCategoriesFor(false);
+            NotifyOfPropertyChange(() => ListOffers);
+            NotifyOfPropertyChange(() => ListCategories);
 
-            if (this.dbRepo == null)
-                this.dbRepo = new BombaJobRepository();
-            this.OffersList = this.dbRepo.GetPeopleOffers(AppSettings.OffersPerPage);
-        }
-
-        private void LoadOffers()
-        {
-            this.OffersList = this.dbRepo.GetNewestOffers(AppSettings.OffersPerPage);
-            NotifyOfPropertyChange(() => OffersList);
+            this.PGOffers = new PanoramaGroup(Properties.Resources.menu_Offers, this.ListOffers);
+            this.PGCategories = new PanoramaGroup(Properties.Resources.menu_Categories, this.ListCategories);
+            this.PGOffersCategories = new ObservableCollection<PanoramaGroup> { this.PGOffers, this.PGCategories };
         }
 
         #region Context menu
@@ -65,7 +68,7 @@ namespace BombaJob.ViewModels
         {
             IBombaJobRepository dbRepo = new BombaJobRepository();
             dbRepo.MarkAsRead(jobOffer);
-            this.LoadOffers();
+            this.LoadLists();
         }
         #endregion
     }

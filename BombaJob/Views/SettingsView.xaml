@@ -49,13 +49,6 @@
                     </CheckBox>
                     <TextBlock Text="{x:Static properties:Resources.conf_OnlineSearch_Desc}"
                                Foreground="#FF000000" FontSize="16" Margin="20,0,0,10" TextWrapping="Wrap"/>
-                    <CheckBox x:Name="stInAppEmail"
-                              FontWeight="Bold" Foreground="#FF000000" FontSize="18" Margin="20,20,20,10"
-                              cal:Message.Attach="[Event Click] = [Action SaveSetting()]">
-                        <TextBlock Text="{x:Static properties:Resources.conf_InAppEmail}" Margin="0,-8,0,0" />
-                    </CheckBox>
-                    <TextBlock Text="{x:Static properties:Resources.conf_InAppEmail_Desc}"
-                               Foreground="#FF000000" FontSize="16" Margin="20,0,0,10" TextWrapping="Wrap"/>
                     <CheckBox x:Name="stShowCategories"
                               FontWeight="Bold" Foreground="#FF000000" FontSize="18" Margin="20,20,20,10"
                               cal:Message.Attach="[Event Click] = [Action SaveSetting()]">

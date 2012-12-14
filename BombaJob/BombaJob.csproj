@@ -144,6 +144,7 @@
     </Compile>
     <Compile Include="AppSettings.cs" />
     <Compile Include="Utilities\Misc\DefaultValidator.cs" />
+    <Compile Include="ViewModels\JobOffersPanViewModel.cs" />
     <Compile Include="ViewModels\SearchResultsViewModel.cs" />
     <Compile Include="ViewModels\SendMessageViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
@@ -155,6 +156,9 @@
     <Compile Include="ViewModels\PeopleOffersViewModel.cs" />
     <Compile Include="ViewModels\PostViewModel.cs" />
     <Compile Include="ViewModels\TabberViewModel.cs" />
+    <Compile Include="Views\JobOffersPanView.xaml.cs">
+      <DependentUpon>JobOffersPanView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SearchResultsView.xaml.cs">
       <DependentUpon>SearchResultsView.xaml</DependentUpon>
     </Compile>
@@ -260,6 +264,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\JobOffersPanView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\SearchResultsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

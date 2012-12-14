@@ -16,7 +16,7 @@ using Caliburn.Micro;
 
 namespace BombaJob.ViewModels
 {
-    [Export(typeof(NewestOffersViewModel))]
+    [Export(typeof(JobOffersViewModel))]
     public class JobOffersViewModel : Screen
     {
         private IBombaJobRepository dbRepo;
@@ -44,7 +44,7 @@ namespace BombaJob.ViewModels
 
         private void LoadOffers()
         {
-            this.OffersList = this.dbRepo.GetNewestOffers(AppSettings.OffersPerPage);
+            this.OffersList = this.dbRepo.GetJobOffers(AppSettings.OffersPerPage);
             NotifyOfPropertyChange(() => OffersList);
         }
 
