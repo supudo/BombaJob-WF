@@ -31,7 +31,7 @@
 
                     <TextBlock Text="{Binding LabelCategory}"
                                Foreground="#FF000000" FontSize="16" Margin="20,0,10,10" TextWrapping="Wrap"/>
-                    <ComboBox x:Name="Categories"
+                    <ComboBox x:Name="Categories" IsEditable="True" IsReadOnly="True"
                               mah:TextboxHelper.Watermark="{x:Static properties:Resources.offer_CategoryWatermark}"
                               FontSize="16" Margin="20,0,10,10" BorderBrush="Orange" BorderThickness="1"
                               ItemsSource="{Binding Categories}" DisplayMemberPath="Title" SelectedValuePath="CategoryID"
@@ -65,7 +65,7 @@
 
                     <Button x:Name="PostOffer" Content="{x:Static properties:Resources.offer_Boom}"
                             HorizontalAlignment="Stretch" VerticalAlignment="Bottom"
-                            FontSize="18" Margin="10,10,10,40" Padding="10"
+                            FontSize="18" Margin="20,10,10,40" Padding="10"
                             BorderBrush="Orange" BorderThickness="1"/>
                 </StackPanel>
             </Grid>
