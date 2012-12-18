@@ -112,6 +112,13 @@ namespace BombaJob.Database.Repository
                             ))
                         .AddOrder(Order.Asc("Title"))
                         .List<Category>();
+                foreach (Category cat in cats)
+                {
+                    if (humanYn)
+                        cat.OffersCount = this.GetPeopleOffersCount(cat.CategoryID);
+                    else
+                        cat.OffersCount = this.GetJobOffersCount(cat.CategoryID);
+                }
                 return new ObservableCollection<Category>(cats);
             }
         }
@@ -213,6 +220,18 @@ namespace BombaJob.Database.Repository
             }
         }
 
+        public int GetJobOffersCount(int categoryID)
+        {
+            using (ISession session = NHibernateHelper.OpenSession())
+            {
+                var offers = session
+                            .CreateCriteria(typeof(JobOffer))
+                            .Add(Restrictions.Eq("HumanYn", false) && (Restrictions.Eq("CategoryID", categoryID)))
+                            .List<JobOffer>();
+                return offers.Count;
+            }
+        }
+
         public ObservableCollection<JobOffer> GetPeopleOffers()
         {
             return this.GetPeopleOffers(AppSettings.OffersPerPageMax);
@@ -243,6 +262,18 @@ namespace BombaJob.Database.Repository
                             .SetMaxResults(offersLimit)
                             .List<JobOffer>();
                 return new ObservableCollection<JobOffer>(offers);
+            }
+        }
+
+        public int GetPeopleOffersCount(int categoryID)
+        {
+            using (ISession session = NHibernateHelper.OpenSession())
+            {
+                var offers = session
+                            .CreateCriteria(typeof(JobOffer))
+                            .Add(Restrictions.Eq("HumanYn", true) && (Restrictions.Eq("CategoryID", categoryID)))
+                            .List<JobOffer>();
+                return offers.Count;
             }
         }
 
