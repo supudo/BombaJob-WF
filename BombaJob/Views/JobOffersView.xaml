@@ -24,7 +24,7 @@
                                 <StackPanel Orientation="Vertical" Margin="12,0,12,0">
                                     <TextBlock Text="{Binding Title}" FontSize="24" TextWrapping="Wrap" Foreground="Black" />
                                     <TextBlock Text="{Binding PublishDate, Converter={StaticResource OfferDateLongConverter}}"
-                                               Foreground="#FFFF8D00" Margin="12,0,0,10" />
+                                               Foreground="#FFFF8D00" Margin="0,0,0,10" />
                                 </StackPanel>
                             </DockPanel>
                             <ListBoxItem.ContextMenu>

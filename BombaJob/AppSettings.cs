@@ -91,6 +91,8 @@ namespace BombaJob
             date += dt.Day;
             date += " ";
             date += Properties.Resources.ResourceManager.GetString("monthFull_" + dt.Month);
+            if (dt.Year != DateTime.Now.Year)
+                date += ", " + dt.Year;
             return date;
         }
 
@@ -106,6 +108,8 @@ namespace BombaJob
             date += dt.Day;
             date += " ";
             date += Properties.Resources.ResourceManager.GetString("monthShort_" + dt.Month);
+            if (dt.Year != DateTime.Now.Year)
+                date += ", " + dt.Year;
             return date;
         }
 

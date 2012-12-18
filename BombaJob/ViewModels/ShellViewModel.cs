@@ -222,6 +222,7 @@ namespace BombaJob.ViewModels
 
         public void ActivateTabber()
         {
+            this.VMTab.RefreshTabs(false);
             ActivateItem(this.VMTab);
         }
         #endregion
