@@ -110,6 +110,7 @@ namespace BombaJob.Database.Repository
                                 .Add(Restrictions.Eq("HumanYn", humanYn))
                                 .SetProjection(Projections.Property("CategoryID"))
                             ))
+                        .AddOrder(Order.Asc("Title"))
                         .List<Category>();
                 return new ObservableCollection<Category>(cats);
             }
@@ -198,6 +199,20 @@ namespace BombaJob.Database.Repository
             }
         }
 
+        public ObservableCollection<JobOffer> GetJobOffers(int offersLimit, int categoryID)
+        {
+            using (ISession session = NHibernateHelper.OpenSession())
+            {
+                var offers = session
+                            .CreateCriteria(typeof(JobOffer))
+                            .Add(Restrictions.Eq("HumanYn", false) && (Restrictions.Eq("CategoryID", categoryID)))
+                            .AddOrder(Order.Desc("PublishDate"))
+                            .SetMaxResults(offersLimit)
+                            .List<JobOffer>();
+                return new ObservableCollection<JobOffer>(offers);
+            }
+        }
+
         public ObservableCollection<JobOffer> GetPeopleOffers()
         {
             return this.GetPeopleOffers(AppSettings.OffersPerPageMax);
@@ -210,6 +225,20 @@ namespace BombaJob.Database.Repository
                 var offers = session
                             .CreateCriteria(typeof(JobOffer))
                             .Add(Restrictions.Eq("HumanYn", true))
+                            .AddOrder(Order.Desc("PublishDate"))
+                            .SetMaxResults(offersLimit)
+                            .List<JobOffer>();
+                return new ObservableCollection<JobOffer>(offers);
+            }
+        }
+
+        public ObservableCollection<JobOffer> GetPeopleOffers(int offersLimit, int categoryID)
+        {
+            using (ISession session = NHibernateHelper.OpenSession())
+            {
+                var offers = session
+                            .CreateCriteria(typeof(JobOffer))
+                            .Add(Restrictions.Eq("HumanYn", true) && (Restrictions.Eq("CategoryID", categoryID)))
                             .AddOrder(Order.Desc("PublishDate"))
                             .SetMaxResults(offersLimit)
                             .List<JobOffer>();

@@ -40,10 +40,15 @@ namespace BombaJob.ViewModels
 
             Items.Add(new NewestOffersViewModel(this));
             if (Properties.Settings.Default.stShowCategories)
-                Items.Add(new JobOffersPanViewModel(this));
+            {
+                Items.Add(new JobOffersCategoriesViewModel(this));
+                Items.Add(new PeopleOffersCategoriesViewModel(this));
+            }
             else
+            {
                 Items.Add(new JobOffersViewModel(this));
-            Items.Add(new PeopleOffersViewModel(this));
+                Items.Add(new PeopleOffersViewModel(this));
+            }
             Items.Add(new PostViewModel(this));
 
             if (showSearch)
@@ -68,6 +73,20 @@ namespace BombaJob.ViewModels
         #endregion
 
         #region Controlls actions
+        public void CategoriesList_SelectionChanged(Category cat, bool humanYn)
+        {
+            if (humanYn)
+            {
+                PeopleOffersViewModel vm = new PeopleOffersViewModel(this, cat.CategoryID);
+                ActivateItem(vm);
+            }
+            else
+            {
+                JobOffersViewModel vm = new JobOffersViewModel(this, cat.CategoryID);
+                ActivateItem(vm);
+            }
+        }
+
         public void OffersList_SelectionChanged(JobOffer jobOffer)
         {
             OfferDetailsViewModel od = new OfferDetailsViewModel(this, jobOffer);

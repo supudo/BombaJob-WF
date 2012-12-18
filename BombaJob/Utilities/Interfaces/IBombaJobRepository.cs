@@ -26,8 +26,10 @@ namespace BombaJob.Utilities.Interfaces
         ObservableCollection<JobOffer> GetNewestOffers(int offersPerPage);
         ObservableCollection<JobOffer> GetJobOffers();
         ObservableCollection<JobOffer> GetJobOffers(int offersPerPage);
+        ObservableCollection<JobOffer> GetJobOffers(int offersPerPage, int categoryID);
         ObservableCollection<JobOffer> GetPeopleOffers();
         ObservableCollection<JobOffer> GetPeopleOffers(int offersPerPage);
+        ObservableCollection<JobOffer> GetPeopleOffers(int offersPerPage, int categoryID);
         JobOffer GetJobOfferById(int entID);
         ObservableCollection<JobOffer> GetByCategoryID(int categoryID);
         ObservableCollection<JobOffer> SearchJobOffers(string searchKeyword);

@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="BombaJob.Views.JobOffersCategoriesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             xmlns:properties="clr-namespace:BombaJob.Properties" 
+             xmlns:cal="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="600">
+
+    <mah:MetroContentControl>
+        <Grid>
+            <ListBox x:Name="CategoriesList" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <ListBoxItem Tag="{Binding DataContext, ElementName=CategoriesList}">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0,5">
+                                <TextBlock Text="{Binding OffersCount}" FontSize="24"
+                                            TextWrapping="Wrap" Margin="12,0,0,0" Foreground="Gray"
+                                            Width="40" />
+                                <TextBlock Text="{Binding Title}" FontSize="24"
+                                            TextWrapping="Wrap" Margin="12,0,0,0" Foreground="Black" />
+                            </StackPanel>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                                    <cal:ActionMessage MethodName="CategoriesList_SelectionChanged">
+                                        <cal:Parameter Value="{Binding}"></cal:Parameter>
+                                        <cal:Parameter Value="false"></cal:Parameter>
+                                    </cal:ActionMessage>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </ListBoxItem>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+    </mah:MetroContentControl>
+</UserControl>

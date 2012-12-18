@@ -144,7 +144,8 @@
     </Compile>
     <Compile Include="AppSettings.cs" />
     <Compile Include="Utilities\Misc\DefaultValidator.cs" />
-    <Compile Include="ViewModels\JobOffersPanViewModel.cs" />
+    <Compile Include="ViewModels\JobOffersCategoriesViewModel.cs" />
+    <Compile Include="ViewModels\PeopleOffersCategoriesViewModel.cs" />
     <Compile Include="ViewModels\SearchResultsViewModel.cs" />
     <Compile Include="ViewModels\SendMessageViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
@@ -156,8 +157,11 @@
     <Compile Include="ViewModels\PeopleOffersViewModel.cs" />
     <Compile Include="ViewModels\PostViewModel.cs" />
     <Compile Include="ViewModels\TabberViewModel.cs" />
-    <Compile Include="Views\JobOffersPanView.xaml.cs">
-      <DependentUpon>JobOffersPanView.xaml</DependentUpon>
+    <Compile Include="Views\JobOffersCategoriesView.xaml.cs">
+      <DependentUpon>JobOffersCategoriesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PeopleOffersCategoriesView.xaml.cs">
+      <DependentUpon>PeopleOffersCategoriesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SearchResultsView.xaml.cs">
       <DependentUpon>SearchResultsView.xaml</DependentUpon>
@@ -264,7 +268,11 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Views\JobOffersPanView.xaml">
+    <Page Include="Views\JobOffersCategoriesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PeopleOffersCategoriesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

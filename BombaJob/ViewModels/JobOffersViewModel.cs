@@ -20,33 +20,55 @@ namespace BombaJob.ViewModels
     public class JobOffersViewModel : Screen
     {
         private IBombaJobRepository dbRepo;
-        public ObservableCollection<JobOffer> OffersList { get; set; }
         private TabberViewModel tabm;
+        private int CategoryID;
+        public ObservableCollection<JobOffer> OffersList { get; set; }
+
+        #region Constructors
+        public JobOffersViewModel(TabberViewModel _tabm, int categoryID)
+        {
+            this.DisplayName = Properties.Resources.menu_Jobs;
+            this.tabm = _tabm;
+            this.CategoryID = categoryID;
+
+            this.InitVM();
+            this.LoadOffers();
+        }
 
         public JobOffersViewModel(TabberViewModel _tabm)
         {
-            this.tabm = _tabm;
             this.DisplayName = Properties.Resources.menu_Jobs;
+            this.tabm = _tabm;
+            this.CategoryID = 0;
 
-            if (this.dbRepo == null)
-                this.dbRepo = new BombaJobRepository();
+            this.InitVM();
             this.LoadOffers();
         }
 
         public JobOffersViewModel()
         {
             this.DisplayName = Properties.Resources.menu_Jobs;
+            this.InitVM();
+            this.OffersList = this.dbRepo.GetJobOffers(AppSettings.OffersPerPage);
+        }
+        #endregion
 
+        #region UI
+        private void InitVM()
+        {
             if (this.dbRepo == null)
                 this.dbRepo = new BombaJobRepository();
-            this.OffersList = this.dbRepo.GetJobOffers(AppSettings.OffersPerPage);
         }
 
         private void LoadOffers()
         {
-            this.OffersList = this.dbRepo.GetJobOffers(AppSettings.OffersPerPage);
+            if (this.CategoryID > 0)
+                this.OffersList = this.dbRepo.GetJobOffers(AppSettings.OffersPerPage, this.CategoryID);
+            else
+                this.OffersList = this.dbRepo.GetJobOffers(AppSettings.OffersPerPage);
             NotifyOfPropertyChange(() => OffersList);
         }
+        #endregion
 
         #region Context menu
         public void OffersList_Menu_View(JobOffer jobOffer)
