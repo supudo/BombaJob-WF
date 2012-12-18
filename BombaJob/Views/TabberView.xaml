@@ -8,7 +8,7 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
         <TabControl x:Name="Items" Margin="0,0,0,10"
-                        cal:Message.Attach="[Event SelectionChanged] = [Action TabSelected($source)]">
+                    cal:Message.Attach="[Event SelectionChanged] = [Action TabSelected($source)]">
             <TabControl.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding DisplayName}" />

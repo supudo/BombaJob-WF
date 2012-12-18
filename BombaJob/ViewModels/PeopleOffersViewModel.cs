@@ -27,7 +27,7 @@ namespace BombaJob.ViewModels
         #region Constructors
         public PeopleOffersViewModel(TabberViewModel _tabm, int categoryID)
         {
-            this.DisplayName = Properties.Resources.menu_Jobs;
+            this.DisplayName = " | " + Properties.Resources.menu_Jobs;
             this.tabm = _tabm;
             this.CategoryID = categoryID;
 
