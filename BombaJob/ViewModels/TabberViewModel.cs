@@ -36,6 +36,11 @@ namespace BombaJob.ViewModels
 
         public void RefreshTabs(bool showSearch)
         {
+            this.RefreshTabs(showSearch, 0);
+        }
+
+        public void RefreshTabs(bool showSearch, int aitem)
+        {
             Items.Clear();
 
             Items.Add(new NewestOffersViewModel(this));
@@ -54,10 +59,15 @@ namespace BombaJob.ViewModels
             if (showSearch)
             {
                 Items.Add(new SearchResultsViewModel(this, this.searchQuery));
-                ActivateItem(Items.Last());
+                if (aitem == 0)
+                    ActivateItem(Items.Last());
             }
-            else
+            else if (aitem == 0)
                 ActivateItem(Items.First());
+            else
+            {
+                ActivateItem(Items[aitem]);
+            }
         }
         #endregion
 
@@ -67,7 +77,7 @@ namespace BombaJob.ViewModels
             if (Items.Count > 4)
             {
                 if (tabc != null && tabc.SelectedIndex <= 3)
-                    RefreshTabs(false);
+                    RefreshTabs(false, tabc.SelectedIndex);
             }
         }
         #endregion

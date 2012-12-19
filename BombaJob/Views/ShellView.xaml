@@ -58,7 +58,7 @@
             <Border Background="White" Opacity="0.7"
                 Visibility="{Binding IsOverlayVisible, Converter={StaticResource boolToVisibilityConverter}}"
                 HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
-            <ContentControl x:Name="ActiveItem" IsEnabled="{Binding TabberEnabled}" Opacity="{Binding TabberOpacity}" />
+            <ContentControl x:Name="ActiveItem" IsEnabled="{Binding TabberEnabled}" Opacity="{Binding TabberOpacity}" Margin="0,0,0,10" />
             <mah:ProgressRing IsActive="True" Foreground="Black" Background="{x:Null}"
                             Visibility="{Binding IsOverlayVisible, Converter={StaticResource boolToVisibilityConverter}}"
                             HorizontalAlignment="Center" VerticalAlignment="Center" />
