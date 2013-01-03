@@ -997,6 +997,42 @@ namespace BombaJob.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Затвори.
+        /// </summary>
+        public static string tb_Close {
+            get {
+                return ResourceManager.GetString("tb_Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Изход.
+        /// </summary>
+        public static string tb_Exit {
+            get {
+                return ResourceManager.GetString("tb_Exit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Отвори.
+        /// </summary>
+        public static string tb_Open {
+            get {
+                return ResourceManager.GetString("tb_Open", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Настройки.
+        /// </summary>
+        public static string tb_Settings {
+            get {
+                return ResourceManager.GetString("tb_Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Понеделник.
         /// </summary>
         public static string weekday_1 {

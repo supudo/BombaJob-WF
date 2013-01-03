@@ -453,4 +453,16 @@
   <data name="ctxmenu_Search" xml:space="preserve">
     <value>Търси</value>
   </data>
+  <data name="tb_Exit" xml:space="preserve">
+    <value>Изход</value>
+  </data>
+  <data name="tb_Open" xml:space="preserve">
+    <value>Отвори</value>
+  </data>
+  <data name="tb_Settings" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="tb_Close" xml:space="preserve">
+    <value>Затвори</value>
+  </data>
 </root>

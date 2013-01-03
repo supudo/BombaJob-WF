@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.Composition;
 using System.Dynamic;
@@ -48,6 +49,7 @@ namespace BombaJob.ViewModels
         public double TabberOpacity { get; set; }
         public string SBStatus { get; set; }
         public string SBOffers { get; set; }
+        public string MaxMinLabel { get; set; }
 
         public bool IsOverlayVisible
         {
@@ -91,6 +93,8 @@ namespace BombaJob.ViewModels
             Properties.Resources.Culture = new CultureInfo(System.Configuration.ConfigurationManager.AppSettings["Culture"]);
             this.vmSettings = new SettingsViewModel(this);
             this.vmTab = new TabberViewModel(this);
+            this.MaxMinLabel = Properties.Resources.tb_Close;
+            NotifyOfPropertyChange(() => MaxMinLabel);
             ActivateItem(this.VMTab);
         }
 
@@ -248,6 +252,35 @@ namespace BombaJob.ViewModels
             NotifyOfPropertyChange(() => TabberEnabled);
             NotifyOfPropertyChange(() => TabberOpacity);
             AppSettings.LogThis(" ------ HideOverlay...");
+        }
+        #endregion
+
+        #region Taskbar icon
+        public void TBOpen()
+        {
+            if (Application.Current.MainWindow.WindowState == WindowState.Normal || Application.Current.MainWindow.WindowState == WindowState.Maximized)
+            {
+                this.MaxMinLabel = Properties.Resources.tb_Open;
+                NotifyOfPropertyChange(() => MaxMinLabel);
+                Application.Current.MainWindow.WindowState = WindowState.Minimized;
+            }
+            else
+            {
+                this.MaxMinLabel = Properties.Resources.tb_Close;
+                NotifyOfPropertyChange(() => MaxMinLabel);
+                Application.Current.MainWindow.WindowState = WindowState.Normal;
+            }
+        }
+
+        public void TBSettings()
+        {
+            this.Settings();
+        }
+
+        public void TBExit()
+        {
+            AppSettings.LogThis("Shutting down...");
+            Application.Current.Shutdown();
         }
         #endregion
     }
