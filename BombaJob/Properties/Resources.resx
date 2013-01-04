@@ -465,4 +465,31 @@
   <data name="tb_Close" xml:space="preserve">
     <value>Затвори</value>
   </data>
+  <data name="offer_Company_EmailTip" xml:space="preserve">
+    <value>Няма да го публикуваме, кандидатите ще ви пишат през сайта.</value>
+  </data>
+  <data name="offer_Company_NegativTip" xml:space="preserve">
+    <value>Ако идеалният служител е нещо като вас, защо ще избере тази фирма?</value>
+  </data>
+  <data name="offer_Company_PositivTip" xml:space="preserve">
+    <value>Bombajob е анонимен и може да публикувате обява за действащ, лош служител</value>
+  </data>
+  <data name="offer_Company_TitleTip" xml:space="preserve">
+    <value>Споделете проблем и решение – глобална фирма търси локален админ</value>
+  </data>
+  <data name="offer_Human_EmailTip" xml:space="preserve">
+    <value>Остава тайна и за нас. Фирмите ще ви пишат през сайта. 1 email = 1 обява</value>
+  </data>
+  <data name="offer_Human_NegativTip" xml:space="preserve">
+    <value>Споменете езици, дипломи, сертификати, компютърни и (не)човешки умения с думи, които някой би потърсил.
+Ако не сте анонимни, сложете линк към портфолио, Facebook или LinkedIn профил</value>
+  </data>
+  <data name="offer_Human_PositivTip" xml:space="preserve">
+    <value>Опишете дискретно проблема в работата ви: кофти осигуровки, няма развитие, офисът е далеч.
+Bombajob не е място да нахраните шефа, а да си намерите по-добра работа; клеветите ще бъдат изтрити.
+Не пускайте обяви за дейности, които нарушават закона (хакери, биячи).</value>
+  </data>
+  <data name="offer_Human_TitleTip" xml:space="preserve">
+    <value>Споделете проблем и решение; напр. iOS бог търси офис в центъра</value>
+  </data>
 </root>

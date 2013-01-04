@@ -40,6 +40,10 @@ namespace BombaJob.ViewModels
         public string LabelEmail { get; set; }
         public string LabelPositiv { get; set; }
         public string LabelNegativ { get; set; }
+        public string LabelTitleTip { get; set; }
+        public string LabelEmailTip { get; set; }
+        public string LabelPositivTip { get; set; }
+        public string LabelNegativTip { get; set; }
         public ObservableCollection<Category> Categories { get; set; }
         private Category _selectedCategory;
         public Category SelectedCategory
@@ -159,6 +163,10 @@ namespace BombaJob.ViewModels
                 this.LabelEmail = Properties.Resources.offer_Human_Email;
                 this.LabelPositiv = Properties.Resources.offer_Human_Positiv;
                 this.LabelNegativ = Properties.Resources.offer_Human_Negativ;
+                this.LabelTitleTip = Properties.Resources.offer_Human_TitleTip;
+                this.LabelEmailTip = Properties.Resources.offer_Human_EmailTip;
+                this.LabelPositivTip = Properties.Resources.offer_Human_PositivTip;
+                this.LabelNegativTip = Properties.Resources.offer_Human_NegativTip;
             }
             else
             {
@@ -167,12 +175,20 @@ namespace BombaJob.ViewModels
                 this.LabelEmail = Properties.Resources.offer_Company_Email;
                 this.LabelPositiv = Properties.Resources.offer_Company_Positiv;
                 this.LabelNegativ = Properties.Resources.offer_Company_Negativ;
+                this.LabelTitleTip = Properties.Resources.offer_Company_TitleTip;
+                this.LabelEmailTip = Properties.Resources.offer_Company_EmailTip;
+                this.LabelPositivTip = Properties.Resources.offer_Company_PositivTip;
+                this.LabelNegativTip = Properties.Resources.offer_Company_NegativTip;
             }
             NotifyOfPropertyChange(() => LabelCategory);
             NotifyOfPropertyChange(() => LabelTitle);
             NotifyOfPropertyChange(() => LabelEmail);
             NotifyOfPropertyChange(() => LabelPositiv);
             NotifyOfPropertyChange(() => LabelNegativ);
+            NotifyOfPropertyChange(() => LabelTitleTip);
+            NotifyOfPropertyChange(() => LabelEmailTip);
+            NotifyOfPropertyChange(() => LabelPositivTip);
+            NotifyOfPropertyChange(() => LabelNegativTip);
         }
 
         public void SelectedItemChanged(Category cat)

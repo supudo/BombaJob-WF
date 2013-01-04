@@ -655,11 +655,29 @@ namespace BombaJob.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Няма да го публикуваме, кандидатите ще ви пишат през сайта..
+        /// </summary>
+        public static string offer_Company_EmailTip {
+            get {
+                return ResourceManager.GetString("offer_Company_EmailTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to В какво е добра вашата фирма?.
         /// </summary>
         public static string offer_Company_Negativ {
             get {
                 return ResourceManager.GetString("offer_Company_Negativ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ако идеалният служител е нещо като вас, защо ще избере тази фирма?.
+        /// </summary>
+        public static string offer_Company_NegativTip {
+            get {
+                return ResourceManager.GetString("offer_Company_NegativTip", resourceCulture);
             }
         }
         
@@ -673,11 +691,29 @@ namespace BombaJob.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bombajob е анонимен и може да публикувате обява за действащ, лош служител.
+        /// </summary>
+        public static string offer_Company_PositivTip {
+            get {
+                return ResourceManager.GetString("offer_Company_PositivTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Заглавие на позицията.
         /// </summary>
         public static string offer_Company_Title {
             get {
                 return ResourceManager.GetString("offer_Company_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Споделете проблем и решение – глобална фирма търси локален админ.
+        /// </summary>
+        public static string offer_Company_TitleTip {
+            get {
+                return ResourceManager.GetString("offer_Company_TitleTip", resourceCulture);
             }
         }
         
@@ -754,11 +790,30 @@ namespace BombaJob.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Остава тайна и за нас. Фирмите ще ви пишат през сайта. 1 email = 1 обява.
+        /// </summary>
+        public static string offer_Human_EmailTip {
+            get {
+                return ResourceManager.GetString("offer_Human_EmailTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Добър съм в следните неща.
         /// </summary>
         public static string offer_Human_Negativ {
             get {
                 return ResourceManager.GetString("offer_Human_Negativ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Споменете езици, дипломи, сертификати, компютърни и (не)човешки умения с думи, които някой би потърсил.
+        ///Ако не сте анонимни, сложете линк към портфолио, Facebook или LinkedIn профил.
+        /// </summary>
+        public static string offer_Human_NegativTip {
+            get {
+                return ResourceManager.GetString("offer_Human_NegativTip", resourceCulture);
             }
         }
         
@@ -772,11 +827,31 @@ namespace BombaJob.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Опишете дискретно проблема в работата ви: кофти осигуровки, няма развитие, офисът е далеч.
+        ///Bombajob не е място да нахраните шефа, а да си намерите по-добра работа; клеветите ще бъдат изтрити.
+        ///Не пускайте обяви за дейности, които нарушават закона (хакери, биячи)..
+        /// </summary>
+        public static string offer_Human_PositivTip {
+            get {
+                return ResourceManager.GetString("offer_Human_PositivTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Заглавие на резюмето ви.
         /// </summary>
         public static string offer_Human_Title {
             get {
                 return ResourceManager.GetString("offer_Human_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Споделете проблем и решение; напр. iOS бог търси офис в центъра.
+        /// </summary>
+        public static string offer_Human_TitleTip {
+            get {
+                return ResourceManager.GetString("offer_Human_TitleTip", resourceCulture);
             }
         }
         

@@ -37,31 +37,36 @@
                               ItemsSource="{Binding Categories}" DisplayMemberPath="Title" SelectedValuePath="CategoryID"
                               cal:Message.Attach="[Event SelectionChanged] = [Action SelectedItemChanged($this.SelectedItem)]"/>
 
-                    <TextBlock Text="{Binding LabelTitle}"
+                    <TextBlock Text="{Binding LabelTitle}"  
                                Foreground="#FF000000" FontSize="16" Margin="20,0,10,10" TextWrapping="Wrap"/>
                     <TextBox x:Name="OfferTitle" MaxLength="255" HorizontalAlignment="Stretch"
                              Margin="20,0,10,10" BorderBrush="Orange" BorderThickness="1" FontSize="16"
-                             mah:TextboxHelper.ClearTextButton="True" TabIndex="5" />
+                             mah:TextboxHelper.ClearTextButton="True" TabIndex="5"
+                             mah:TextboxHelper.Watermark="{Binding LabelTitleTip}" />
 
                     <TextBlock Text="{Binding LabelEmail}"
                                Foreground="#FF000000" FontSize="16" Margin="20,0,10,10" TextWrapping="Wrap"/>
                     <TextBox x:Name="OfferEmail" MaxLength="255" HorizontalAlignment="Stretch"
                              Margin="20,0,10,10" BorderBrush="Orange" BorderThickness="1" FontSize="16"
-                             mah:TextboxHelper.ClearTextButton="True" TabIndex="6"/>
+                             mah:TextboxHelper.ClearTextButton="True" TabIndex="6"
+                             mah:TextboxHelper.Watermark="{Binding LabelEmailTip}"/>
 
                     <TextBlock Text="{Binding LabelPositiv}"
                                Foreground="#FF000000" FontSize="16" Margin="20,0,10,10" TextWrapping="Wrap"/>
                     <TextBox x:Name="OfferPositiv" HorizontalAlignment="Stretch"
                              Margin="20,0,10,10" BorderBrush="Orange" BorderThickness="1" FontSize="16"
                              mah:TextboxHelper.ClearTextButton="True" TabIndex="7"
-                             TextWrapping="Wrap" AcceptsReturn="True" Height="Auto" VerticalScrollBarVisibility="Visible"/>
+                             TextWrapping="Wrap" AcceptsReturn="True" Height="Auto" VerticalScrollBarVisibility="Visible"
+                             mah:TextboxHelper.Watermark="{Binding LabelPositivTip}"/>
 
                     <TextBlock Text="{Binding LabelNegativ}"
                                Foreground="#FF000000" FontSize="16" Margin="20,0,10,10" TextWrapping="Wrap"/>
                     <TextBox Name="OfferNegativ" HorizontalAlignment="Stretch"
                              Margin="20,0,10,10" BorderBrush="Orange" BorderThickness="1" FontSize="16"
                              mah:TextboxHelper.ClearTextButton="True" TabIndex="8"
-                             TextWrapping="Wrap" AcceptsReturn="True" Height="Auto" VerticalScrollBarVisibility="Visible"/>
+                             TextWrapping="Wrap" AcceptsReturn="True" Height="Auto" VerticalScrollBarVisibility="Visible"
+                             mah:TextboxHelper.Watermark="{Binding LabelNegativTip}"
+                             xml:space="preserve"/>
 
                     <Button x:Name="PostOffer" Content="{x:Static properties:Resources.offer_Boom}"
                             HorizontalAlignment="Stretch" VerticalAlignment="Bottom"
