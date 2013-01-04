@@ -7,21 +7,11 @@ namespace BombaJob.ViewModels
 {
     public class MessageBoxViewModel : Screen
     {
-        #region Properties
+        #region Variables
         private MessageBoxButton _buttons = MessageBoxButton.OK;
         private string _message;
         private string _title;
         private MessageBoxResult _result = MessageBoxResult.None;
-        #endregion
-
-        #region Init
-        public MessageBoxViewModel(string message, string title, MessageBoxButton buttons)
-        {
-            this.DisplayName = "";
-            Title = title;
-            Message = message;
-            Buttons = buttons;
-        }
         #endregion
 
         #region Properties
@@ -59,6 +49,16 @@ namespace BombaJob.ViewModels
         }
 
         public MessageBoxResult Result { get { return _result; } }
+        #endregion
+
+        #region Init
+        public MessageBoxViewModel(string message, string title, MessageBoxButton buttons)
+        {
+            this.DisplayName = "";
+            Title = title;
+            Message = message;
+            Buttons = buttons;
+        }
         #endregion
 
         #region Is

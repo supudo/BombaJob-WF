@@ -44,6 +44,7 @@ namespace BombaJob.ViewModels
         private BackgroundWorker bgWorker;
         private bool connRunning;
 
+        public Hardcodet.Wpf.TaskbarNotification.TaskbarIcon BMNotifyIcon { get; set; }
         public bool IsBusy { get; set; }
         public bool TabberEnabled { get; set; }
         public double TabberOpacity { get; set; }
@@ -109,6 +110,7 @@ namespace BombaJob.ViewModels
             this.vmAbout = new AboutViewModel(this);
             this.MaxMinLabel = Properties.Resources.tb_Close;
             NotifyOfPropertyChange(() => MaxMinLabel);
+            this.BMNotifyIcon = new Hardcodet.Wpf.TaskbarNotification.TaskbarIcon();
             ActivateItem(this.VMTab);
         }
 
@@ -304,8 +306,17 @@ namespace BombaJob.ViewModels
 
         public void TBExit()
         {
-            AppSettings.LogThis("Shutting down...");
+            AppSettings.LogThis("TrayIcon shutting down...");
             Application.Current.Shutdown();
+        }
+
+        public void DisposeTrayIcon()
+        {
+            if (this.BMNotifyIcon != null)
+            {
+                AppSettings.LogThis("Disposing tray icon...");
+                this.BMNotifyIcon.Dispose();
+            }
         }
         #endregion
     }

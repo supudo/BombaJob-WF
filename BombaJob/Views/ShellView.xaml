@@ -67,10 +67,10 @@
             <tb:TaskbarIcon x:Name="BMNotifyIcon" IconSource="/Images/bombajob.ico" ToolTipText="{x:Static properties:Resources.appName}">
                 <tb:TaskbarIcon.ContextMenu>
                     <ContextMenu>
-                        <MenuItem Header="{Binding MaxMinLabel}" x:Name="TBOpen" />
-                        <MenuItem Header="{x:Static properties:Resources.tb_Settings}" x:Name="TBSettings" />
+                        <MenuItem Header="{Binding MaxMinLabel}" cal:Message.Attach="TBOpen" />
+                        <MenuItem Header="{x:Static properties:Resources.tb_Settings}" cal:Message.Attach="TBSettings" />
                         <Separator/>
-                        <MenuItem Header="{x:Static properties:Resources.tb_Exit}" x:Name="TBExit" />
+                        <MenuItem Header="{x:Static properties:Resources.tb_Exit}" cal:Message.Attach="TBExit" />
                     </ContextMenu>
                 </tb:TaskbarIcon.ContextMenu>
 

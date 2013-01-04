@@ -17,6 +17,7 @@ namespace BombaJob
     public class BombaJobBootstrapper : Bootstrapper<IShell>
     {
         private CompositionContainer container;
+        private ShellViewModel shellVM;
 
         static BombaJobBootstrapper()
         {
@@ -65,7 +66,7 @@ namespace BombaJob
 
         protected override void OnStartup(object sender, System.Windows.StartupEventArgs e)
         {
-            var viewModel = IoC.Get<ShellViewModel>();
+            this.shellVM = IoC.Get<ShellViewModel>();
             IWindowManager windowManager;
             try
             {
@@ -75,8 +76,14 @@ namespace BombaJob
             {
                 windowManager = new WindowManager();
             }
-            viewModel.Bom();
-            windowManager.ShowWindow(viewModel);
+            this.shellVM.Bom();
+            windowManager.ShowWindow(this.shellVM);
+        }
+
+        protected override void OnExit(object sender, EventArgs e)
+        {
+            this.shellVM.DisposeTrayIcon();
+            base.OnExit(sender, e);
         }
     }
 }
