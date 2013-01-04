@@ -145,7 +145,8 @@ namespace BombaJob.ViewModels
                 this.dbRepo = new BombaJobRepository();
             this.Categories = this.dbRepo.GetCategories();
             NotifyOfPropertyChange(() => Categories);
-            this.SelectedCategory = this.Categories[0];
+            if (this.Categories != null && this.Categories.Count > 0)
+                this.SelectedCategory = this.Categories[0];
         }
 
         public void SetLabels(RadioButton rb)

@@ -772,7 +772,7 @@ namespace BombaJob.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Проект/Freelance.
+        ///   Looks up a localized string similar to Проект/Freelance : .
         /// </summary>
         public static string offer_FreelanceYn {
             get {

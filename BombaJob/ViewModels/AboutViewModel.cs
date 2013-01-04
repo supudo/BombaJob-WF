@@ -28,7 +28,9 @@ namespace BombaJob.ViewModels
             if (this.dbRepo == null)
                 this.dbRepo = new BombaJobRepository();
 
-            this.AboutText = this.dbRepo.GetTextById(35).Content;
+            BombaJob.Database.Domain.Text t = this.dbRepo.GetTextById(35);
+            if (t != null)
+                this.AboutText = t.Content;
         }
 
         public void CloseAbout()

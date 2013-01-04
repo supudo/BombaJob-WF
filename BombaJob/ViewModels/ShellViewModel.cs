@@ -43,6 +43,7 @@ namespace BombaJob.ViewModels
         private NetworkHelper netHelper = new NetworkHelper();
         private BackgroundWorker bgWorker;
         private bool connRunning;
+        private bool forceSync;
 
         public Hardcodet.Wpf.TaskbarNotification.TaskbarIcon BMNotifyIcon { get; set; }
         public bool IsBusy { get; set; }
@@ -110,7 +111,8 @@ namespace BombaJob.ViewModels
             this.vmAbout = new AboutViewModel(this);
             this.MaxMinLabel = Properties.Resources.tb_Close;
             NotifyOfPropertyChange(() => MaxMinLabel);
-            this.BMNotifyIcon = new Hardcodet.Wpf.TaskbarNotification.TaskbarIcon();
+            //this.BMNotifyIcon = new Hardcodet.Wpf.TaskbarNotification.TaskbarIcon();
+            this.forceSync = false;
             ActivateItem(this.VMTab);
         }
 
@@ -142,8 +144,11 @@ namespace BombaJob.ViewModels
         private void load()
         {
             Thread.Sleep(500);
-            if (Properties.Settings.Default.stInitSync)
+            if (this.forceSync || Properties.Settings.Default.stInitSync)
+            {
+                this.forceSync = false;
                 this.syncManager.StartSync();
+            }
             else
             {
                 Thread.Sleep(2000);
@@ -167,8 +172,12 @@ namespace BombaJob.ViewModels
         {
             this.IsBusy = false;
             if (!this.VMTab.IsActive)
+            {
                 ActivateItem(this.VMTab);
-            NotifyOfPropertyChange(() => VMTab);
+                NotifyOfPropertyChange(() => VMTab);
+            }
+            else
+                this.VMTab.RefreshTabs(false);
             this.HideOverlay();
             this.StartConnectivityCheck();
         }
@@ -206,9 +215,7 @@ namespace BombaJob.ViewModels
                     this.connectivityHandler();
                 };
                 if (!this.connRunning)
-                {
                     this.bgWorker.RunWorkerAsync();
-                }
             }
         }
         #endregion
@@ -217,13 +224,21 @@ namespace BombaJob.ViewModels
         public void Synchronize()
         {
             if (!this.IsBusy)
+            {
+                this.forceSync = true;
                 this.StartSynchronization();
+            }
         }
 
         public void Settings()
         {
             if (!this.IsBusy)
-                ActivateItem(this.VMSettings);
+            {
+                if (this.ActiveItem.ToString().Equals(this.vmSettings.ToString()))
+                    this.ActivateTabber();
+                else
+                    ActivateItem(this.VMSettings);
+            }
         }
 
         public void Search(TextBox txt, System.Windows.Input.KeyEventArgs e)
@@ -302,6 +317,12 @@ namespace BombaJob.ViewModels
         public void TBSettings()
         {
             this.Settings();
+        }
+
+        public void TBSync()
+        {
+            this.forceSync = true;
+            this.Synchronize();
         }
 
         public void TBExit()

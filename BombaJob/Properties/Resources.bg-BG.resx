@@ -319,7 +319,7 @@
     <value>Заглавие на позицията</value>
   </data>
   <data name="offer_FreelanceYn" xml:space="preserve">
-    <value>Проект/Freelance</value>
+    <value>Проект/Freelance : </value>
   </data>
   <data name="offer_Human_Email" xml:space="preserve">
     <value>Вашият email</value>

@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BombaJob", "BombaJob\BombaJob.csproj", "{3610B1DE-D3AA-45A9-8122-9B5465528FC0}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "BombaJobInstall", "BombaJobInstall\BombaJobInstall.vdproj", "{9FFAAC93-A6A0-46ED-B3EA-AE19CDF19A6E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,12 @@ Global
 		{3610B1DE-D3AA-45A9-8122-9B5465528FC0}.Release|Mixed Platforms.Build.0 = Release|x86
 		{3610B1DE-D3AA-45A9-8122-9B5465528FC0}.Release|x86.ActiveCfg = Release|x86
 		{3610B1DE-D3AA-45A9-8122-9B5465528FC0}.Release|x86.Build.0 = Release|x86
+		{9FFAAC93-A6A0-46ED-B3EA-AE19CDF19A6E}.Debug|Any CPU.ActiveCfg = Debug
+		{9FFAAC93-A6A0-46ED-B3EA-AE19CDF19A6E}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{9FFAAC93-A6A0-46ED-B3EA-AE19CDF19A6E}.Debug|x86.ActiveCfg = Debug
+		{9FFAAC93-A6A0-46ED-B3EA-AE19CDF19A6E}.Release|Any CPU.ActiveCfg = Release
+		{9FFAAC93-A6A0-46ED-B3EA-AE19CDF19A6E}.Release|Mixed Platforms.ActiveCfg = Release
+		{9FFAAC93-A6A0-46ED-B3EA-AE19CDF19A6E}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

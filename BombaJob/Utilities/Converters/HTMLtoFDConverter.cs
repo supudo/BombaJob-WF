@@ -24,6 +24,7 @@ namespace BombaJob.Utilities.Converters
             string html = AppSettings.HyperlinkifyAll((string)value, "");
             html = html.Replace("<br />", "");
             html = html.Replace("<br/>", "");
+            flowDocument.FontFamily = new System.Windows.Media.FontFamily("Segoe UI");
 
             int nextOffset = 0;
             foreach (Match match in regEx.Matches(html))

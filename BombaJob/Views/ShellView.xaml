@@ -70,6 +70,8 @@
                         <MenuItem Header="{Binding MaxMinLabel}" cal:Message.Attach="TBOpen" />
                         <MenuItem Header="{x:Static properties:Resources.tb_Settings}" cal:Message.Attach="TBSettings" />
                         <Separator/>
+                        <MenuItem Header="{x:Static properties:Resources.menu_Sync}" cal:Message.Attach="TBSync" />
+                        <Separator/>
                         <MenuItem Header="{x:Static properties:Resources.tb_Exit}" cal:Message.Attach="TBExit" />
                     </ContextMenu>
                 </tb:TaskbarIcon.ContextMenu>

@@ -86,7 +86,7 @@ namespace BombaJob
             string date = "";
             date += dt.ToString("HH:mm");
             date += " ";
-            date += Properties.Resources.ResourceManager.GetString("weekday_" + ((int)dt.DayOfWeek + 1));
+            date += Properties.Resources.ResourceManager.GetString("weekday_" + ((int)dt.DayOfWeek));
             date += ", ";
             date += dt.Day;
             date += " ";
@@ -103,7 +103,7 @@ namespace BombaJob
             string date = "";
             date += dt.ToString("HH:mm");
             date += " ";
-            date += Properties.Resources.ResourceManager.GetString("weekday_" + ((int)dt.DayOfWeek + 1));
+            date += Properties.Resources.ResourceManager.GetString("weekday_" + ((int)dt.DayOfWeek));
             date += ", ";
             date += dt.Day;
             date += " ";
@@ -115,6 +115,9 @@ namespace BombaJob
 
         public static string Hyperlinkify(string strvar)
         {
+            if (strvar == null || strvar.Trim().Equals(""))
+                return "";
+
             string final = strvar;
 
             Regex regex = new Regex(@"<nolink>(.*?)</nolink>",
@@ -159,6 +162,9 @@ namespace BombaJob
 
         public static string HyperlinkifyAll(string strvar, string param)
         {
+            if (strvar == null || strvar.Trim().Equals(""))
+                return "";
+
             string final = strvar;
             string section = String.Empty;
             Regex regex;
