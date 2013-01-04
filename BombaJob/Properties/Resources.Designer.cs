@@ -655,7 +655,7 @@ namespace BombaJob.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Предимства на фирмата.
+        ///   Looks up a localized string similar to В какво е добра вашата фирма?.
         /// </summary>
         public static string offer_Company_Negativ {
             get {
@@ -664,7 +664,7 @@ namespace BombaJob.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Описание на позицията.
+        ///   Looks up a localized string similar to Каква е позицията?.
         /// </summary>
         public static string offer_Company_Positiv {
             get {
@@ -754,7 +754,7 @@ namespace BombaJob.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Умения.
+        ///   Looks up a localized string similar to Добър съм в следните неща.
         /// </summary>
         public static string offer_Human_Negativ {
             get {
@@ -763,7 +763,7 @@ namespace BombaJob.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Проблем.
+        ///   Looks up a localized string similar to В работата си не харесвам.
         /// </summary>
         public static string offer_Human_Positiv {
             get {

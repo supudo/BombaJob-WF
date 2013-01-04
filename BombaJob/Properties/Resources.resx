@@ -280,10 +280,10 @@
     <value>Email за връзка</value>
   </data>
   <data name="offer_Company_Negativ" xml:space="preserve">
-    <value>Предимства на фирмата</value>
+    <value>В какво е добра вашата фирма?</value>
   </data>
   <data name="offer_Company_Positiv" xml:space="preserve">
-    <value>Описание на позицията</value>
+    <value>Каква е позицията?</value>
   </data>
   <data name="offer_Company_Title" xml:space="preserve">
     <value>Заглавие на позицията</value>
@@ -295,10 +295,10 @@
     <value>Вашият email</value>
   </data>
   <data name="offer_Human_Negativ" xml:space="preserve">
-    <value>Умения</value>
+    <value>Добър съм в следните неща</value>
   </data>
   <data name="offer_Human_Positiv" xml:space="preserve">
-    <value>Проблем</value>
+    <value>В работата си не харесвам</value>
   </data>
   <data name="offer_Human_Title" xml:space="preserve">
     <value>Заглавие на резюмето ви</value>
