@@ -22,6 +22,8 @@ namespace BombaJob.Utilities.Converters
 
             FlowDocument flowDocument = new FlowDocument();
             string html = AppSettings.HyperlinkifyAll((string)value, "");
+            html = html.Replace("<br />", "");
+            html = html.Replace("<br/>", "");
 
             int nextOffset = 0;
             foreach (Match match in regEx.Matches(html))

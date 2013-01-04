@@ -84,6 +84,19 @@ namespace BombaJob.ViewModels
                 this.vmSettings = value;
             }
         }
+
+        private AboutViewModel vmAbout;
+        public AboutViewModel VMAbout
+        {
+            get
+            {
+                return this.vmAbout;
+            }
+            private set
+            {
+                this.vmAbout = value;
+            }
+        }
         #endregion
 
         #region Init
@@ -93,6 +106,7 @@ namespace BombaJob.ViewModels
             Properties.Resources.Culture = new CultureInfo(System.Configuration.ConfigurationManager.AppSettings["Culture"]);
             this.vmSettings = new SettingsViewModel(this);
             this.vmTab = new TabberViewModel(this);
+            this.vmAbout = new AboutViewModel(this);
             this.MaxMinLabel = Properties.Resources.tb_Close;
             NotifyOfPropertyChange(() => MaxMinLabel);
             ActivateItem(this.VMTab);
@@ -228,6 +242,17 @@ namespace BombaJob.ViewModels
         {
             this.VMTab.RefreshTabs(false);
             ActivateItem(this.VMTab);
+        }
+
+        public void About()
+        {
+            if (!this.IsBusy)
+            {
+                if (this.ActiveItem.ToString().Equals(this.vmAbout.ToString()))
+                    this.ActivateTabber();
+                else
+                    ActivateItem(this.VMAbout);
+            }
         }
         #endregion
 

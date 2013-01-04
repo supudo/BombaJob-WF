@@ -147,6 +147,7 @@
     </Compile>
     <Compile Include="AppSettings.cs" />
     <Compile Include="Utilities\Misc\DefaultValidator.cs" />
+    <Compile Include="ViewModels\AboutViewModel.cs" />
     <Compile Include="ViewModels\JobOffersCategoriesViewModel.cs" />
     <Compile Include="ViewModels\PeopleOffersCategoriesViewModel.cs" />
     <Compile Include="ViewModels\SearchResultsViewModel.cs" />
@@ -160,6 +161,9 @@
     <Compile Include="ViewModels\PeopleOffersViewModel.cs" />
     <Compile Include="ViewModels\PostViewModel.cs" />
     <Compile Include="ViewModels\TabberViewModel.cs" />
+    <Compile Include="Views\AboutView.xaml.cs">
+      <DependentUpon>AboutView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\JobOffersCategoriesView.xaml.cs">
       <DependentUpon>JobOffersCategoriesView.xaml</DependentUpon>
     </Compile>
@@ -263,6 +267,7 @@
     <Resource Include="Images\iconcompany.png" />
     <Resource Include="Images\iconperson.png" />
     <Resource Include="Images\splashtr.png" />
+    <Resource Include="Images\bmabout.png" />
     <Content Include="x64\SQLite.Interop.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -271,6 +276,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\AboutView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\JobOffersCategoriesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
