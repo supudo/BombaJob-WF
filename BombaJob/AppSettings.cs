@@ -69,14 +69,20 @@ namespace BombaJob
         public static void LogThis(params string[] logs)
         {
             if (AppSettings.InDebug)
+            {
                 Console.WriteLine("[____BombaJob-Log] [" + DateTime.Now.ToString() + "] " + string.Join(" ", logs));
+                Trace.WriteLine("[____BombaJob-Log] [" + DateTime.Now.ToString() + "] " + string.Join(" ", logs));
+            }
         }
 
         [Conditional("DEBUG")]
         public static void SyncLogThis(params string[] logs)
         {
-            if (AppSettings.SyncDebug)
+            if (AppSettings.SyncDebug && logs != null && logs.Length > 0)
+            {
                 Console.WriteLine("[____BombaJob-Log-Sync] [" + DateTime.Now.ToString() + "] " + string.Join(" ", logs));
+                Trace.WriteLine("[____BombaJob-Log] [" + DateTime.Now.ToString() + "] " + string.Join(" ", logs));
+            }
         }
 
         public static string DoLongDate(DateTime dt)

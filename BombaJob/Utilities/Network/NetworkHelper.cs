@@ -89,6 +89,8 @@ namespace BombaJob.Utilities.Network
 
         private void webClient_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
         {
+            AppSettings.SyncLogThis(this.webServiceOp + " - " + e.Result);
+
             if (e.Error != null)
                 this.DownloadError(this, new BombaJobEventArgs(true, e.Error.Message, ""));
             else if (this.InBackground)

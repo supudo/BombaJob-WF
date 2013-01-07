@@ -268,7 +268,10 @@ namespace BombaJob.ViewModels
                 if (this.ActiveItem.ToString().Equals(this.vmAbout.ToString()))
                     this.ActivateTabber();
                 else
+                {
+                    this.VMAbout.LoadText();
                     ActivateItem(this.VMAbout);
+                }
             }
         }
         #endregion

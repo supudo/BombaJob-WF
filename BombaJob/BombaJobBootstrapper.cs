@@ -27,6 +27,8 @@ namespace BombaJob
 
         protected override void Configure()
         {
+            AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
+
             this.container = new CompositionContainer(
                 new AggregateCatalog(
                     AssemblySource.Instance.Select(x => new AssemblyCatalog(x))
@@ -80,10 +82,21 @@ namespace BombaJob
             windowManager.ShowWindow(this.shellVM);
         }
 
+        void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            Exception ex = e.ExceptionObject as Exception;
+            MessageBox.Show(ex.StackTrace, "Uncaught Thread Exception", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+
         protected override void OnExit(object sender, EventArgs e)
         {
             this.shellVM.DisposeTrayIcon();
             base.OnExit(sender, e);
+        }
+
+        protected override void OnUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
+        {
+            MessageBox.Show(e.Exception.StackTrace, e.Exception.Message, MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 }
