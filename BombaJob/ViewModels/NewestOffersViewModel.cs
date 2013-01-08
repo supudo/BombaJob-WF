@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.Composition;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -10,9 +11,12 @@ using System.Windows.Controls;
 using BombaJob.Database;
 using BombaJob.Database.Domain;
 using BombaJob.Database.Repository;
+using BombaJob.Utilities.Controls;
 using BombaJob.Utilities.Interfaces;
 
 using Caliburn.Micro;
+
+using Facebook;
 
 namespace BombaJob.ViewModels
 {
@@ -20,8 +24,8 @@ namespace BombaJob.ViewModels
     public class NewestOffersViewModel : Screen
     {
         private IBombaJobRepository dbRepo;
-        public ObservableCollection<JobOffer> OffersList { get; set; }
         private TabberViewModel tabm;
+        public ObservableCollection<JobOffer> OffersList { get; set; }
 
         public NewestOffersViewModel(TabberViewModel _tabm)
         {
@@ -66,6 +70,20 @@ namespace BombaJob.ViewModels
             IBombaJobRepository dbRepo = new BombaJobRepository();
             dbRepo.MarkAsRead(jobOffer);
             this.LoadOffers();
+        }
+
+        public void OffersList_Menu_ShareFacebook(JobOffer jobOffer)
+        {
+            AppSettings.LogThis("Share Facebook...");
+            FacebookOAuthResult fbResult = null;
+            Caliburn.Micro.Execute.OnUIThread(() => fbResult = IoC.Get<IWindowManager>().ShowFacebookLogin());
+            if (fbResult != null)
+                AppSettings.FacebookPost(fbResult, jobOffer);
+        }
+
+        public void OffersList_Menu_ShareTwitter(JobOffer jobOffer)
+        {
+            AppSettings.LogThis("Share Twitter...");
         }
         #endregion
     }

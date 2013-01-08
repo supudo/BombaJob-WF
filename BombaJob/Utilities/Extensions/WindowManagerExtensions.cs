@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 
+using BombaJob.SocNet.Facebook;
 using BombaJob.ViewModels;
 
 using Caliburn.Micro;
@@ -34,6 +35,24 @@ namespace BombaJob.Utilities.Controls
         public static void ShowMessageBox(this IWindowManager @this, string message)
         {
             @this.ShowMessageBox(message, "System Message", MessageBoxButton.OK);
+        }
+
+        public static Facebook.FacebookOAuthResult ShowFacebookLogin(this IWindowManager @this)
+        {
+            Facebook.FacebookOAuthResult retval;
+            ShellViewModel shellViewModel = IoC.Get<ShellViewModel>();
+            try
+            {
+                shellViewModel.ShowOverlay();
+                var model = new FacebookLoginViewModel();
+                @this.ShowDialog(model);
+                retval = model.FacebookOAuthResult;
+            }
+            finally
+            {
+                shellViewModel.HideOverlay();
+            }
+            return retval;
         }
     }
 }

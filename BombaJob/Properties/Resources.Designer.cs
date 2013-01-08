@@ -1054,6 +1054,42 @@ namespace BombaJob.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Сподели в Facebook.
+        /// </summary>
+        public static string share_Facebook {
+            get {
+                return ResourceManager.GetString("share_Facebook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Възникна проблем при публикуване на вашата стена..
+        /// </summary>
+        public static string share_FacebookError {
+            get {
+                return ResourceManager.GetString("share_FacebookError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Обявата беше публикувана на вашата стена..
+        /// </summary>
+        public static string share_FacebookOK {
+            get {
+                return ResourceManager.GetString("share_FacebookOK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Сподели в Twitter.
+        /// </summary>
+        public static string share_Twitter {
+            get {
+                return ResourceManager.GetString("share_Twitter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ф.
         /// </summary>
         public static string shortCompany {

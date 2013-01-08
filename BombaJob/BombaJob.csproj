@@ -65,6 +65,9 @@
     <Reference Include="Caliburn.Micro.Logging, Version=1.3.0.2, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Caliburn.Micro.Logging.1.3.0\lib\net40\Caliburn.Micro.Logging.dll</HintPath>
     </Reference>
+    <Reference Include="Facebook">
+      <HintPath>..\packages\Facebook.6.1.4\lib\net40-client\Facebook.dll</HintPath>
+    </Reference>
     <Reference Include="Hardcodet.Wpf.TaskbarNotification, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Hardcodet.Wpf.TaskbarNotification.1.0.4.0\lib\net40\Hardcodet.Wpf.TaskbarNotification.dll</HintPath>
     </Reference>
@@ -117,6 +120,10 @@
     <Compile Include="Caliburn\Micro\Logging\DebugLogger.cs" />
     <Compile Include="Database\Domain\BombaJobDomain.cs" />
     <Compile Include="Database\Repository\BombaJobRepository.cs" />
+    <Compile Include="SocNet\Facebook\FacebookLoginView.xaml.cs">
+      <DependentUpon>FacebookLoginView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SocNet\Facebook\FacebookLoginViewModel.cs" />
     <Compile Include="Utilities\Commands\HyperlinkCommand.cs" />
     <Compile Include="Utilities\Controls\OfferCountTicker.cs" />
     <Compile Include="Utilities\Converters\HTMLtoFDConverter.cs" />
@@ -279,6 +286,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="SocNet\Facebook\FacebookLoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\AboutView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

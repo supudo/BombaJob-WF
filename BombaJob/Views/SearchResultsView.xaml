@@ -42,6 +42,11 @@
                                               cal:Message.Attach="OffersList_Menu_Message($dataContext)"/>
                                     <MenuItem Header="{x:Static properties:Resources.ctxmenu_MarkAsRead}"
                                               cal:Message.Attach="OffersList_Menu_Mark($dataContext)"/>
+                                    <Separator />
+                                    <MenuItem Header="{x:Static properties:Resources.share_Facebook}"
+                                              cal:Message.Attach="OffersList_Menu_ShareFacebook($dataContext)"/>
+                                    <MenuItem Header="{x:Static properties:Resources.share_Twitter}"
+                                              cal:Message.Attach="OffersList_Menu_ShareTwitter($dataContext)"/>
                                 </ContextMenu>
                             </ListBoxItem.ContextMenu>
                             <i:Interaction.Triggers>

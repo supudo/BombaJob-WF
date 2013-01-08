@@ -1,10 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Dynamic;
 using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Windows;
+
+using BombaJob.Database.Domain;
+using BombaJob.Utilities.Controls;
+
+using Caliburn.Micro;
+
+using Facebook;
 
 namespace BombaJob
 {
@@ -49,6 +58,9 @@ namespace BombaJob
         public static string IconHuman = "/BombaJob;component/Images/iconperson.png";
         public static string IconCompany = "/BombaJob;component/Images/iconcompany.png";
         public static int ConnectivityCheckTimer = 60000;
+
+        public static string FacebookAppID = "162884250446512";
+        public static string FacebookPermissions = "publish_stream";
 
         public enum ServiceOp
         {
@@ -267,6 +279,42 @@ namespace BombaJob
         public static bool ValidateEmail(string email)
         {
             return Regex.IsMatch(email, @"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*");
+        }
+        #endregion
+
+        #region SocNet
+        public static void FacebookPost(FacebookOAuthResult facebookOAuthResult, JobOffer jobOffer)
+        {
+            if (facebookOAuthResult == null)
+                return;
+
+            if (facebookOAuthResult.IsSuccess)
+            {
+                AppSettings.LogThis("Facebook token = " + facebookOAuthResult.AccessToken);
+                string _accessToken = facebookOAuthResult.AccessToken;
+                var fb = new FacebookClient(_accessToken);
+
+                fb.PostCompleted += (o, e) =>
+                {
+                    if (e.Cancelled)
+                        return;
+                    else if (e.Error != null)
+                        Caliburn.Micro.Execute.OnUIThread(() => IoC.Get<IWindowManager>().ShowMessageBox(Properties.Resources.share_FacebookError + "\n" + e.Error.Message, Properties.Resources.errorTitle, MessageBoxButton.OK));
+                    else
+                        Caliburn.Micro.Execute.OnUIThread(() => IoC.Get<IWindowManager>().ShowMessageBox(Properties.Resources.share_FacebookOK, Properties.Resources.share_Facebook, MessageBoxButton.OK));
+                };
+
+                dynamic parameters = new ExpandoObject();
+                parameters.picture = "http://bombajob.bg/images/ibombajob.png";
+                parameters.name = jobOffer.Title;
+                parameters.link = "http://bombajob.bg/offer/" + jobOffer.OfferID;
+                parameters.caption = jobOffer.Positivism;
+                parameters.description = jobOffer.Negativism;
+
+                fb.PostAsync("me/feed", parameters);
+            }
+            else
+                return;// Caliburn.Micro.Execute.OnUIThread(() => IoC.Get<IWindowManager>().ShowMessageBox(facebookOAuthResult.ErrorDescription, Properties.Resources.errorTitle, MessageBoxButton.OK));
         }
         #endregion
     }

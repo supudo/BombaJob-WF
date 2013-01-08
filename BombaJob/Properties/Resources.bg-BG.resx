@@ -492,4 +492,16 @@ Bombajob не е място да нахраните шефа, а да си на�
   <data name="offer_Human_TitleTip" xml:space="preserve">
     <value>Споделете проблем и решение; напр. iOS бог търси офис в центъра</value>
   </data>
+  <data name="share_Facebook" xml:space="preserve">
+    <value>Сподели в Facebook</value>
+  </data>
+  <data name="share_Twitter" xml:space="preserve">
+    <value>Сподели в Twitter</value>
+  </data>
+  <data name="share_FacebookError" xml:space="preserve">
+    <value>Възникна проблем при публикуване на вашата стена.</value>
+  </data>
+  <data name="share_FacebookOK" xml:space="preserve">
+    <value>Обявата беше публикувана на вашата стена.</value>
+  </data>
 </root>
