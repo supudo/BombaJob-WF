@@ -59,8 +59,10 @@ namespace BombaJob
         public static string IconCompany = "/BombaJob;component/Images/iconcompany.png";
         public static int ConnectivityCheckTimer = 60000;
 
-        public static string FacebookAppID = "162884250446512";
+        public static string FacebookAppID = "";
         public static string FacebookPermissions = "publish_stream";
+        public static string TwitterKey = "";
+        public static string TwitterSecret = "";
 
         public enum ServiceOp
         {
@@ -315,6 +317,14 @@ namespace BombaJob
             }
             else
                 return;// Caliburn.Micro.Execute.OnUIThread(() => IoC.Get<IWindowManager>().ShowMessageBox(facebookOAuthResult.ErrorDescription, Properties.Resources.errorTitle, MessageBoxButton.OK));
+        }
+
+        public static void TwitterPost(JobOffer jobOffer)
+        {
+            string tw = "BombaJob.bg - ";
+            tw += jobOffer.Title + " - ";
+            tw += "http://bombajob.bg/offer/" + jobOffer.OfferID;
+            tw += " #bombajobbg";
         }
         #endregion
     }
