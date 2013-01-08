@@ -18,4 +18,5 @@ Using:
 [Hardcodet Taskbar Notification](http://www.hardcodet.net/projects/wpf-notifyicon),
 [MahApps.Metro](http://mahapps.com/MahApps.Metro/),
 [NHibernate](http://nhforge.org/),
-[System.Data.SQLite](http://system.data.sqlite.org/)
+[System.Data.SQLite](http://system.data.sqlite.org/),
+[Facebook C# SDK](http://csharpsdk.org/)
