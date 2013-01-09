@@ -45,8 +45,6 @@
                                     <Separator />
                                     <MenuItem Header="{x:Static properties:Resources.share_Facebook}"
                                               cal:Message.Attach="OffersList_Menu_ShareFacebook($dataContext)"/>
-                                    <MenuItem Header="{x:Static properties:Resources.share_Twitter}"
-                                              cal:Message.Attach="OffersList_Menu_ShareTwitter($dataContext)"/>
                                 </ContextMenu>
                             </ListBoxItem.ContextMenu>
                             <i:Interaction.Triggers>

@@ -84,6 +84,8 @@ namespace BombaJob.ViewModels
         public void OffersList_Menu_ShareTwitter(JobOffer jobOffer)
         {
             AppSettings.LogThis("Share Twitter...");
+            Caliburn.Micro.Execute.OnUIThread(() => IoC.Get<IWindowManager>().ShowTwitterLogin());
+            AppSettings.TwitterPost(jobOffer);
         }
         #endregion
     }

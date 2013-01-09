@@ -59,10 +59,18 @@ namespace BombaJob
         public static string IconCompany = "/BombaJob;component/Images/iconcompany.png";
         public static int ConnectivityCheckTimer = 60000;
 
-        public static string FacebookAppID = "";
+        public static string FacebookAppID = "162884250446512";
         public static string FacebookPermissions = "publish_stream";
-        public static string TwitterKey = "";
-        public static string TwitterSecret = "";
+
+        public static string TwitterOAuth = "https://api.twitter.com/oauth";
+        public static string TwitterRequestTokenUri = "https://api.twitter.com/oauth/request_token";
+        public static string TwitterAuthorizeUri = "https://api.twitter.com/oauth/authorize";
+        public static string TwitterAccessTokenUri = "https://api.twitter.com/oauth/access_token";
+        public static string TwitterCallbackUri = "oob";
+        public static string TwitterStatusUpdateUrl { get { return "http://api.twitter.com"; } }
+        public static string TwitterConsumerKey = "OVvHQ1wio8LZklS5mRUuA";
+        public static string TwitterConsumerKeySecret = "zZm0RsfzkLpF3FYnxcM3BDZdxHA6sPLoPiTcBvohUEo";
+        public static string TwitterOAuthVersion = "1.0a";
 
         public enum ServiceOp
         {

@@ -5,6 +5,7 @@ using System.Text;
 using System.Windows;
 
 using BombaJob.SocNet.Facebook;
+using BombaJob.SocNet.Twitter;
 using BombaJob.ViewModels;
 
 using Caliburn.Micro;
@@ -53,6 +54,21 @@ namespace BombaJob.Utilities.Controls
                 shellViewModel.HideOverlay();
             }
             return retval;
+        }
+
+        public static void ShowTwitterLogin(this IWindowManager @this)
+        {
+            ShellViewModel shellViewModel = IoC.Get<ShellViewModel>();
+            try
+            {
+                shellViewModel.ShowOverlay();
+                var model = new TwitterLoginViewModel();
+                @this.ShowDialog(model);
+            }
+            finally
+            {
+                shellViewModel.HideOverlay();
+            }
         }
     }
 }
