@@ -49,7 +49,7 @@ namespace BombaJob
         public static string SQLiteFile = "BombaJob.sqlite";
         public static string DBConnectionString = "Data Source=" + AppSettings.SQLiteFile;
         public static string ServicesURL = "http://www.bombajob.bg/_mob_service.php";
-        public static bool InDebug = true;
+        public static bool InDebug = false;
         public static bool CaliburnDebug = false;
         public static bool SyncDebug = false;
         public static string DateTimeFormat = "dd-MM-yyyy HH:mm:ss";
@@ -59,7 +59,7 @@ namespace BombaJob
         public static string IconCompany = "/BombaJob;component/Images/iconcompany.png";
         public static int ConnectivityCheckTimer = 60000;
 
-        public static string FacebookAppID = "162884250446512";
+        public static string FacebookAppID = "";
         public static string FacebookPermissions = "publish_stream";
 
         public static string TwitterOAuth = "https://api.twitter.com/oauth";
@@ -68,8 +68,8 @@ namespace BombaJob
         public static string TwitterAccessTokenUri = "https://api.twitter.com/oauth/access_token";
         public static string TwitterCallbackUri = "oob";
         public static string TwitterStatusUpdateUrl { get { return "http://api.twitter.com"; } }
-        public static string TwitterConsumerKey = "OVvHQ1wio8LZklS5mRUuA";
-        public static string TwitterConsumerKeySecret = "zZm0RsfzkLpF3FYnxcM3BDZdxHA6sPLoPiTcBvohUEo";
+        public static string TwitterConsumerKey = "";
+        public static string TwitterConsumerKeySecret = "";
         public static string TwitterOAuthVersion = "1.0a";
 
         public enum ServiceOp

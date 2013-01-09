@@ -7,9 +7,9 @@ using BombaJob.Utilities.Controls;
 
 using Caliburn.Micro;
 
-using Hammock;
-using Hammock.Authentication.OAuth;
-using Hammock.Web;
+//using Hammock;
+//using Hammock.Authentication.OAuth;
+//using Hammock.Web;
 
 namespace BombaJob.SocNet.Twitter
 {
@@ -36,10 +36,11 @@ namespace BombaJob.SocNet.Twitter
 
         public void LoadLogin()
         {
-            this.wbTwitter.Navigating += new System.Windows.Navigation.NavigatingCancelEventHandler(wbTwitter_Navigating);
-            this.GetTwitterToken();
+            //this.wbTwitter.Navigating += new System.Windows.Navigation.NavigatingCancelEventHandler(wbTwitter_Navigating);
+            //this.GetTwitterToken();
         }
 
+        /*
         private void GetTwitterToken()
         {
             var credentials = new OAuthCredentials
@@ -164,5 +165,6 @@ namespace BombaJob.SocNet.Twitter
 
             GetAccessToken(arguments[1]);
         }
+         * */
     }
 }
