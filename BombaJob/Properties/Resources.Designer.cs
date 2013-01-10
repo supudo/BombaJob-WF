@@ -1090,6 +1090,24 @@ namespace BombaJob.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Възникна проблем при чуруликането..
+        /// </summary>
+        public static string share_TwitterError {
+            get {
+                return ResourceManager.GetString("share_TwitterError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Чуруликането беше успешно.
+        /// </summary>
+        public static string share_TwitterOK {
+            get {
+                return ResourceManager.GetString("share_TwitterOK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ф.
         /// </summary>
         public static string shortCompany {

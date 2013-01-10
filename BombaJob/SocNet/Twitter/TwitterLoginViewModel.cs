@@ -3,24 +3,40 @@ using System.Dynamic;
 using System.Windows;
 using System.Windows.Controls;
 
+using BombaJob.Database.Domain;
 using BombaJob.Utilities.Controls;
 
 using Caliburn.Micro;
 
-//using Hammock;
-//using Hammock.Authentication.OAuth;
-//using Hammock.Web;
+using TweetSharp;
+using TweetSharp.Model;
 
 namespace BombaJob.SocNet.Twitter
 {
     public class TwitterLoginViewModel : Screen
     {
-        private string _oAuthToken;
-        private string _oAuthTokenSecret;
+        #region Properties
+        private TwitterService twService;
+        private JobOffer currentOffer;
+
         public WebBrowser wbTwitter { get; set; }
 
-        public TwitterLoginViewModel()
+        public OAuthRequestToken RequestToken
         {
+            get;
+            private set;
+        }
+
+        public OAuthAccessToken AccessToken
+        {
+            get;
+            private set;
+        }
+        #endregion
+
+        public TwitterLoginViewModel(JobOffer jobOffer)
+        {
+            this.currentOffer = jobOffer;
             this.DisplayName = Properties.Resources.appName;
             this.wbTwitter = new WebBrowser();
         }
@@ -31,140 +47,71 @@ namespace BombaJob.SocNet.Twitter
             var itemView = view as TwitterLoginView;
             if (itemView != null)
                 this.wbTwitter = itemView.wbTwitter;
-            this.LoadLogin();
+            this.twService = new TwitterService(AppSettings.TwitterConsumerKey, AppSettings.TwitterConsumerKeySecret);
+            if (AppSettings.TwitterToken != null && !AppSettings.TwitterToken.Equals("") &&
+                AppSettings.TwitterTokenSecret != null && !AppSettings.TwitterTokenSecret.Equals(""))
+                this.PostTweet(AppSettings.TwitterToken, AppSettings.TwitterTokenSecret);
+            else
+                this.LoadLogin();
         }
 
         public void LoadLogin()
         {
-            //this.wbTwitter.Navigating += new System.Windows.Navigation.NavigatingCancelEventHandler(wbTwitter_Navigating);
-            //this.GetTwitterToken();
+            this.wbTwitter.LoadCompleted += new System.Windows.Navigation.LoadCompletedEventHandler(wbTwitter_LoadCompleted);
+            this.RequestToken = this.twService.GetRequestToken();
+            Uri uri = this.twService.GetAuthorizationUri(this.RequestToken);
+            this.wbTwitter.Navigate(uri);
         }
 
-        /*
-        private void GetTwitterToken()
+        void wbTwitter_LoadCompleted(object sender, System.Windows.Navigation.NavigationEventArgs e)
         {
-            var credentials = new OAuthCredentials
+            if (string.Compare(e.Uri.AbsoluteUri, AppSettings.TwitterAuthorizeUri, true) == 0)
             {
-                Type = OAuthType.RequestToken,
-                SignatureMethod = OAuthSignatureMethod.HmacSha1,
-                ParameterHandling = OAuthParameterHandling.HttpAuthorizationHeader,
-                ConsumerKey = AppSettings.TwitterConsumerKey,
-                ConsumerSecret = AppSettings.TwitterConsumerKeySecret,
-                Version = AppSettings.TwitterOAuthVersion,
-                CallbackUrl = AppSettings.TwitterCallbackUri
-            };
-
-            var client = new RestClient
-            {
-                Authority = AppSettings.TwitterOAuth,
-                Credentials = credentials
-            };
-
-            var request = new RestRequest
-            {
-                Path = "/request_token"
-            };
-            client.BeginRequest(request, new RestCallback(TwitterRequestTokenCompleted));
-        }
-
-        private void TwitterRequestTokenCompleted(RestRequest request, RestResponse response, object userstate)
-        {
-            this._oAuthToken = GetQueryParameter(response.Content, "oauth_token");
-            this._oAuthTokenSecret = GetQueryParameter(response.Content, "oauth_token_secret");
-            var authorizeUrl = AppSettings.TwitterAuthorizeUri + "?oauth_token=" + this._oAuthToken;
-
-            if (String.IsNullOrEmpty(this._oAuthToken) || String.IsNullOrEmpty(this._oAuthTokenSecret))
-            {
-                Caliburn.Micro.Execute.OnUIThread(() => IoC.Get<IWindowManager>().ShowMessageBox("error calling twitter", Properties.Resources.errorTitle, MessageBoxButton.OK));
-                return;
+                if (!e.Uri.Query.Contains("oauth_token"))
+                {
+                    try
+                    {
+                        var doc = this.wbTwitter.Document as mshtml.HTMLDocument;
+                        var oauthPinElement = doc.getElementById("oauth_pin") as mshtml.IHTMLElement;
+                        if (null != oauthPinElement)
+                        {
+                            var div = oauthPinElement as mshtml.HTMLDivElement;
+                            if (null != div)
+                            {
+                                var pinText = div.innerText;
+                                pinText = pinText.Replace("Next, return to BombaJob and enter this PIN to complete the authorization process:", "");
+                                pinText = pinText.Replace("\r\n", "");
+                                if (!string.IsNullOrEmpty(pinText))
+                                {
+                                    this.AccessToken = this.twService.GetAccessToken(this.RequestToken, pinText.Trim());
+                                    if (this.AccessToken != null)
+                                    {
+                                        AppSettings.TwitterToken = this.AccessToken.Token;
+                                        AppSettings.TwitterTokenSecret = this.AccessToken.TokenSecret;
+                                        this.PostTweet(this.AccessToken.Token, this.AccessToken.TokenSecret);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Caliburn.Micro.Execute.OnUIThread(() => IoC.Get<IWindowManager>().ShowMessageBox(Properties.Resources.share_TwitterError + "\n" + ex.Message, Properties.Resources.errorTitle, MessageBoxButton.OK));
+                    }
+                }
             }
-
-            Caliburn.Micro.Execute.OnUIThread(() => this.wbTwitter.Navigate(new Uri(authorizeUrl)));
         }
 
-        private void GetAccessToken(string uri)
+        private void PostTweet(string token, string tokenSecret)
         {
-            var requestToken = GetQueryParameter(uri, "oauth_token");
-            if (requestToken != this._oAuthToken)
-                Caliburn.Micro.Execute.OnUIThread(() => IoC.Get<IWindowManager>().ShowMessageBox("Twitter auth tokens don't match", Properties.Resources.errorTitle, MessageBoxButton.OK));
-
-            var requestVerifier = GetQueryParameter(uri, "oauth_verifier");
-
-            var credentials = new OAuthCredentials
-            {
-                Type = OAuthType.AccessToken,
-                SignatureMethod = OAuthSignatureMethod.HmacSha1,
-                ParameterHandling = OAuthParameterHandling.HttpAuthorizationHeader,
-                ConsumerKey = AppSettings.TwitterConsumerKey,
-                ConsumerSecret = AppSettings.TwitterConsumerKeySecret,
-                Token = this._oAuthToken,
-                TokenSecret = this._oAuthTokenSecret,
-                Verifier = requestVerifier
-            };
-
-            var client = new RestClient
-            {
-                Authority = AppSettings.TwitterOAuth,
-                Credentials = credentials
-            };
-
-            var request = new RestRequest
-            {
-                Path = "/access_token",
-                Method = WebMethod.Post
-            };
-
-            client.BeginRequest(request, new RestCallback(RequestAccessTokenCompleted));
-        }
-
-        private void RequestAccessTokenCompleted(RestRequest request, RestResponse response, object userstate)
-        {
-            var twitteruser = new TwitterAccess
-            {
-                AccessToken = GetQueryParameter(response.Content, "oauth_token"),
-                AccessTokenSecret = GetQueryParameter(response.Content, "oauth_token_secret"),
-                UserId = GetQueryParameter(response.Content, "user_id"),
-                ScreenName = GetQueryParameter(response.Content, "screen_name")
-            };
-
-            if (String.IsNullOrEmpty(twitteruser.AccessToken) || String.IsNullOrEmpty(twitteruser.AccessTokenSecret))
-            {
-                Caliburn.Micro.Execute.OnUIThread(() => IoC.Get<IWindowManager>().ShowMessageBox(response.Content, Properties.Resources.errorTitle, MessageBoxButton.OK));
-                return;
-            }
-
-            //Helper.SaveSetting(Constants.TwitterAccess, twitteruser);
+            this.twService.AuthenticateWith(token, tokenSecret);
+            string tweet = "BombaJob.bg - ";
+            tweet += this.currentOffer.Title + " - ";
+            tweet += "http://bombajob.bg/offer/" + this.currentOffer.OfferID;
+            tweet += " #bombajobbg";
+            this.twService.SendTweet(tweet);
             this.TryClose();
+            Caliburn.Micro.Execute.OnUIThread(() => IoC.Get<IWindowManager>().ShowMessageBox(Properties.Resources.share_TwitterOK, Properties.Resources.share_Twitter, MessageBoxButton.OK));
         }
-
-        private static string GetQueryParameter(string input, string parameterName)
-        {
-            foreach (string item in input.Split('&'))
-            {
-                var parts = item.Split('=');
-                if (parts[0] == parameterName)
-                    return parts[1];
-            }
-            return String.Empty;
-        }
-
-        void wbTwitter_Navigating(object sender, System.Windows.Navigation.NavigatingCancelEventArgs e)
-        {
-            if (e.Uri.AbsoluteUri.CompareTo(AppSettings.TwitterAuthorizeUri) == 0)
-            {
-            }
-
-            if (!e.Uri.AbsoluteUri.Contains(AppSettings.TwitterCallbackUri))
-                return;
-
-            e.Cancel = true;
-
-            var arguments = e.Uri.AbsoluteUri.Split('?');
-            if (arguments.Length < 1)
-                return;
-
-            GetAccessToken(arguments[1]);
-        }
-         * */
     }
 }

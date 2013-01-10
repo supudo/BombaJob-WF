@@ -74,18 +74,12 @@ namespace BombaJob.ViewModels
 
         public void OffersList_Menu_ShareFacebook(JobOffer jobOffer)
         {
-            AppSettings.LogThis("Share Facebook...");
-            FacebookOAuthResult fbResult = null;
-            Caliburn.Micro.Execute.OnUIThread(() => fbResult = IoC.Get<IWindowManager>().ShowFacebookLogin());
-            if (fbResult != null)
-                AppSettings.FacebookPost(fbResult, jobOffer);
+            Caliburn.Micro.Execute.OnUIThread(() => IoC.Get<IWindowManager>().ShowFacebookLogin(jobOffer));
         }
 
         public void OffersList_Menu_ShareTwitter(JobOffer jobOffer)
         {
-            AppSettings.LogThis("Share Twitter...");
-            Caliburn.Micro.Execute.OnUIThread(() => IoC.Get<IWindowManager>().ShowTwitterLogin());
-            AppSettings.TwitterPost(jobOffer);
+            Caliburn.Micro.Execute.OnUIThread(() => IoC.Get<IWindowManager>().ShowTwitterLogin(jobOffer));
         }
         #endregion
     }

@@ -3,6 +3,9 @@ using System.Dynamic;
 using System.Windows;
 using System.Windows.Controls;
 
+using BombaJob.Database.Domain;
+using BombaJob.Utilities.Controls;
+
 using Caliburn.Micro;
 
 using Facebook;
@@ -13,12 +16,14 @@ namespace BombaJob.SocNet.Facebook
     {
         private Uri _loginUrl;
         private FacebookClient _fb;
+        private JobOffer currentOffer;
 
         public WebBrowser wbFacebook { get; set; }
         public FacebookOAuthResult FacebookOAuthResult { get; private set; }
 
-        public FacebookLoginViewModel()
+        public FacebookLoginViewModel(JobOffer jobOffer)
         {
+            this.currentOffer = jobOffer;
             this.DisplayName = Properties.Resources.appName;
             this.wbFacebook = new WebBrowser();
         }
@@ -41,18 +46,6 @@ namespace BombaJob.SocNet.Facebook
             this.wbFacebook.Navigate(this._loginUrl.AbsoluteUri);
         }
 
-        void wbFacebook_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
-        {
-            FacebookOAuthResult oauthResult;
-            if (_fb.TryParseOAuthCallbackUrl(e.Uri, out oauthResult))
-            {
-                this.FacebookOAuthResult = oauthResult;
-                this.TryClose();
-            }
-            else
-                this.FacebookOAuthResult = null;
-        }
-
         private Uri GenerateLoginUrl(string appId, string extendedPermissions)
         {
             dynamic parameters = new ExpandoObject();
@@ -66,6 +59,42 @@ namespace BombaJob.SocNet.Facebook
                 parameters.scope = extendedPermissions;
 
             return this._fb.GetLoginUrl(parameters);
+        }
+
+        void wbFacebook_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs args)
+        {
+            FacebookOAuthResult oauthResult;
+            if (_fb.TryParseOAuthCallbackUrl(args.Uri, out oauthResult))
+            {
+                this.FacebookOAuthResult = oauthResult;
+                if (this.FacebookOAuthResult.IsSuccess)
+                {
+                    string _accessToken = this.FacebookOAuthResult.AccessToken;
+                    var fb = new FacebookClient(_accessToken);
+
+                    fb.PostCompleted += (o, e) =>
+                    {
+                        if (e.Cancelled)
+                            return;
+                        else if (e.Error != null)
+                            Caliburn.Micro.Execute.OnUIThread(() => IoC.Get<IWindowManager>().ShowMessageBox(Properties.Resources.share_FacebookError + "\n" + e.Error.Message, Properties.Resources.errorTitle, MessageBoxButton.OK));
+                        else
+                            Caliburn.Micro.Execute.OnUIThread(() => IoC.Get<IWindowManager>().ShowMessageBox(Properties.Resources.share_FacebookOK, Properties.Resources.share_Facebook, MessageBoxButton.OK));
+                    };
+
+                    dynamic parameters = new ExpandoObject();
+                    parameters.picture = "http://bombajob.bg/images/ibombajob.png";
+                    parameters.name = this.currentOffer.Title;
+                    parameters.link = "http://bombajob.bg/offer/" + this.currentOffer.OfferID;
+                    parameters.caption = this.currentOffer.Positivism;
+                    parameters.description = this.currentOffer.Negativism;
+
+                    fb.PostAsync("me/feed", parameters);
+                    this.TryClose();
+                }
+            }
+            else
+                this.FacebookOAuthResult = null;
         }
     }
 }

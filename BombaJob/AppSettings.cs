@@ -71,6 +71,8 @@ namespace BombaJob
         public static string TwitterConsumerKey = "";
         public static string TwitterConsumerKeySecret = "";
         public static string TwitterOAuthVersion = "1.0a";
+        public static string TwitterToken = "";
+        public static string TwitterTokenSecret = "";
 
         public enum ServiceOp
         {
@@ -325,14 +327,6 @@ namespace BombaJob
             }
             else
                 return;// Caliburn.Micro.Execute.OnUIThread(() => IoC.Get<IWindowManager>().ShowMessageBox(facebookOAuthResult.ErrorDescription, Properties.Resources.errorTitle, MessageBoxButton.OK));
-        }
-
-        public static void TwitterPost(JobOffer jobOffer)
-        {
-            string tw = "BombaJob.bg - ";
-            tw += jobOffer.Title + " - ";
-            tw += "http://bombajob.bg/offer/" + jobOffer.OfferID;
-            tw += " #bombajobbg";
         }
         #endregion
     }

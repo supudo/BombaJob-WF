@@ -38,31 +38,28 @@ namespace BombaJob.Utilities.Controls
             @this.ShowMessageBox(message, "System Message", MessageBoxButton.OK);
         }
 
-        public static Facebook.FacebookOAuthResult ShowFacebookLogin(this IWindowManager @this)
+        public static void ShowFacebookLogin(this IWindowManager @this, BombaJob.Database.Domain.JobOffer jobOffer)
         {
-            Facebook.FacebookOAuthResult retval;
             ShellViewModel shellViewModel = IoC.Get<ShellViewModel>();
             try
             {
                 shellViewModel.ShowOverlay();
-                var model = new FacebookLoginViewModel();
+                var model = new FacebookLoginViewModel(jobOffer);
                 @this.ShowDialog(model);
-                retval = model.FacebookOAuthResult;
             }
             finally
             {
                 shellViewModel.HideOverlay();
             }
-            return retval;
         }
 
-        public static void ShowTwitterLogin(this IWindowManager @this)
+        public static void ShowTwitterLogin(this IWindowManager @this, BombaJob.Database.Domain.JobOffer jobOffer)
         {
             ShellViewModel shellViewModel = IoC.Get<ShellViewModel>();
             try
             {
                 shellViewModel.ShowOverlay();
-                var model = new TwitterLoginViewModel();
+                var model = new TwitterLoginViewModel(jobOffer);
                 @this.ShowDialog(model);
             }
             finally

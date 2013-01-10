@@ -19,4 +19,5 @@ Using:
 [MahApps.Metro](http://mahapps.com/MahApps.Metro/),
 [NHibernate](http://nhforge.org/),
 [System.Data.SQLite](http://system.data.sqlite.org/),
-[Facebook C# SDK](http://csharpsdk.org/)
+[Facebook C# SDK](http://csharpsdk.org/),
+[Tweetsharp](https://github.com/danielcrenna/tweetsharp)

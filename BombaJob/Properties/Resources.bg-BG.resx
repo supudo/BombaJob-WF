@@ -504,4 +504,10 @@ Bombajob не е място да нахраните шефа, а да си на�
   <data name="share_FacebookOK" xml:space="preserve">
     <value>Обявата беше публикувана на вашата стена.</value>
   </data>
+  <data name="share_TwitterError" xml:space="preserve">
+    <value>Възникна проблем при чуруликането.</value>
+  </data>
+  <data name="share_TwitterOK" xml:space="preserve">
+    <value>Чуруликането беше успешно</value>
+  </data>
 </root>
